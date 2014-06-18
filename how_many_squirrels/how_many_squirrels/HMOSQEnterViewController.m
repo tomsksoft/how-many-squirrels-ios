@@ -1,26 +1,25 @@
 //
-//  HMOSQMainViewController.m
+//  HMOSQEnterViewController.m
 //  how_many_squirrels
 //
 //  Created by Student1 on 18/06/14.
 //  Copyright (c) 2014 TomskSoft. All rights reserved.
 //
 
-#import "HMOSQMainViewController.h"
+#import "HMOSQEnterViewController.h"
 
-@interface HMOSQMainViewController ()
+@interface HMOSQEnterViewController ()
 
 @end
 
-@implementation HMOSQMainViewController
+@implementation HMOSQEnterViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self)
-    {
-        
-        self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Главная" image:[UIImage imageNamed:@""] tag:0];    }
+    if (self) {
+        self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Ввод данных" image:[UIImage imageNamed:@""] tag:0];        // Custom initialization
+ }
     return self;
 }
 

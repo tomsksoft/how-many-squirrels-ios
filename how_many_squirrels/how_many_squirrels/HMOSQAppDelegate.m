@@ -8,6 +8,7 @@
 
 #import "HMOSQAppDelegate.h"
 #import "HMOSQMainViewController.h"
+#import "HMOSQEnterViewController.h"
 
 @implementation HMOSQAppDelegate
 
@@ -19,7 +20,9 @@
 {
     UITabBarController * tabBarController = [[UITabBarController alloc]init];
     HMOSQMainViewController * mainViewController = [[HMOSQMainViewController alloc]init];
-    [tabBarController setViewControllers:@[mainViewController]];
+    HMOSQEnterViewController * enterViewController = [[HMOSQEnterViewController alloc]init];
+    
+    [tabBarController setViewControllers:@[mainViewController,enterViewController]];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window setRootViewController:tabBarController];

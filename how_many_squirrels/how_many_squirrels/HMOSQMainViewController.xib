@@ -14,18 +14,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wrT-2k-oaa">
-                    <rect key="frame" x="0.0" y="519" width="320" height="49"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <items>
-                        <tabBarItem title="Ввод данных" id="Huw-b3-mCO"/>
-                        <tabBarItem title="Графики" id="qAk-fY-hRR"/>
-                        <tabBarItem title="Настройки" id="1rz-py-RTe"/>
-                        <tabBarItem title="Таблица" id="5qC-1h-BD2"/>
-                        <tabBarItem title="Редактирование" id="ig1-8e-9TL"/>
-                    </items>
-                </tabBar>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m1w-9d-K98">
                     <rect key="frame" x="6" y="356" width="85" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

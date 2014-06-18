@@ -24,6 +24,8 @@
 		E78E58811951477800C4AA9F /* how_many_squirrelsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E78E58801951477800C4AA9F /* how_many_squirrelsTests.m */; };
 		E78E588D19514BF000C4AA9F /* HMOSQMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E78E588B19514BF000C4AA9F /* HMOSQMainViewController.m */; };
 		E78E588E19514BF000C4AA9F /* HMOSQMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78E588C19514BF000C4AA9F /* HMOSQMainViewController.xib */; };
+		E78E589219515A2D00C4AA9F /* HMOSQEnterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E78E589019515A2D00C4AA9F /* HMOSQEnterViewController.m */; };
+		E78E589319515A2D00C4AA9F /* HMOSQEnterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78E589119515A2D00C4AA9F /* HMOSQEnterViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,9 @@
 		E78E588A19514BF000C4AA9F /* HMOSQMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMOSQMainViewController.h; sourceTree = "<group>"; };
 		E78E588B19514BF000C4AA9F /* HMOSQMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMOSQMainViewController.m; sourceTree = "<group>"; };
 		E78E588C19514BF000C4AA9F /* HMOSQMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMOSQMainViewController.xib; sourceTree = "<group>"; };
+		E78E588F19515A2D00C4AA9F /* HMOSQEnterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMOSQEnterViewController.h; sourceTree = "<group>"; };
+		E78E589019515A2D00C4AA9F /* HMOSQEnterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMOSQEnterViewController.m; sourceTree = "<group>"; };
+		E78E589119515A2D00C4AA9F /* HMOSQEnterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMOSQEnterViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +133,9 @@
 				E78E588A19514BF000C4AA9F /* HMOSQMainViewController.h */,
 				E78E588B19514BF000C4AA9F /* HMOSQMainViewController.m */,
 				E78E588C19514BF000C4AA9F /* HMOSQMainViewController.xib */,
+				E78E588F19515A2D00C4AA9F /* HMOSQEnterViewController.h */,
+				E78E589019515A2D00C4AA9F /* HMOSQEnterViewController.m */,
+				E78E589119515A2D00C4AA9F /* HMOSQEnterViewController.xib */,
 			);
 			path = how_many_squirrels;
 			sourceTree = "<group>";
@@ -239,6 +247,7 @@
 			files = (
 				E78E58621951477800C4AA9F /* InfoPlist.strings in Resources */,
 				E78E586D1951477800C4AA9F /* Images.xcassets in Resources */,
+				E78E589319515A2D00C4AA9F /* HMOSQEnterViewController.xib in Resources */,
 				E78E588E19514BF000C4AA9F /* HMOSQMainViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E78E589219515A2D00C4AA9F /* HMOSQEnterViewController.m in Sources */,
 				E78E588D19514BF000C4AA9F /* HMOSQMainViewController.m in Sources */,
 				E78E58641951477800C4AA9F /* main.m in Sources */,
 				E78E58681951477800C4AA9F /* HMOSQAppDelegate.m in Sources */,
@@ -460,6 +470,7 @@
 				E78E58861951477800C4AA9F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E78E58871951477800C4AA9F /* Build configuration list for PBXNativeTarget "how_many_squirrelsTests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +479,7 @@
 				E78E58891951477800C4AA9F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
