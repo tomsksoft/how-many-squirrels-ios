@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface HMOSQEnterViewController : UIViewController
+//@property(strong,nonatomic)UIDatePicker * dateTimePicker;
+@property(strong,nonatomic)IBOutlet UILabel * dateTime;
 
 @end
