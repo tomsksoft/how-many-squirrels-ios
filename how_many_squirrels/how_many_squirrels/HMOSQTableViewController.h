@@ -1,5 +1,5 @@
 //
-//  HMOSQMainViewController.h
+//  HMOSQTableViewController.h
 //  how_many_squirrels
 //
 //  Created by Student1 on 18/06/14.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HMOSQMainViewController : UIViewController
-
-- (IBAction) SettingClick : (id)sender;
+@interface HMOSQTableViewController : UIViewController
 
 @end

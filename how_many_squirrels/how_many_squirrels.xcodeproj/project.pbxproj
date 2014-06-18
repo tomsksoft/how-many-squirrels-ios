@@ -28,6 +28,8 @@
 		E78E589319515A2D00C4AA9F /* HMOSQEnterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78E589119515A2D00C4AA9F /* HMOSQEnterViewController.xib */; };
 		E78E58DB1951823900C4AA9F /* HMOSQPlotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E78E58D91951823900C4AA9F /* HMOSQPlotViewController.m */; };
 		E78E58DC1951823900C4AA9F /* HMOSQPlotViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78E58DA1951823900C4AA9F /* HMOSQPlotViewController.xib */; };
+		E78E58E01951864F00C4AA9F /* HMOSQTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E78E58DE1951864F00C4AA9F /* HMOSQTableViewController.m */; };
+		E78E58E11951864F00C4AA9F /* HMOSQTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78E58DF1951864F00C4AA9F /* HMOSQTableViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,9 @@
 		E78E58D81951823900C4AA9F /* HMOSQPlotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMOSQPlotViewController.h; sourceTree = "<group>"; };
 		E78E58D91951823900C4AA9F /* HMOSQPlotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMOSQPlotViewController.m; sourceTree = "<group>"; };
 		E78E58DA1951823900C4AA9F /* HMOSQPlotViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMOSQPlotViewController.xib; sourceTree = "<group>"; };
+		E78E58DD1951864F00C4AA9F /* HMOSQTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMOSQTableViewController.h; sourceTree = "<group>"; };
+		E78E58DE1951864F00C4AA9F /* HMOSQTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMOSQTableViewController.m; sourceTree = "<group>"; };
+		E78E58DF1951864F00C4AA9F /* HMOSQTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMOSQTableViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,20 +135,13 @@
 		E78E585D1951477800C4AA9F /* how_many_squirrels */ = {
 			isa = PBXGroup;
 			children = (
+				E78E58E319518F9400C4AA9F /* Interface */,
+				E78E58E219518F4700C4AA9F /* Controllers */,
 				E78E58661951477800C4AA9F /* HMOSQAppDelegate.h */,
 				E78E58671951477800C4AA9F /* HMOSQAppDelegate.m */,
 				E78E586C1951477800C4AA9F /* Images.xcassets */,
 				E78E58691951477800C4AA9F /* how_many_squirrels.xcdatamodeld */,
 				E78E585E1951477800C4AA9F /* Supporting Files */,
-				E78E588A19514BF000C4AA9F /* HMOSQMainViewController.h */,
-				E78E588B19514BF000C4AA9F /* HMOSQMainViewController.m */,
-				E78E588C19514BF000C4AA9F /* HMOSQMainViewController.xib */,
-				E78E588F19515A2D00C4AA9F /* HMOSQEnterViewController.h */,
-				E78E589019515A2D00C4AA9F /* HMOSQEnterViewController.m */,
-				E78E589119515A2D00C4AA9F /* HMOSQEnterViewController.xib */,
-				E78E58D81951823900C4AA9F /* HMOSQPlotViewController.h */,
-				E78E58D91951823900C4AA9F /* HMOSQPlotViewController.m */,
-				E78E58DA1951823900C4AA9F /* HMOSQPlotViewController.xib */,
 			);
 			path = how_many_squirrels;
 			sourceTree = "<group>";
@@ -175,6 +173,32 @@
 				E78E587D1951477800C4AA9F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E78E58E219518F4700C4AA9F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E78E588B19514BF000C4AA9F /* HMOSQMainViewController.m */,
+				E78E588A19514BF000C4AA9F /* HMOSQMainViewController.h */,
+				E78E588F19515A2D00C4AA9F /* HMOSQEnterViewController.h */,
+				E78E589019515A2D00C4AA9F /* HMOSQEnterViewController.m */,
+				E78E58D81951823900C4AA9F /* HMOSQPlotViewController.h */,
+				E78E58D91951823900C4AA9F /* HMOSQPlotViewController.m */,
+				E78E58DD1951864F00C4AA9F /* HMOSQTableViewController.h */,
+				E78E58DE1951864F00C4AA9F /* HMOSQTableViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		E78E58E319518F9400C4AA9F /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				E78E588C19514BF000C4AA9F /* HMOSQMainViewController.xib */,
+				E78E589119515A2D00C4AA9F /* HMOSQEnterViewController.xib */,
+				E78E58DA1951823900C4AA9F /* HMOSQPlotViewController.xib */,
+				E78E58DF1951864F00C4AA9F /* HMOSQTableViewController.xib */,
+			);
+			name = Interface;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,6 +281,7 @@
 				E78E586D1951477800C4AA9F /* Images.xcassets in Resources */,
 				E78E589319515A2D00C4AA9F /* HMOSQEnterViewController.xib in Resources */,
 				E78E58DC1951823900C4AA9F /* HMOSQPlotViewController.xib in Resources */,
+				E78E58E11951864F00C4AA9F /* HMOSQTableViewController.xib in Resources */,
 				E78E588E19514BF000C4AA9F /* HMOSQMainViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,6 +306,7 @@
 				E78E58DB1951823900C4AA9F /* HMOSQPlotViewController.m in Sources */,
 				E78E58641951477800C4AA9F /* main.m in Sources */,
 				E78E58681951477800C4AA9F /* HMOSQAppDelegate.m in Sources */,
+				E78E58E01951864F00C4AA9F /* HMOSQTableViewController.m in Sources */,
 				E78E586B1951477800C4AA9F /* how_many_squirrels.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

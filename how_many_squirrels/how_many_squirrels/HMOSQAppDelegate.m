@@ -10,6 +10,7 @@
 #import "HMOSQMainViewController.h"
 #import "HMOSQEnterViewController.h"
 #import "HMOSQPlotViewController.h"
+#import "HMOSQTableViewController.h"
 
 @implementation HMOSQAppDelegate
 
@@ -23,8 +24,9 @@
     HMOSQMainViewController * mainViewController = [[HMOSQMainViewController alloc]init];
     HMOSQEnterViewController * enterViewController = [[HMOSQEnterViewController alloc]init];
     HMOSQPlotViewController * plotController = [[HMOSQPlotViewController alloc] init];
+    HMOSQTableViewController * tableController = [[HMOSQTableViewController alloc]init];
     
-    [tabBarController setViewControllers:@[mainViewController,enterViewController,plotController]];
+    [tabBarController setViewControllers:@[mainViewController,enterViewController,plotController,tableController]];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window setRootViewController:tabBarController];

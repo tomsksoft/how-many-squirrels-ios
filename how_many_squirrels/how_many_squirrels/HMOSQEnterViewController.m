@@ -23,9 +23,20 @@
     return self;
 }
 
+-(void) updateTime
+{
+    NSDate * now = [NSDate date];
+    NSDateFormatter * formater = [[NSDateFormatter alloc] init];
+    formater.dateFormat = @"dd.MM.yy. hh:mm:ss";
+    _dateTime.text = [[NSString alloc] initWithFormat:@"%@",[formater stringFromDate:now]];
+    [self performSelector:@selector(updateTime) withObject:self afterDelay:1.0];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self updateTime];
+
     // Do any additional setup after loading the view from its nib.
 }
 - (void) viewDidAppear:(BOOL)animated
