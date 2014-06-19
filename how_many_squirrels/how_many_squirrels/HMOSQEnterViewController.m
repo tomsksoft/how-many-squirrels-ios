@@ -7,6 +7,7 @@
 //
 
 #import "HMOSQEnterViewController.h"
+#import "HMOSQKeyboardViewController.h"
 
 @interface HMOSQEnterViewController ()
 
@@ -35,11 +36,27 @@
     [self performSelector:@selector(updateTime) withObject:self afterDelay:1.0];
 }
 
--(IBAction)addClick:(id)sender
+-(IBAction)plusClick:(id)sender
 {
-    [self addNewObject:[NSDate date] :[NSNumber numberWithInt:10]];
+    
+    int count = [_count.text intValue];
+    NSString * str = [[NSString alloc]initWithFormat:@"%d",count+1 ];
+    _count.text = str;
+    [self addNewObject:[NSDate date] :[NSNumber numberWithInt:1]];
 }
-
+-(IBAction)decClick:(id)sender
+{
+    HMOSQKeyboardViewController * view = [[HMOSQKeyboardViewController alloc] init];
+   [self presentViewController:view animated:YES completion:nil];    //int count = [_count.text intValue];
+    
+    int count = [_count.text intValue];
+    if (count==0)
+    {
+        return;
+    }
+    NSString * str = [[NSString alloc]initWithFormat:@"%d",count-1 ];
+    _count.text = str;    [self addNewObject:[NSDate date] :[NSNumber numberWithInt:-1]];
+}
 - (NSFetchedResultsController *)fetchedResultsController
 {
     if (_fetchedResultsController != nil) {

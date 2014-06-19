@@ -14,6 +14,7 @@
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 //@property(strong,nonatomic)UIDatePicker * dateTimePicker;
 @property(strong,nonatomic)IBOutlet UILabel * dateTime;
--(IBAction)addClick:(id)sender;
-
+@property(strong,nonatomic)IBOutlet UILabel * count;
+-(IBAction)plusClick:(id)sender;
+-(IBAction)decClick:(id)sender;
 @end

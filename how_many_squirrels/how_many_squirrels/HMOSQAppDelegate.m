@@ -25,7 +25,6 @@
     HMOSQEnterViewController * enterViewController = [[HMOSQEnterViewController alloc]init];
     HMOSQPlotViewController * plotController = [[HMOSQPlotViewController alloc] init];
     HMOSQTableViewController * tableController = [[HMOSQTableViewController alloc]init];
-    
     [tabBarController setViewControllers:@[mainViewController,enterViewController,plotController,tableController]];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
