@@ -66,6 +66,8 @@
     NSManagedObject* object = [NSEntityDescription insertNewObjectForEntityForName:[disc name] inManagedObjectContext:context];
     [object setValue: date forKey:@"date"];
     [object setValue:count forKey:@"number"];
+    [context save:nil];
+    
 }
 
 - (void)viewDidLoad
