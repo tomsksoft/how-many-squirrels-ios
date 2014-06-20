@@ -8,13 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HMOSQEnterViewController : UIViewController<NSFetchedResultsControllerDelegate>
+@interface HMOSQEnterViewController : UIViewController<NSFetchedResultsControllerDelegate,UITextViewDelegate>
+{
+    NSNumber * num;
+}
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 //@property(strong,nonatomic)UIDatePicker * dateTimePicker;
 @property(strong,nonatomic)IBOutlet UILabel * dateTime;
-@property(strong,nonatomic)IBOutlet UILabel * count;
+@property (strong,nonatomic)IBOutlet UITextView * text;
 -(IBAction)plusClick:(id)sender;
 -(IBAction)decClick:(id)sender;
 @end

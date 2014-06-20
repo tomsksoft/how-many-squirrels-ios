@@ -10,9 +10,7 @@
 
 @interface HMOSQTableViewController : UIViewController<NSFetchedResultsControllerDelegate>
 {
-    NSArray * result;
 }
-@property(strong,retain) NSArray * result;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @end

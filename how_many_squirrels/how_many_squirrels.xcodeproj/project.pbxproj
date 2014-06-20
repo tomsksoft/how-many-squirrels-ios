@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E74E584F1952DB8E00D262F0 /* HMOSQKeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E74E584D1952DB8E00D262F0 /* HMOSQKeyboardViewController.m */; };
-		E74E58501952DB8E00D262F0 /* HMOSQKeyboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E74E584E1952DB8E00D262F0 /* HMOSQKeyboardViewController.xib */; };
+		E74E58541953EDD900D262F0 /* HMOSQKeyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E74E58521953EDD900D262F0 /* HMOSQKeyViewController.m */; };
+		E74E58551953EDD900D262F0 /* HMOSQKeyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E74E58531953EDD900D262F0 /* HMOSQKeyViewController.xib */; };
 		E78E58561951477700C4AA9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E78E58551951477700C4AA9F /* Foundation.framework */; };
 		E78E58581951477700C4AA9F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E78E58571951477700C4AA9F /* CoreGraphics.framework */; };
 		E78E585A1951477800C4AA9F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E78E58591951477800C4AA9F /* UIKit.framework */; };
@@ -46,9 +46,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E74E584C1952DB8E00D262F0 /* HMOSQKeyboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMOSQKeyboardViewController.h; path = ../HMOSQKeyboardViewController.h; sourceTree = "<group>"; };
-		E74E584D1952DB8E00D262F0 /* HMOSQKeyboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMOSQKeyboardViewController.m; path = ../HMOSQKeyboardViewController.m; sourceTree = "<group>"; };
-		E74E584E1952DB8E00D262F0 /* HMOSQKeyboardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HMOSQKeyboardViewController.xib; path = ../HMOSQKeyboardViewController.xib; sourceTree = "<group>"; };
+		E74E58511953EDD900D262F0 /* HMOSQKeyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMOSQKeyViewController.h; sourceTree = "<group>"; };
+		E74E58521953EDD900D262F0 /* HMOSQKeyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMOSQKeyViewController.m; sourceTree = "<group>"; };
+		E74E58531953EDD900D262F0 /* HMOSQKeyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMOSQKeyViewController.xib; sourceTree = "<group>"; };
 		E78E58521951477700C4AA9F /* how_many_squirrels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = how_many_squirrels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78E58551951477700C4AA9F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E78E58571951477700C4AA9F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -154,13 +154,13 @@
 		E78E585D1951477800C4AA9F /* how_many_squirrels */ = {
 			isa = PBXGroup;
 			children = (
-				E74E584C1952DB8E00D262F0 /* HMOSQKeyboardViewController.h */,
-				E74E584D1952DB8E00D262F0 /* HMOSQKeyboardViewController.m */,
-				E74E584E1952DB8E00D262F0 /* HMOSQKeyboardViewController.xib */,
 				E74EDB9C1952B9D2004466CA /* Classes */,
 				E78E58E319518F9400C4AA9F /* Interface */,
 				E78E58E219518F4700C4AA9F /* Controllers */,
 				E78E585E1951477800C4AA9F /* Supporting Files */,
+				E74E58511953EDD900D262F0 /* HMOSQKeyViewController.h */,
+				E74E58521953EDD900D262F0 /* HMOSQKeyViewController.m */,
+				E74E58531953EDD900D262F0 /* HMOSQKeyViewController.xib */,
 			);
 			path = how_many_squirrels;
 			sourceTree = "<group>";
@@ -301,9 +301,9 @@
 				E78E58621951477800C4AA9F /* InfoPlist.strings in Resources */,
 				E78E586D1951477800C4AA9F /* Images.xcassets in Resources */,
 				E78E589319515A2D00C4AA9F /* HMOSQEnterViewController.xib in Resources */,
+				E74E58551953EDD900D262F0 /* HMOSQKeyViewController.xib in Resources */,
 				E78E58DC1951823900C4AA9F /* HMOSQPlotViewController.xib in Resources */,
 				E78E58E11951864F00C4AA9F /* HMOSQTableViewController.xib in Resources */,
-				E74E58501952DB8E00D262F0 /* HMOSQKeyboardViewController.xib in Resources */,
 				E78E588E19514BF000C4AA9F /* HMOSQMainViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,9 +329,9 @@
 				E78E58DB1951823900C4AA9F /* HMOSQPlotViewController.m in Sources */,
 				E78E58641951477800C4AA9F /* main.m in Sources */,
 				E78E58681951477800C4AA9F /* HMOSQAppDelegate.m in Sources */,
-				E74E584F1952DB8E00D262F0 /* HMOSQKeyboardViewController.m in Sources */,
 				E78E58E01951864F00C4AA9F /* HMOSQTableViewController.m in Sources */,
 				E78E586B1951477800C4AA9F /* how_many_squirrels.xcdatamodeld in Sources */,
+				E74E58541953EDD900D262F0 /* HMOSQKeyViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

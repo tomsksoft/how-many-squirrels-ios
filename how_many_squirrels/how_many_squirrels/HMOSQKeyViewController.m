@@ -1,18 +1,18 @@
 //
-//  HMOSQKeyboardViewController.m
+//  HMOSQKeyViewController.m
 //  how_many_squirrels
 //
-//  Created by Student1 on 19/06/14.
+//  Created by Student1 on 20/06/14.
 //  Copyright (c) 2014 TomskSoft. All rights reserved.
 //
 
-#import "HMOSQKeyboardViewController.h"
+#import "HMOSQKeyViewController.h"
 
-@interface HMOSQKeyboardViewController ()
+@interface HMOSQKeyViewController ()
 
 @end
 
-@implementation HMOSQKeyboardViewController
+@implementation HMOSQKeyViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
