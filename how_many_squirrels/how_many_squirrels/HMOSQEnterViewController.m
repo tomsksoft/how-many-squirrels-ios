@@ -7,7 +7,6 @@
 //
 
 #import "HMOSQEnterViewController.h"
-#import "HMOSQKeyViewController.h"
 
 @interface HMOSQEnterViewController ()
 
@@ -33,16 +32,19 @@
     NSDateFormatter * formater = [[NSDateFormatter alloc] init];
     formater.dateFormat = @"dd.MM.yy. hh:mm:ss";
     _dateTime.text = [[NSString alloc] initWithFormat:@"%@",[formater stringFromDate:now]];
-    [self performSelector:@selector(updateTime) withObject:self afterDelay:1.0];
+    //[self performSelector:@selector(updateTime) withObject:self afterDelay:1.0];
 }
 
 -(IBAction)plusClick:(id)sender
 {
     
     int count = [_text.text intValue];
+    NSLog(@"%@",_text.text);
     NSString * str = [[NSString alloc]initWithFormat:@"%d",count+1 ];
-    _text.text = str;
+    //_text.text = str;
+    [_text setText:str];
     [self addNewObject:[NSDate date] :[NSNumber numberWithInt:1]];
+    
 }
 -(IBAction)decClick:(id)sender
 {
@@ -52,7 +54,7 @@
         return;
     }
     NSString * str = [[NSString alloc]initWithFormat:@"%d",count-1 ];
-    _text.text = str;
+    [_text setText:str];
     [self addNewObject:[NSDate date] :[NSNumber numberWithInt:-1]];
 }
 - (NSFetchedResultsController *)fetchedResultsController
@@ -88,8 +90,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self updateTime];
+    [self stateChange];
     _text.delegate = self;
+    [_text setText:@"100"];
     UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
     numberToolbar.barStyle = UIBarStyleBlackTranslucent;
     numberToolbar.items = [NSArray arrayWithObjects:
@@ -99,8 +102,66 @@
                            nil];
     [numberToolbar sizeToFit];
     _text.inputAccessoryView = numberToolbar;
+    _dateActionSheet = [[UIActionSheet alloc] initWithTitle:@"DateTime"
+                                                   delegate:self
+                                          cancelButtonTitle:nil
+                                        destructiveButtonTitle:nil
+                                          otherButtonTitles:nil];
+    
+    
+    _datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0.0, 44.0, 0.0, 0.0)];
+    [self.datePicker setDatePickerMode:UIDatePickerModeDateAndTime];
+    
+    UIToolbar *pickerDateToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    pickerDateToolbar.barStyle = UIBarStyleBlackOpaque;
+    [pickerDateToolbar sizeToFit];
+    
+    NSMutableArray *barItems = [[NSMutableArray alloc] init];
+    
+    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    
+    
+    UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem
+                                :UIBarButtonSystemItemDone target:self action:@selector(datePickerDoneClick:)];
+        UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(datePickerCancelClick:)];
+    [barItems addObject:cancelBtn];
+    [barItems addObject:flexSpace];
+    [barItems addObject:doneBtn];
+    [pickerDateToolbar setItems:barItems animated:YES];
+    [self.dateActionSheet addSubview:pickerDateToolbar];
+    [self.dateActionSheet addSubview:self.datePicker];
+    [_swch addTarget:self action:@selector(stateChange) forControlEvents:UIControlEventValueChanged];
 }
 
+-(void) stateChange
+{
+    if ([_swch isOn])
+    {
+        
+        [self performSelector:@selector(updateTime) withObject:self afterDelay:1.0];
+        [self updateTime];
+
+    }
+    else
+    {
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateTime) object:nil];
+        [self.dateActionSheet showInView:self.view];
+        [self.dateActionSheet setBounds:CGRectMake(0,0,320, 464)];
+    }
+}
+
+-(void)datePickerDoneClick:(id)sender
+{
+    NSDateFormatter * formater = [[NSDateFormatter alloc] init];
+    formater.dateFormat = @"dd.MM.yy. hh:mm:ss";
+    _dateTime.text = [[NSString alloc] initWithFormat:@"%@",[formater stringFromDate:_datePicker.date]];
+      [self.dateActionSheet dismissWithClickedButtonIndex:2 animated:YES];
+}
+
+-(void)datePickerCancelClick:(id)sender
+{
+     [self.dateActionSheet dismissWithClickedButtonIndex:0 animated:YES];
+}
 -(void)cancelNumberPad
 {
     [_text resignFirstResponder];

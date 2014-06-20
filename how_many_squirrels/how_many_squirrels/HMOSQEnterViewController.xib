@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HMOSQEnterViewController">
             <connections>
                 <outlet property="dateTime" destination="h6P-DX-CYf" id="35p-ZN-Fzg"/>
+                <outlet property="swch" destination="IGv-Tk-76n" id="tEY-mO-2CR"/>
                 <outlet property="text" destination="rFC-gh-J6d" id="hFc-Fa-aRS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -42,7 +43,6 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="decClick:" destination="-1" eventType="touchUpInside" id="0bG-Pa-efr"/>
                         <action selector="plusClick:" destination="-1" eventType="touchUpInside" id="jjV-3n-LzU"/>
                     </connections>
                 </button>
@@ -63,6 +63,9 @@
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="numberPad" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="yc8-tb-rhs"/>
+                    </connections>
                 </textView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
