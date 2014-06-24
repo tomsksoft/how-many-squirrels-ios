@@ -2,36 +2,176 @@
 //  HMOSQTableViewController.m
 //  how_many_squirrels
 //
-//  Created by Student1 on 23/06/14.
+//  Created by Student1 on 18/06/14.
 //  Copyright (c) 2014 TomskSoft. All rights reserved.
 //
 
 #import "HMOSQTableViewController.h"
+#import "HMOSQAppDelegate.h"
+#import "HMOSQInfo.h"
+#import "HMOSQEditViewController.h"
 
 @interface HMOSQTableViewController ()
-
 @end
 
 @implementation HMOSQTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithStyle:style];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
-    }
+        self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Таблица" image:[UIImage imageNamed:@""] tag:0];        // Custom initialization
+        id delegate = [[UIApplication sharedApplication]delegate];
+        self.managedObjectContext = [delegate managedObjectContext];
+        //self.fetchedRecordsArray = [delegate getAllRecords];
+        }
     return self;
+}
+
+- (void)addViewController:(HMOSQEditViewController *)controller didFinishWithSave:(BOOL)save {
+    
+    if (save)
+    {
+        [self.managedObjectContext save:nil];
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+-(IBAction)editClick:(id)sender
+{
+    
+    [_tableView setEditing:YES animated:YES];
+    _navItem.rightBarButtonItem = _cancelButton;
+    _navItem.leftBarButtonItem = _deleteButton;
+}
+
+-(IBAction)cancelClick:(id)sender
+{
+    
+    [_tableView setEditing:NO animated:YES];
+    _navItem.rightBarButtonItem = _editButton;
+    _navItem.leftBarButtonItem = nil;
+}
+
+-(IBAction)deleteClick:(id)sender
+{
+    NSArray *selectedRows = [_tableView indexPathsForSelectedRows];
+    if (selectedRows.count==0 || selectedRows.count == [_fetchedResultsController.fetchedObjects count])
+    {
+        for (NSManagedObject * inf in _fetchedResultsController.fetchedObjects)
+        {
+            [_managedObjectContext deleteObject:inf];
+        }
+    }
+    else
+    {
+        for (NSIndexPath *selectionIndex in selectedRows)
+        {
+            [_managedObjectContext deleteObject:[_fetchedResultsController objectAtIndexPath:selectionIndex]];
+            [_managedObjectContext save:nil];
+            [self configureCell:[_tableView cellForRowAtIndexPath:selectionIndex] atIndexPath:selectionIndex];
+        }
+    }
+    [_managedObjectContext save:nil];
+    [_tableView setEditing:NO animated:YES];
+    _navItem.rightBarButtonItem = _editButton;
+    _navItem.leftBarButtonItem = nil;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)path
+{
+    if([_tableView isEditing])
+    {
+        [self updateDeleteButtonTitle];
+    }
+    
+    HMOSQEditViewController* editView = [[HMOSQEditViewController alloc]init ];
+    editView.manageObject = [_fetchedResultsController objectAtIndexPath:path];
+    [self presentViewController:editView animated:YES completion:nil];
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self updateDeleteButtonTitle];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+-(void) viewWillAppear:(BOOL)animated
+{
+    [self.fetchedResultsController performFetch:nil];
+}
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    //[_tableView endUpdates];
+}
+- (NSFetchedResultsController *)fetchedResultsController
+{
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Info" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:YES];
+    NSArray *sortDescriptors = @[sortDescriptor];
+    
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    aFetchedResultsController.delegate = self;
+    self.fetchedResultsController = aFetchedResultsController;
+    return _fetchedResultsController;
+}
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+
+    //[self.tableView beginUpdates];
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    
+    //[self.tableView endUpdates];
+    [self.tableView reloadData];
+}
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return  UITableViewCellEditingStyleNone;
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [_fetchedResultsController.fetchedObjects count];
+}
+
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    
+    HMOSQInfo * inf = [_fetchedResultsController.fetchedObjects objectAtIndex:indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ ",inf.number];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@",inf.date];
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    [self configureCell:cell atIndexPath:indexPath];
+    return cell;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    _navItem.rightBarButtonItem = _editButton;
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,80 +180,22 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (void)updateDeleteButtonTitle
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    NSArray *selectedRows = [_tableView indexPathsForSelectedRows];
     
-    // Configure the cell...
+    BOOL allItemsAreSelected = selectedRows.count == [_fetchedResultsController.fetchedObjects count];
+    BOOL noItemsAreSelected = selectedRows.count == 0;
     
-    return cell;
+    if (allItemsAreSelected || noItemsAreSelected)
+    {
+        self.deleteButton.title = (@"Удалить все");
+    }
+    else
+    {
+        NSString *titleFormatString = (@"Удалить (%d)");
+    _deleteButton.title = [NSString stringWithFormat:titleFormatString, selectedRows.count];
+    }
 }
-*/
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

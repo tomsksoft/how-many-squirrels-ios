@@ -21,18 +21,33 @@
         self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Ввод данных" image:[UIImage imageNamed:@""] tag:0];        // Custom initialization
         id delegate = [[UIApplication sharedApplication]delegate];
         self.managedObjectContext = [delegate managedObjectContext];
-        
+        UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
+        [recognizer setNumberOfTapsRequired:1];
+        //lblName.userInteractionEnabled = true;  (setting this in Interface Builder)
+        [_dateTime addGestureRecognizer:recognizer];
  }
     return self;
 }
 
+-(void)tapAction
+{
+    if(!_swch.isOn)
+    {
+        [self.dateActionSheet showInView:self.view];
+        [self.dateActionSheet setBounds:CGRectMake(0,0,320, 464)];
+    }
+}
+
 -(void) updateTime
 {
-    NSDate * now = [NSDate date];
-    NSDateFormatter * formater = [[NSDateFormatter alloc] init];
-    formater.dateFormat = @"dd.MM.yy. hh:mm:ss";
-    _dateTime.text = [[NSString alloc] initWithFormat:@"%@",[formater stringFromDate:now]];
-    //[self performSelector:@selector(updateTime) withObject:self afterDelay:1.0];
+    if (_swch.isOn)
+    {
+        NSDate * now = [NSDate date];
+        NSDateFormatter * formater = [[NSDateFormatter alloc] init];
+        formater.dateFormat = @"dd.MM.yy. hh:mm:ss";
+        _dateTime.text = [[NSString alloc] initWithFormat:@"%@",[formater stringFromDate:now]];    }
+
+    [self performSelector:@selector(updateTime) withObject:self afterDelay:1.0];
 }
 
 -(IBAction)plusClick:(id)sender
@@ -43,9 +58,16 @@
     NSString * str = [[NSString alloc]initWithFormat:@"%d",count+1 ];
     //_text.text = str;
     [_text setText:str];
-    [self addNewObject:[NSDate date] :[NSNumber numberWithInt:1]];
+    NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+    
+    [dateFormater setDateFormat:@"dd.MM.yy. hh:mm:ss"];
+    NSDate *currentDate = [dateFormater dateFromString:_dateTime.text];
+    [self addNewObject:currentDate :[NSNumber numberWithInt:1]];
+    //[self deleteAllObjects:@"Info"];
+    
     
 }
+
 -(IBAction)decClick:(id)sender
 {
     int count = [_text.text intValue];
@@ -55,7 +77,11 @@
     }
     NSString * str = [[NSString alloc]initWithFormat:@"%d",count-1 ];
     [_text setText:str];
-    [self addNewObject:[NSDate date] :[NSNumber numberWithInt:-1]];
+    NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+    
+    [dateFormater setDateFormat:@"dd.MM.yy. hh:mm:ss"];
+    NSDate *currentDate = [dateFormater dateFromString:_dateTime.text];
+    [self addNewObject:currentDate :[NSNumber numberWithInt:-1]];
 }
 - (NSFetchedResultsController *)fetchedResultsController
 {
@@ -66,7 +92,7 @@
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Info" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:YES];
     NSArray *sortDescriptors = @[sortDescriptor];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
@@ -131,6 +157,10 @@
     [self.dateActionSheet addSubview:pickerDateToolbar];
     [self.dateActionSheet addSubview:self.datePicker];
     [_swch addTarget:self action:@selector(stateChange) forControlEvents:UIControlEventValueChanged];
+    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
+    [recognizer setNumberOfTapsRequired:1];
+    //lblName.userInteractionEnabled = true;  (setting this in Interface Builder)
+    [_dateTime addGestureRecognizer:recognizer];
 }
 
 -(void) stateChange
@@ -138,13 +168,13 @@
     if ([_swch isOn])
     {
         
-        [self performSelector:@selector(updateTime) withObject:self afterDelay:1.0];
+        //[self performSelector:@selector(updateTime) withObject:self afterDelay:1.0];
         [self updateTime];
 
     }
     else
     {
-        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateTime) object:nil];
+        //[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateTime) object:nil];
         [self.dateActionSheet showInView:self.view];
         [self.dateActionSheet setBounds:CGRectMake(0,0,320, 464)];
     }
@@ -156,11 +186,16 @@
     formater.dateFormat = @"dd.MM.yy. hh:mm:ss";
     _dateTime.text = [[NSString alloc] initWithFormat:@"%@",[formater stringFromDate:_datePicker.date]];
       [self.dateActionSheet dismissWithClickedButtonIndex:2 animated:YES];
+    
+    //[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateTime) object:nil];
 }
 
 -(void)datePickerCancelClick:(id)sender
 {
-     [self.dateActionSheet dismissWithClickedButtonIndex:0 animated:YES];
+    [self.dateActionSheet dismissWithClickedButtonIndex:0 animated:YES];
+    [self performSelector:@selector(updateTime) withObject:self afterDelay:1.0];
+    [self updateTime];
+    [_swch setOn:YES];
 }
 -(void)cancelNumberPad
 {
@@ -173,7 +208,11 @@
     int count = [_text.text intValue];
     NSString * str = [[NSString alloc]initWithFormat:@"%d",count ];
     _text.text = str;
-    [self addNewObject:[NSDate date] :[NSNumber numberWithInt:count]];
+    NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+    
+    [dateFormater setDateFormat:@"dd.MM.yy. hh:mm:ss"];
+    NSDate *currentDate = [dateFormater dateFromString:_dateTime.text];
+    [self addNewObject:currentDate :[NSNumber numberWithInt:count]];
     [_text resignFirstResponder];
 }
 

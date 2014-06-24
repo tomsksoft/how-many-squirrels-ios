@@ -6,7 +6,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HMOSQTableViewController">
             <connections>
-                <outlet property="view" destination="i5M-Pr-FkT" id="vQ7-Bo-Tm6"/>
+                <outlet property="cancelButton" destination="4hp-WK-M70" id="saZ-fw-3Us"/>
+                <outlet property="deleteButton" destination="Rqx-nI-cwA" id="PlE-S0-wyK"/>
+                <outlet property="editButton" destination="ve6-Nz-fkg" id="00K-ec-Xkh"/>
+                <outlet property="navItem" destination="Wwy-gt-rv6" id="17j-ZH-Tt8"/>
+                <outlet property="tableView" destination="tBA-WL-3bX" id="B87-f9-YoR"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="KWT-QE-BeT"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -14,8 +19,8 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="tBA-WL-3bX">
-                    <rect key="frame" x="0.0" y="70" width="320" height="478"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="tBA-WL-3bX">
+                    <rect key="frame" x="0.0" y="59" width="320" height="456"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
@@ -23,10 +28,33 @@
                         <outlet property="delegate" destination="-1" id="jfr-IQ-mtd"/>
                     </connections>
                 </tableView>
+                <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="73y-Tk-Pl3">
+                    <rect key="frame" x="0.0" y="15" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <items>
+                        <navigationItem id="Wwy-gt-rv6"/>
+                    </items>
+                </navigationBar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
+        <barButtonItem title="Редактировать" id="ve6-Nz-fkg">
+            <connections>
+                <action selector="editClick:" destination="-1" id="8EX-wU-gID"/>
+            </connections>
+        </barButtonItem>
+        <barButtonItem title="Отмена" id="4hp-WK-M70">
+            <connections>
+                <action selector="cancelClick:" destination="-1" id="nmg-Nz-KPs"/>
+            </connections>
+        </barButtonItem>
+        <barButtonItem title="Удалить все" id="Rqx-nI-cwA">
+            <color key="tintColor" red="1" green="0.14901961386203766" blue="0.0039215688593685627" alpha="1" colorSpace="deviceRGB"/>
+            <connections>
+                <action selector="deleteClick:" destination="-1" id="Nb0-S9-Eg5"/>
+            </connections>
+        </barButtonItem>
     </objects>
 </document>
