@@ -1,10 +1,15 @@
-//
-//  HMOSQEditViewController.h
-//  how_many_squirrels
-//
-//  Created by Student1 on 24/06/14.
-//  Copyright (c) 2014 TomskSoft. All rights reserved.
-//
+/*
+ * How many squirrels: tool for young naturalist
+ *
+ * This application is created within the internship
+ * in the Education Department of Tomsksoft, http://tomsksoft.com
+ * Idea and leading: Sergei Borisov
+ *
+ * This software is licensed under a GPL v3
+ * http://www.gnu.org/licenses/gpl.txt
+ *
+ * Created by Anton Tsygantsev on 18/06/14
+ */
 
 @protocol HMOSQEditViewControllerDelegate;
 #import <UIKit/UIKit.h>
