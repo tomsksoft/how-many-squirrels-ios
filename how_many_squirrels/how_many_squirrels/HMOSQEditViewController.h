@@ -13,8 +13,13 @@
 
 @protocol HMOSQEditViewControllerDelegate;
 #import <UIKit/UIKit.h>
+#import "HMOSQInfo.h"
 
 @interface HMOSQEditViewController : UIViewController<UITextViewDelegate,UIActionSheetDelegate>
+{
+    NSNumber * num;
+    HMOSQInfo* info;
+}
 @property (nonatomic, strong) NSManagedObject *manageObject;
 @property (nonatomic, weak) id <HMOSQEditViewControllerDelegate> delegate;
 @property (nonatomic, retain)IBOutlet UIDatePicker *datePicker;
@@ -22,5 +27,5 @@
 @end
 
 @protocol HMOSQEditViewControllerDelegate
-- (void)addViewController:(HMOSQEditViewController *)controller didFinishWithSave:(BOOL)save;
+- (void)closeEdit:(HMOSQEditViewController *)controller didFinishWithSave:(BOOL)save withObject:(HMOSQInfo*) object;
 @end

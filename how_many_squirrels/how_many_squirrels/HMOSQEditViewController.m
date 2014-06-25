@@ -32,7 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    HMOSQInfo * info = self.manageObject;
+    info = self.manageObject;
     _text.delegate = self;
     [_text setText: [[NSString alloc] initWithFormat:@"%@",info.number]];
     UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
@@ -44,18 +44,24 @@
                            nil];
     [numberToolbar sizeToFit];
     _text.inputAccessoryView = numberToolbar;
+    _datePicker.timeZone = [NSTimeZone timeZoneWithName:@"GMT"];
+    NSLog(@"date %@",info.date);
     _datePicker.date = info.date;
-    // Do any additional setup after loading the view from its nib.
 }
 
+-(void)textViewDidBeginEditing:(UITextView *)textView
+{
+    num = [[NSNumber alloc]initWithInt:[_text.text intValue]];
+}
 -(void) cancelNumberPad
 {
-    
+    [_text resignFirstResponder];
+    _text.text = [[NSString alloc]initWithFormat:@"%@",num];
 }
 
 -(void) doneWithNumberPad
 {
-    
+    [_text resignFirstResponder];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -63,19 +69,17 @@
     // Dispose of any resources that can be recreated.
 }
 
--(IBAction)cancelClick:(id)sender
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 - (IBAction)cancel:(id)sender
 {
-    [self.delegate addViewController:self didFinishWithSave:NO];
+    [self.delegate closeEdit:self didFinishWithSave:NO withObject:info];
 }
 
 
 - (IBAction)save:(id)sender
 {
-    [self.delegate addViewController:self didFinishWithSave:YES];
+    int tmp = [_text.text intValue];
+    info.number = [[NSNumber alloc] initWithInt:tmp];
+    info.date = _datePicker.date;
+    [self.delegate closeEdit:self didFinishWithSave:YES withObject:info];
 }
 @end

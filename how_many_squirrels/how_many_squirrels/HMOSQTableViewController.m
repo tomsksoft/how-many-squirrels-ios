@@ -33,13 +33,15 @@
     return self;
 }
 
-- (void)addViewController:(HMOSQEditViewController *)controller didFinishWithSave:(BOOL)save {
-    
+- (void)closeEdit:(HMOSQEditViewController *)controller didFinishWithSave:(BOOL)save withObject:(HMOSQInfo*) object
+{
     if (save)
     {
+        HMOSQInfo* inf = [_fetchedResultsController objectAtIndexPath:[_tableView indexPathForSelectedRow]];
+        [inf setValue:object.date forKey:@"date"];
+        [inf setValue:object.number forKeyPath:@"number"];
         [self.managedObjectContext save:nil];
     }
-    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -93,6 +95,7 @@
     
     HMOSQEditViewController* editView = [[HMOSQEditViewController alloc]init ];
     editView.manageObject = [_fetchedResultsController objectAtIndexPath:path];
+    editView.delegate = self;
     [self presentViewController:editView animated:YES completion:nil];
 }
 

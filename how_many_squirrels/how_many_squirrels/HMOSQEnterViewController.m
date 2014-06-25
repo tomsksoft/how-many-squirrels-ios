@@ -50,7 +50,8 @@
         NSDate * now = [NSDate date];
         NSDateFormatter * formater = [[NSDateFormatter alloc] init];
         formater.dateFormat = @"dd.MM.yy. hh:mm:ss";
-        _dateTime.text = [[NSString alloc] initWithFormat:@"%@",[formater stringFromDate:now]];    }
+        _dateTime.text = [[NSString alloc] initWithFormat:@"%@",[formater stringFromDate:now]];
+    }
 
     [self performSelector:@selector(updateTime) withObject:self afterDelay:1.0];
 }
@@ -61,14 +62,13 @@
     int count = [_text.text intValue];
     NSLog(@"%@",_text.text);
     NSString * str = [[NSString alloc]initWithFormat:@"%d",count+1 ];
-    //_text.text = str;
     [_text setText:str];
     NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
-    
     [dateFormater setDateFormat:@"dd.MM.yy. hh:mm:ss"];
+    [dateFormater setTimeZone: [NSTimeZone timeZoneWithName:@"South Africa"]];
     NSDate *currentDate = [dateFormater dateFromString:_dateTime.text];
+    //NSLog(@"%@",currentDate);
     [self addNewObject:currentDate :[NSNumber numberWithInt:1]];
-    //[self deleteAllObjects:@"Info"];
     
     
 }
@@ -84,6 +84,7 @@
     [_text setText:str];
     NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
     
+    [dateFormater setTimeZone: [NSTimeZone timeZoneWithName:@"GMT"]];
     [dateFormater setDateFormat:@"dd.MM.yy. hh:mm:ss"];
     NSDate *currentDate = [dateFormater dateFromString:_dateTime.text];
     [self addNewObject:currentDate :[NSNumber numberWithInt:-1]];
@@ -172,10 +173,7 @@
 {
     if ([_swch isOn])
     {
-        
-        //[self performSelector:@selector(updateTime) withObject:self afterDelay:1.0];
         [self updateTime];
-
     }
     else
     {
@@ -189,10 +187,9 @@
 {
     NSDateFormatter * formater = [[NSDateFormatter alloc] init];
     formater.dateFormat = @"dd.MM.yy. hh:mm:ss";
+    [formater setTimeZone: [NSTimeZone timeZoneWithName:@"GMT"]];
     _dateTime.text = [[NSString alloc] initWithFormat:@"%@",[formater stringFromDate:_datePicker.date]];
-      [self.dateActionSheet dismissWithClickedButtonIndex:2 animated:YES];
-    
-    //[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateTime) object:nil];
+    [self.dateActionSheet dismissWithClickedButtonIndex:2 animated:YES];
 }
 
 -(void)datePickerCancelClick:(id)sender
@@ -214,8 +211,8 @@
     NSString * str = [[NSString alloc]initWithFormat:@"%d",count ];
     _text.text = str;
     NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
-    
     [dateFormater setDateFormat:@"dd.MM.yy. hh:mm:ss"];
+    [dateFormater setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
     NSDate *currentDate = [dateFormater dateFromString:_dateTime.text];
     [self addNewObject:currentDate :[NSNumber numberWithInt:count]];
     [_text resignFirstResponder];
