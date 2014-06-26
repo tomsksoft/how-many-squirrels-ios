@@ -24,7 +24,6 @@
                     </state>
                     <connections>
                         <action selector="cancel:" destination="-1" eventType="touchUpInside" id="6eW-OZ-JwU"/>
-                        <action selector="cancelClick:" destination="-1" eventType="touchUpInside" id="31Z-gU-Wlw"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HMI-Uu-kH7">

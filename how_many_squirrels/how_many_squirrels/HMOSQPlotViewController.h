@@ -12,7 +12,18 @@
  */
 
 #import <UIKit/UIKit.h>
+#import <CorePlot/CorePlot-CocoaTouch.h>
+#import "HMOSQInfo.h"
 
-@interface HMOSQPlotViewController : UIViewController
+@interface HMOSQPlotViewController : UIViewController<NSFetchedResultsControllerDelegate,CPTPlotDataSource>
+
+{
+    CPTXYGraph *graph;
+    NSArray *plotData;
+}
+
+@property(strong,nonatomic) IBOutlet CPTGraphHostingView* plotView;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end

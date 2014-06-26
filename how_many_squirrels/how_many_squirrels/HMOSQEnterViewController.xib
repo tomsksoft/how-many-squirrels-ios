@@ -68,7 +68,7 @@
                     </connections>
                 </textView>
                 <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QL8-r0-b83">
-                    <rect key="frame" x="-33" y="0.0" width="320" height="44"/>
+                    <rect key="frame" x="-33" y="0.0" width="353" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                 </navigationBar>
             </subviews>

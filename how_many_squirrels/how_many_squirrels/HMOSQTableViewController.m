@@ -92,11 +92,15 @@
     {
         [self updateDeleteButtonTitle];
     }
-    
-    HMOSQEditViewController* editView = [[HMOSQEditViewController alloc]init ];
-    editView.manageObject = [_fetchedResultsController objectAtIndexPath:path];
-    editView.delegate = self;
-    [self presentViewController:editView animated:YES completion:nil];
+    else
+    {
+        
+        HMOSQEditViewController* editView = [[HMOSQEditViewController alloc]init ];
+        editView.manageObject = [_fetchedResultsController objectAtIndexPath:path];
+        editView.delegate = self;
+        [self presentViewController:editView animated:YES completion:nil];
+    }
+
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
