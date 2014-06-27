@@ -15,15 +15,22 @@
 #import <CorePlot/CorePlot-CocoaTouch.h>
 #import "HMOSQInfo.h"
 
-@interface HMOSQPlotViewController : UIViewController<NSFetchedResultsControllerDelegate,CPTPlotDataSource>
+@interface HMOSQPlotViewController : UIViewController<NSFetchedResultsControllerDelegate,CPTPlotDataSource,UIActionSheetDelegate>
 
 {
     CPTXYGraph *graph;
     NSArray *plotData;
+    NSDate *minDate;
+    NSDate *maxDate;
+    BOOL isMinDateClick;
 }
 
 @property(strong,nonatomic) IBOutlet CPTGraphHostingView* plotView;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-
+@property(strong,nonatomic)IBOutlet UILabel * minLabel;
+@property(strong,nonatomic)IBOutlet UILabel * maxLabel;
+@property (nonatomic, retain) UIActionSheet *dateActionSheet;
+@property (nonatomic, retain) UIDatePicker *datePicker;
+@property(strong,nonatomic) IBOutlet UISwitch * swch;
 @end

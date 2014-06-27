@@ -31,32 +31,113 @@
 
 -(NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index
 {
-    NSString *key = (fieldEnum == CPTScatterPlotFieldX ? @"x" : @"y");
-    NSNumber *num = plotData[index][key];
-    
-    // Green plot gets shifted above the blue
-    if ( [(NSString *)plot.identifier isEqualToString : @"Date Plot"] ) {
-        if ( fieldEnum == CPTScatterPlotFieldY ) {
-            num = @([num doubleValue] + 1.0);
-        }
-    }
-    return num;
+    return plotData[index][@(fieldEnum)];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //graph.delegate = self;
+    
+    _dateActionSheet = [[UIActionSheet alloc] initWithTitle:@"DateTime"
+                                                   delegate:self
+                                          cancelButtonTitle:nil
+                                     destructiveButtonTitle:nil
+                                          otherButtonTitles:nil];
+    
+    
+    _datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0.0, 44.0, 0.0, 0.0)];
+    [self.datePicker setDatePickerMode:UIDatePickerModeDate];
+    
+    UIToolbar *pickerDateToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    pickerDateToolbar.barStyle = UIBarStyleBlackOpaque;
+    [pickerDateToolbar sizeToFit];
+    
+    NSMutableArray *barItems = [[NSMutableArray alloc] init];
+    
+    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    
+    
+    UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem
+                                :UIBarButtonSystemItemDone target:self action:@selector(datePickerDoneClick:)];
+    UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(datePickerCancelClick:)];
+    [barItems addObject:cancelBtn];
+    [barItems addObject:flexSpace];
+    [barItems addObject:doneBtn];
+    [pickerDateToolbar setItems:barItems animated:YES];
+    [self.dateActionSheet addSubview:pickerDateToolbar];
+    [self.dateActionSheet addSubview:self.datePicker];
+    [_swch addTarget:self action:@selector(stateChange) forControlEvents:UIControlEventValueChanged];
+    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(minTapAction)];
+    [recognizer setNumberOfTapsRequired:1];
+    [_minLabel addGestureRecognizer:recognizer];
+    UITapGestureRecognizer *recognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(maxTapAction)];
+    [recognizer setNumberOfTapsRequired:1];
+    [_maxLabel addGestureRecognizer:recognizer2];
+    _minLabel.text = @"22.06.14";
+    _maxLabel.text = @"27.06.14";
+    NSString *dateStr = @"22.06.2014. 02:00:00";
+    NSString *dateStr2 = @"27.06.2014. 02:00:00";
+    NSDateFormatter * formater = [[NSDateFormatter alloc] init];
+    formater.dateFormat = @"dd.MM.yy. hh:mm:ss";
+    minDate = [formater dateFromString:dateStr];
+    maxDate = [formater dateFromString:dateStr2];
     [self initGraph];
     // Do any additional setup after loading the view from its nib.
 }
+
+-(void)minTapAction
+{
+    isMinDateClick = YES;
+    NSDateFormatter * formater = [[NSDateFormatter alloc] init];
+    formater.dateFormat = @"dd.MM.yy";
+    _datePicker.date = [formater dateFromString:_minLabel.text];
+    [self.dateActionSheet showInView:self.view];
+    [self.dateActionSheet setBounds:CGRectMake(0,0,320, 464)];
+}
+
+-(void)maxTapAction
+{
+    isMinDateClick = NO;
+    NSDateFormatter * formater = [[NSDateFormatter alloc] init];
+    formater.dateFormat = @"dd.MM.yy";
+    _datePicker.date = [formater dateFromString:_maxLabel.text];
+    [self.dateActionSheet showInView:self.view];
+    [self.dateActionSheet setBounds:CGRectMake(0,0,320, 464)];
+}
+
+-(void)datePickerDoneClick:(id)sender
+{
+    NSDate *oldDate = _datePicker.date;
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *comps = [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth |  NSCalendarUnitDay fromDate:oldDate];
+    comps.hour   = 2;
+    comps.minute = 0;
+    comps.second = 0;
+    NSDate *newDate = [calendar dateFromComponents:comps];
+    NSDateFormatter * formater = [[NSDateFormatter alloc] init];
+    formater.dateFormat = @"dd.MM.yy";
+    if(isMinDateClick)
+    {
+        minDate = newDate;
+        _minLabel.text = [[NSString alloc] initWithFormat:@"%@",[formater stringFromDate:newDate]];
+    }
+    
+    else
+    {
+        maxDate = newDate;
+        _maxLabel.text = [[NSString alloc] initWithFormat:@"%@",[formater stringFromDate:newDate]];
+    }
+    [self initGraph];
+    [self.dateActionSheet dismissWithClickedButtonIndex:2 animated:YES];
+}
+
+-(void)datePickerCancelClick:(id)sender
+{
+    [self.dateActionSheet dismissWithClickedButtonIndex:0 animated:YES];
+}
 -(void)initGraph
 {
-    // If you make sure your dates are calculated at noon, you shouldn't have to
-    // worry about daylight savings. If you use midnight, you will have to adjust
-    // for daylight savings time.
     [self.fetchedResultsController performFetch:nil];
-    NSDate *refDate       = [NSDate date];
     NSTimeInterval oneDay = 24 * 60 * 60;
     
     // Create graph from theme
@@ -64,13 +145,14 @@
     CPTTheme *theme = [CPTTheme themeNamed:kCPTDarkGradientTheme];
     [graph applyTheme:theme];
     _plotView.hostedGraph = graph;
-    //_plotView.allowPinchScaling = YES;
+    _plotView.allowPinchScaling = YES;
+    
     // Setup scatter plot space
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
-    NSTimeInterval xLow       = 0.0;
-    plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(xLow) length:CPTDecimalFromDouble(oneDay * 4.0)];
+    NSTimeInterval xLow       = -oneDay;
+    plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(xLow) length:CPTDecimalFromDouble(oneDay * 7.0)];
     plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(-1.0) length:CPTDecimalFromDouble(10.0)];
-    
+    plotSpace.allowsUserInteraction = YES;
     // Axes
     CPTXYAxisSet *axisSet = (CPTXYAxisSet *)graph.axisSet;
     CPTXYAxis *x          = axisSet.xAxis;
@@ -78,9 +160,9 @@
     x.orthogonalCoordinateDecimal = CPTDecimalFromDouble(0.0);
     x.minorTicksPerInterval       = 0;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateStyle = kCFDateFormatterShortStyle;
+    dateFormatter.dateFormat = @"dd/MM";
     CPTTimeFormatter *timeFormatter = [[CPTTimeFormatter alloc] initWithDateFormatter:dateFormatter];
-    timeFormatter.referenceDate = refDate;
+    timeFormatter.referenceDate = minDate;
     x.labelFormatter            = timeFormatter;
     
     CPTXYAxis *y = axisSet.yAxis;
@@ -93,40 +175,67 @@
     dataSourceLinePlot.identifier = @"Date Plot";
     
     CPTMutableLineStyle *lineStyle = [dataSourceLinePlot.dataLineStyle mutableCopy];
-    lineStyle.lineWidth              = 3.0;
+    lineStyle.lineWidth              = 1.0;
     lineStyle.lineColor              = [CPTColor greenColor];
+    lineStyle.lineCap = kCGLineCapSquare;
     dataSourceLinePlot.dataLineStyle = lineStyle;
     
     dataSourceLinePlot.dataSource = self;
     [graph addPlot:dataSourceLinePlot];
-    
-    // Add some data
-    NSMutableArray *newData = [NSMutableArray array];
-    int i=0;
-    for (NSManagedObject* object in [_fetchedResultsController fetchedObjects])
-    {
-        HMOSQInfo *inf = object;
-        NSTimeInterval x = oneDay * i;
-        NSNumber *y      = inf.number;
-        NSLog(@" y = %@",inf.number);
-        NSLog(@"x = %f",x);
-        [newData addObject:
-         @{ @(CPTScatterPlotFieldX): @(x),
-            @(CPTScatterPlotFieldY): y }
-         ];
-        i++;
-        
-    }
-    plotData = newData;
-    //[graph reloadData];
+    [self generateDate];
 }
 
-#pragma mark -
-#pragma mark Plot Data Source Methods
+-(void)generateDate
+{
+    HMOSQInfo *inf;
+    NSDate *dt = minDate;
+    int count =0;
+    NSTimeInterval oneDay = 60*60*24;
+   
+    NSTimeInterval secondsBetween = [maxDate timeIntervalSinceDate:minDate];
+    
+    int numberOfDays = secondsBetween / oneDay+1;
+    NSMutableArray *newData = [NSMutableArray array];
+    for (int i=0; i<numberOfDays; i++)
+    {
+        for (NSManagedObject *object in [_fetchedResultsController fetchedObjects])
+        {
+            inf = object;
+            if (([self getDay:dt] == [self getDay:inf.date])&&
+                ([self getMonth:dt] == [self getMonth:inf.date]))
+            {
+                count+=[inf.number intValue];
+            }
+        }
+        [newData addObject:
+         @{ @(CPTScatterPlotFieldX): @(oneDay*i),
+            @(CPTScatterPlotFieldY): [NSNumber numberWithInt:count] }
+         ];
+        NSLog(@"date = %@,count = %d ",dt,count);
+        dt = [dt dateByAddingTimeInterval:oneDay];
+        count = 0;
+        
+    }
+        plotData = newData;
+}
 
+-(NSInteger)getDay:(NSDate*)date
+{
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSDayCalendarUnit fromDate:date];
+    NSInteger day = [components day];
+    return day;
+}
+
+-(NSInteger)getMonth:(NSDate*)date
+{
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSMonthCalendarUnit fromDate:date];
+    NSInteger month = [components month];
+    return month;
+}
 -(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot
 {
-    return [self.fetchedResultsController fetchedObjects].count;
+    return plotData.count;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -137,7 +246,7 @@
 
 -(void) viewWillAppear:(BOOL)animated
 {
-    
+    [self initGraph];
 }
 
 - (NSFetchedResultsController *)fetchedResultsController
@@ -155,16 +264,4 @@
     self.fetchedResultsController = aFetchedResultsController;
     return _fetchedResultsController;
 }
-
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-    
-    //[self.tableView beginUpdates];
-}
-
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    
-    //[self.tableView endUpdates];
-    //[self.tableView reloadData];
-}
-
 @end
