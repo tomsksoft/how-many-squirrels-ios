@@ -114,6 +114,7 @@
     if (buttonIndex == 1)
     {
         [prefs setObject:_textView.text forKey:@"type"];
+        [prefs setObject:0 forKey:@"count"];
         NSArray *items = [_fetchedResultsController fetchedObjects];
         
         

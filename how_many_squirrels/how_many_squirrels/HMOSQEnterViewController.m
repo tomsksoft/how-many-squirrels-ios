@@ -171,17 +171,6 @@
     [_dateTime addGestureRecognizer:recognizer];
     
     prefs = [NSUserDefaults standardUserDefaults];
-    NSInteger myInt = [prefs integerForKey:@"count"];
-    NSString *str = [[NSString alloc] initWithFormat:@"%ld", (long)myInt];
-    if ([str length]!=0)
-    {
-        _text.text = str;
-    }
-    else
-    {
-        _text.text = @"0";
-    }
-    
 }
 
 -(void) stateChange
@@ -233,9 +222,18 @@
     [self setCount];
 }
 
-- (void) viewDidAppear:(BOOL)animated
+- (void) viewWillAppear:(BOOL)animated
 {
-    
+    NSInteger myInt = [prefs integerForKey:@"count"];
+    NSString *str = [[NSString alloc] initWithFormat:@"%ld", (long)myInt];
+    if ([str length]!=0)
+    {
+        _text.text = str;
+    }
+    else
+    {
+        _text.text = @"0";
+    }
 }
 
 -(void)setCount
