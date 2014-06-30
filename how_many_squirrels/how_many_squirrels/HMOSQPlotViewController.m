@@ -29,11 +29,6 @@
     return self;
 }
 
--(NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index
-{
-    return plotData[index][@(fieldEnum)];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -81,8 +76,22 @@
     formater.dateFormat = @"dd.MM.yy. hh:mm:ss";
     minDate = [formater dateFromString:dateStr];
     maxDate = [formater dateFromString:dateStr2];
-    [self initGraph];
+    //[self initGraph];
     // Do any additional setup after loading the view from its nib.
+}
+
+-(void)stateChange
+{
+    if (_swch.isOn)
+    {
+        [_plotView createDatePlot:[_fetchedResultsController fetchedObjects] withMinDate:minDate withMaxDate:maxDate];
+    }
+    else
+    {
+        
+        [_plotView createBarPlot:[_fetchedResultsController fetchedObjects] withMinDate:minDate withMaxDate:maxDate];
+        
+    }
 }
 
 -(void)minTapAction
@@ -127,115 +136,13 @@
         maxDate = newDate;
         _maxLabel.text = [[NSString alloc] initWithFormat:@"%@",[formater stringFromDate:newDate]];
     }
-    [self initGraph];
+    [_plotView createDatePlot:[_fetchedResultsController fetchedObjects] withMinDate:minDate withMaxDate:maxDate];
     [self.dateActionSheet dismissWithClickedButtonIndex:2 animated:YES];
 }
 
 -(void)datePickerCancelClick:(id)sender
 {
     [self.dateActionSheet dismissWithClickedButtonIndex:0 animated:YES];
-}
--(void)initGraph
-{
-    [self.fetchedResultsController performFetch:nil];
-    NSTimeInterval oneDay = 24 * 60 * 60;
-    
-    // Create graph from theme
-    graph = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
-    CPTTheme *theme = [CPTTheme themeNamed:kCPTDarkGradientTheme];
-    [graph applyTheme:theme];
-    _plotView.hostedGraph = graph;
-    _plotView.allowPinchScaling = YES;
-    
-    // Setup scatter plot space
-    CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
-    NSTimeInterval xLow       = -oneDay;
-    plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(xLow) length:CPTDecimalFromDouble(oneDay * 7.0)];
-    plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(-1.0) length:CPTDecimalFromDouble(10.0)];
-    plotSpace.allowsUserInteraction = YES;
-    // Axes
-    CPTXYAxisSet *axisSet = (CPTXYAxisSet *)graph.axisSet;
-    CPTXYAxis *x          = axisSet.xAxis;
-    x.majorIntervalLength         = CPTDecimalFromFloat(oneDay);
-    x.orthogonalCoordinateDecimal = CPTDecimalFromDouble(0.0);
-    x.minorTicksPerInterval       = 0;
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"dd/MM";
-    CPTTimeFormatter *timeFormatter = [[CPTTimeFormatter alloc] initWithDateFormatter:dateFormatter];
-    timeFormatter.referenceDate = minDate;
-    x.labelFormatter            = timeFormatter;
-    
-    CPTXYAxis *y = axisSet.yAxis;
-    y.majorIntervalLength         = CPTDecimalFromDouble(1);
-    y.minorTicksPerInterval       = 10;
-    y.orthogonalCoordinateDecimal = CPTDecimalFromFloat(oneDay);
-    
-    // Create a plot that uses the data source method
-    CPTScatterPlot *dataSourceLinePlot = [[CPTScatterPlot alloc] init];
-    dataSourceLinePlot.identifier = @"Date Plot";
-    
-    CPTMutableLineStyle *lineStyle = [dataSourceLinePlot.dataLineStyle mutableCopy];
-    lineStyle.lineWidth              = 1.0;
-    lineStyle.lineColor              = [CPTColor greenColor];
-    lineStyle.lineCap = kCGLineCapSquare;
-    dataSourceLinePlot.dataLineStyle = lineStyle;
-    
-    dataSourceLinePlot.dataSource = self;
-    [graph addPlot:dataSourceLinePlot];
-    [self generateDate];
-}
-
--(void)generateDate
-{
-    HMOSQInfo *inf;
-    NSDate *dt = minDate;
-    int count =0;
-    NSTimeInterval oneDay = 60*60*24;
-   
-    NSTimeInterval secondsBetween = [maxDate timeIntervalSinceDate:minDate];
-    
-    int numberOfDays = secondsBetween / oneDay+1;
-    NSMutableArray *newData = [NSMutableArray array];
-    for (int i=0; i<numberOfDays; i++)
-    {
-        for (NSManagedObject *object in [_fetchedResultsController fetchedObjects])
-        {
-            inf = object;
-            if (([self getDay:dt] == [self getDay:inf.date])&&
-                ([self getMonth:dt] == [self getMonth:inf.date]))
-            {
-                count+=[inf.number intValue];
-            }
-        }
-        [newData addObject:
-         @{ @(CPTScatterPlotFieldX): @(oneDay*i),
-            @(CPTScatterPlotFieldY): [NSNumber numberWithInt:count] }
-         ];
-        NSLog(@"date = %@,count = %d ",dt,count);
-        dt = [dt dateByAddingTimeInterval:oneDay];
-        count = 0;
-        
-    }
-        plotData = newData;
-}
-
--(NSInteger)getDay:(NSDate*)date
-{
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSDayCalendarUnit fromDate:date];
-    NSInteger day = [components day];
-    return day;
-}
-
--(NSInteger)getMonth:(NSDate*)date
-{
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSMonthCalendarUnit fromDate:date];
-    NSInteger month = [components month];
-    return month;
-}
--(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot
-{
-    return plotData.count;
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -246,7 +153,23 @@
 
 -(void) viewWillAppear:(BOOL)animated
 {
-    [self initGraph];
+    [self.fetchedResultsController performFetch:nil];
+    if (_swch.isOn)
+    {
+        [_plotView createDatePlot:[_fetchedResultsController fetchedObjects] withMinDate:minDate withMaxDate:maxDate];
+    }
+    else
+    {
+        [_plotView createBarPlot:[_fetchedResultsController fetchedObjects] withMinDate:minDate withMaxDate:maxDate];
+    }
+    //_plotView.allowPinchScaling = 1;
+    //_plotView.userInteractionEnabled = 1;
+    //Generate data
+    //[self generateDateWithoutTime];
+    
+    //Generate layout
+    //[self generateLayout];
+    //[self initGraph];
 }
 
 - (NSFetchedResultsController *)fetchedResultsController

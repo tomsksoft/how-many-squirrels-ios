@@ -30,7 +30,7 @@
         [recognizer setNumberOfTapsRequired:1];
         //lblName.userInteractionEnabled = true;  (setting this in Interface Builder)
         [_dateTime addGestureRecognizer:recognizer];
- }
+    }
     return self;
 }
 
@@ -52,7 +52,7 @@
         formater.dateFormat = @"dd.MM.yy. hh:mm:ss";
         _dateTime.text = [[NSString alloc] initWithFormat:@"%@",[formater stringFromDate:now]];
     }
-
+    
     [self performSelector:@selector(updateTime) withObject:self afterDelay:1.0];
 }
 
@@ -65,9 +65,9 @@
     [_text setText:str];
     NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
     [dateFormater setDateFormat:@"dd.MM.yy. hh:mm:ss"];
-    [dateFormater setTimeZone: [NSTimeZone timeZoneWithName:@"South Africa"]];
+    [dateFormater setTimeZone: [NSTimeZone timeZoneWithName:@"GMT"]];
     NSDate *currentDate = [dateFormater dateFromString:_dateTime.text];
-    //NSLog(@"%@",currentDate);
+    NSLog(@"%@",currentDate);
     [self addNewObject:currentDate :[NSNumber numberWithInt:1]];
     
     
@@ -137,7 +137,7 @@
     _dateActionSheet = [[UIActionSheet alloc] initWithTitle:@"DateTime"
                                                    delegate:self
                                           cancelButtonTitle:nil
-                                        destructiveButtonTitle:nil
+                                     destructiveButtonTitle:nil
                                           otherButtonTitles:nil];
     
     
@@ -155,7 +155,7 @@
     
     UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem
                                 :UIBarButtonSystemItemDone target:self action:@selector(datePickerDoneClick:)];
-        UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(datePickerCancelClick:)];
+    UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(datePickerCancelClick:)];
     [barItems addObject:cancelBtn];
     [barItems addObject:flexSpace];
     [barItems addObject:doneBtn];
@@ -212,7 +212,7 @@
     _text.text = str;
     NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
     [dateFormater setDateFormat:@"dd.MM.yy. hh:mm:ss"];
-    [dateFormater setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
+    [dateFormater setTimeZone: [NSTimeZone timeZoneWithName:@"GMT"]];
     NSDate *currentDate = [dateFormater dateFromString:_dateTime.text];
     [self addNewObject:currentDate :[NSNumber numberWithInt:count]];
     [_text resignFirstResponder];

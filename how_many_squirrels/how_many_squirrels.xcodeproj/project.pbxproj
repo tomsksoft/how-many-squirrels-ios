@@ -12,6 +12,7 @@
 		E74E586719595C2500D262F0 /* HMOSQEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E74E586519595C2500D262F0 /* HMOSQEditViewController.xib */; };
 		E74E58AC195BD52100D262F0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E74E58AB195BD52100D262F0 /* QuartzCore.framework */; };
 		E74E58AE195BD52B00D262F0 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E74E58AD195BD52B00D262F0 /* Accelerate.framework */; };
+		E74E58C51961180200D262F0 /* HMOSQPlotView.m in Sources */ = {isa = PBXBuildFile; fileRef = E74E58C41961180200D262F0 /* HMOSQPlotView.m */; };
 		E78E58561951477700C4AA9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E78E58551951477700C4AA9F /* Foundation.framework */; };
 		E78E58581951477700C4AA9F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E78E58571951477700C4AA9F /* CoreGraphics.framework */; };
 		E78E585A1951477800C4AA9F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E78E58591951477800C4AA9F /* UIKit.framework */; };
@@ -56,6 +57,8 @@
 		E74E586519595C2500D262F0 /* HMOSQEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMOSQEditViewController.xib; sourceTree = "<group>"; };
 		E74E58AB195BD52100D262F0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E74E58AD195BD52B00D262F0 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		E74E58C31961180200D262F0 /* HMOSQPlotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMOSQPlotView.h; sourceTree = "<group>"; };
+		E74E58C41961180200D262F0 /* HMOSQPlotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMOSQPlotView.m; sourceTree = "<group>"; };
 		E78E58521951477700C4AA9F /* how_many_squirrels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = how_many_squirrels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78E58551951477700C4AA9F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E78E58571951477700C4AA9F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -220,6 +223,8 @@
 				E78E589019515A2D00C4AA9F /* HMOSQEnterViewController.m */,
 				E78E58D81951823900C4AA9F /* HMOSQPlotViewController.h */,
 				E78E58D91951823900C4AA9F /* HMOSQPlotViewController.m */,
+				E74E58C31961180200D262F0 /* HMOSQPlotView.h */,
+				E74E58C41961180200D262F0 /* HMOSQPlotView.m */,
 				E78E58DD1951864F00C4AA9F /* HMOSQTableViewController.h */,
 				E78E58DE1951864F00C4AA9F /* HMOSQTableViewController.m */,
 				E74E586319595C2500D262F0 /* HMOSQEditViewController.h */,
@@ -364,6 +369,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E74E58C51961180200D262F0 /* HMOSQPlotView.m in Sources */,
 				E74E586619595C2500D262F0 /* HMOSQEditViewController.m in Sources */,
 				E78E589219515A2D00C4AA9F /* HMOSQEnterViewController.m in Sources */,
 				E78E588D19514BF000C4AA9F /* HMOSQMainViewController.m in Sources */,

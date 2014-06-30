@@ -14,8 +14,9 @@
 #import <UIKit/UIKit.h>
 #import <CorePlot/CorePlot-CocoaTouch.h>
 #import "HMOSQInfo.h"
+#import "HMOSQPlotView.h"
 
-@interface HMOSQPlotViewController : UIViewController<NSFetchedResultsControllerDelegate,CPTPlotDataSource,UIActionSheetDelegate>
+@interface HMOSQPlotViewController : UIViewController<NSFetchedResultsControllerDelegate,UIActionSheetDelegate>
 
 {
     CPTXYGraph *graph;
@@ -25,7 +26,7 @@
     BOOL isMinDateClick;
 }
 
-@property(strong,nonatomic) IBOutlet CPTGraphHostingView* plotView;
+@property(strong,nonatomic) IBOutlet HMOSQPlotView* plotView;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property(strong,nonatomic)IBOutlet UILabel * minLabel;
