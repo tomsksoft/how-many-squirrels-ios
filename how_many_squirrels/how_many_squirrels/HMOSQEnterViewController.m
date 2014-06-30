@@ -69,6 +69,7 @@
     NSDate *currentDate = [dateFormater dateFromString:_dateTime.text];
     NSLog(@"%@",currentDate);
     [self addNewObject:currentDate :[NSNumber numberWithInt:1]];
+    [self setCount];
     
     
 }
@@ -88,6 +89,7 @@
     [dateFormater setDateFormat:@"dd.MM.yy. hh:mm:ss"];
     NSDate *currentDate = [dateFormater dateFromString:_dateTime.text];
     [self addNewObject:currentDate :[NSNumber numberWithInt:-1]];
+    [self setCount];
 }
 - (NSFetchedResultsController *)fetchedResultsController
 {
@@ -167,6 +169,19 @@
     [recognizer setNumberOfTapsRequired:1];
     //lblName.userInteractionEnabled = true;  (setting this in Interface Builder)
     [_dateTime addGestureRecognizer:recognizer];
+    
+    prefs = [NSUserDefaults standardUserDefaults];
+    NSInteger myInt = [prefs integerForKey:@"count"];
+    NSString *str = [[NSString alloc] initWithFormat:@"%ld", (long)myInt];
+    if ([str length]!=0)
+    {
+        _text.text = str;
+    }
+    else
+    {
+        _text.text = @"0";
+    }
+    
 }
 
 -(void) stateChange
@@ -177,7 +192,6 @@
     }
     else
     {
-        //[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateTime) object:nil];
         [self.dateActionSheet showInView:self.view];
         [self.dateActionSheet setBounds:CGRectMake(0,0,320, 464)];
     }
@@ -216,11 +230,19 @@
     NSDate *currentDate = [dateFormater dateFromString:_dateTime.text];
     [self addNewObject:currentDate :[NSNumber numberWithInt:count]];
     [_text resignFirstResponder];
+    [self setCount];
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
-    //_dateTime.text = [[NSString alloc] initWithFormat:@"date: %@", _dateTimePicker.date];
+    
+}
+
+-(void)setCount
+{
+    int number = [_text.text intValue];
+    [prefs setInteger:number forKey:@"count"];
+    [prefs synchronize];
 }
 
 -(void)textViewDidBeginEditing:(UITextView *)textView

@@ -88,12 +88,12 @@
 	graph.plotAreaFrame.paddingLeft         = 70.0;
     
 	//Add plot space
-	CPTXYPlotSpace *plotSpace       = (CPTXYPlotSpace *)graph.defaultPlotSpace;
-    plotSpace.delegate              = self;
-	plotSpace.yRange                = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromInt(0)
-                                                                   length:CPTDecimalFromInt(10 * sets.count)];
-	plotSpace.xRange                = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromInt(-1)
-                                                                   length:CPTDecimalFromInt(8)];
+	CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
+    plotSpace.delegate = self;
+	plotSpace.yRange  = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromInt(0)length:CPTDecimalFromInt(10 * sets.count)];
+	plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromInt(-1)
+                                                        length:CPTDecimalFromInt(8)];
+    plotSpace.allowsUserInteraction = YES;
     
     //Grid line styles
 	CPTMutableLineStyle *majorGridLineStyle = [CPTMutableLineStyle lineStyle];
@@ -130,11 +130,12 @@
     
     //Y axis
 	CPTXYAxis *y            = axisSet.yAxis;
-	y.title                 = @"Value";
-	y.titleOffset           = 50.0f;
+	y.title                 = @"Количество";
     y.labelingPolicy        = CPTAxisLabelingPolicyAutomatic;
     y.majorGridLineStyle    = majorGridLineStyle;
     y.minorGridLineStyle    = minorGridLineStyle;
+    
+    y.majorIntervalLength   = CPTDecimalFromInt(1);
     y.axisConstraints       = [CPTConstraints constraintWithLowerOffset:0.0];
     
     //Create a bar line style
@@ -222,6 +223,12 @@
     // Create graph from theme
     graph = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
     CPTTheme *theme = [CPTTheme themeNamed:kCPTDarkGradientTheme];
+    
+    graph.plotAreaFrame.masksToBorder   = NO;
+    graph.paddingLeft                   = 0.0f;
+    graph.paddingTop                    = 0.0f;
+	graph.paddingRight                  = 0.0f;
+	graph.paddingBottom                 = 0.0f;
     [graph applyTheme:theme];
     self.hostedGraph = graph;
     //self.allowPinchScaling = YES;
@@ -247,7 +254,7 @@
     x.labelFormatter            = timeFormatter;
     
     CPTXYAxis *y = axisSet.yAxis;
-    y.majorIntervalLength         = CPTDecimalFromDouble(1);
+    y.majorIntervalLength         = CPTDecimalFromInt(1);
     y.minorTicksPerInterval       = 10;
     y.orthogonalCoordinateDecimal = CPTDecimalFromFloat(oneDay);
     

@@ -136,7 +136,10 @@
         maxDate = newDate;
         _maxLabel.text = [[NSString alloc] initWithFormat:@"%@",[formater stringFromDate:newDate]];
     }
-    [_plotView createDatePlot:[_fetchedResultsController fetchedObjects] withMinDate:minDate withMaxDate:maxDate];
+    if(_swch.isOn)
+        [_plotView createDatePlot:[_fetchedResultsController fetchedObjects] withMinDate:minDate withMaxDate:maxDate];
+    else
+        [_plotView createBarPlot:[_fetchedResultsController fetchedObjects] withMinDate:minDate withMaxDate:maxDate];
     [self.dateActionSheet dismissWithClickedButtonIndex:2 animated:YES];
 }
 
@@ -162,14 +165,6 @@
     {
         [_plotView createBarPlot:[_fetchedResultsController fetchedObjects] withMinDate:minDate withMaxDate:maxDate];
     }
-    //_plotView.allowPinchScaling = 1;
-    //_plotView.userInteractionEnabled = 1;
-    //Generate data
-    //[self generateDateWithoutTime];
-    
-    //Generate layout
-    //[self generateLayout];
-    //[self initGraph];
 }
 
 - (NSFetchedResultsController *)fetchedResultsController

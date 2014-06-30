@@ -12,10 +12,6 @@
  */
 
 #import "HMOSQAppDelegate.h"
-#import "HMOSQMainViewController.h"
-#import "HMOSQEnterViewController.h"
-#import "HMOSQPlotViewController.h"
-#import "HMOSQTableViewController.h"
 
 @implementation HMOSQAppDelegate
 
@@ -25,17 +21,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    UITabBarController * tabBarController = [[UITabBarController alloc]init];
+    _tabBarController = [[UITabBarController alloc]init];
+
     HMOSQMainViewController * mainViewController = [[HMOSQMainViewController alloc]init];
     HMOSQEnterViewController * enterViewController = [[HMOSQEnterViewController alloc]init];
     HMOSQPlotViewController * plotController = [[HMOSQPlotViewController alloc] init];
     HMOSQTableViewController * tableController = [[HMOSQTableViewController alloc]init];
-    [tabBarController setViewControllers:@[mainViewController,enterViewController,plotController,tableController]];
-    
+    [_tabBarController setViewControllers:@[mainViewController ,enterViewController,plotController,tableController]];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [self.window setRootViewController:tabBarController];
+    [self.window setRootViewController:_tabBarController];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

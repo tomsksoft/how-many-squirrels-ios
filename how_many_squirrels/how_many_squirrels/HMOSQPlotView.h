@@ -16,7 +16,7 @@
 #import "HMOSQInfo.h"
 #import <CorePlot/CorePlot-CocoaTouch.h>
 
-@interface HMOSQPlotView : CPTGraphHostingView <CPTPlotDataSource,CPTPlotDelegate>
+@interface HMOSQPlotView : CPTGraphHostingView <CPTPlotDataSource,CPTPlotDelegate,CPTPlotSpaceDelegate>
 {
     CPTXYGraph *graph;
     NSDictionary *data;

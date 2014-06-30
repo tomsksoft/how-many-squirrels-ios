@@ -11,21 +11,16 @@
  * Created by Anton Tsygantsev on 18/06/14
  */
 
+
 #import <UIKit/UIKit.h>
 
-@interface HMOSQEnterViewController : UIViewController<NSFetchedResultsControllerDelegate,UITextViewDelegate,UIActionSheetDelegate>
+@interface HMOSQOptionViewController : UIViewController<UIAlertViewDelegate,NSFetchedResultsControllerDelegate>
 {
-    NSNumber * num;
     NSUserDefaults *prefs;
 }
 
+@property(strong,nonatomic)IBOutlet UITextView* textView;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic, retain) UIActionSheet *dateActionSheet;
-@property (nonatomic, retain) UIDatePicker *datePicker;
-@property(strong,nonatomic)IBOutlet UILabel * dateTime;
-@property (strong,nonatomic)IBOutlet UITextView * text;
-@property(strong,nonatomic) IBOutlet UISwitch * swch;
--(IBAction)plusClick:(id)sender;
--(IBAction)decClick:(id)sender;
+
 @end

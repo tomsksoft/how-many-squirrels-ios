@@ -16,5 +16,7 @@
 @interface HMOSQMainViewController : UIViewController
 
 - (IBAction) SettingClick : (id)sender;
+- (IBAction) plotClick : (id)sender;
+- (IBAction) enterClick : (id)sender;
 
 @end
