@@ -25,11 +25,11 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Таблица" image:[UIImage imageNamed:@""] tag:0];        // Custom initialization
+        self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Таблица" image:[UIImage imageNamed:@"iconm.png"] tag:0];        // Custom initialization
         id delegate = [[UIApplication sharedApplication]delegate];
         self.managedObjectContext = [delegate managedObjectContext];
         //self.fetchedRecordsArray = [delegate getAllRecords];
-        }
+    }
     return self;
 }
 
@@ -100,7 +100,7 @@
         editView.delegate = self;
         [self presentViewController:editView animated:YES completion:nil];
     }
-
+    
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -127,7 +127,7 @@
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Info" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
     NSArray *sortDescriptors = @[sortDescriptor];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
@@ -138,7 +138,7 @@
 }
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-
+    
     //[self.tableView beginUpdates];
 }
 
@@ -164,8 +164,11 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     
     HMOSQInfo * inf = [_fetchedResultsController.fetchedObjects objectAtIndex:indexPath.row];
+    NSDateFormatter * formater = [[NSDateFormatter alloc] init];
+    formater.dateFormat = @"dd/MM/yy hh:mm:ss";
+    [formater setTimeZone: [NSTimeZone localTimeZone]];
+    cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@",[formater stringFromDate:inf.date]];
     cell.textLabel.text = [NSString stringWithFormat:@"%@ ",inf.number];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@",inf.date];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -206,7 +209,7 @@
     else
     {
         NSString *titleFormatString = (@"Удалить (%d)");
-    _deleteButton.title = [NSString stringWithFormat:titleFormatString, selectedRows.count];
+        _deleteButton.title = [NSString stringWithFormat:titleFormatString, selectedRows.count];
     }
 }
 

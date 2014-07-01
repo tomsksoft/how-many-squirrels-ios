@@ -58,7 +58,7 @@
                         <action selector="plotClick:" destination="-1" eventType="touchUpInside" id="xkn-MB-teB"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0wB-th-5Z7">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="belka.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="0wB-th-5Z7">
                     <rect key="frame" x="12" y="122" width="293" height="226"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -84,4 +84,7 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
+    <resources>
+        <image name="belka.jpg" width="1024" height="768"/>
+    </resources>
 </document>

@@ -23,7 +23,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Ввод данных" image:[UIImage imageNamed:@""] tag:0];        // Custom initialization
+        self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Ввод данных" image:[UIImage imageNamed:@"iconm.png"] tag:0];        // Custom initialization
         id delegate = [[UIApplication sharedApplication]delegate];
         self.managedObjectContext = [delegate managedObjectContext];
         UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
@@ -65,7 +65,7 @@
     [_text setText:str];
     NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
     [dateFormater setDateFormat:@"dd.MM.yy. hh:mm:ss"];
-    [dateFormater setTimeZone: [NSTimeZone timeZoneWithName:@"GMT"]];
+    //[dateFormater setTimeZone: [NSTimeZone timeZoneWithName:@"GMT"]];
     NSDate *currentDate = [dateFormater dateFromString:_dateTime.text];
     NSLog(@"%@",currentDate);
     [self addNewObject:currentDate :[NSNumber numberWithInt:1]];
@@ -85,7 +85,7 @@
     [_text setText:str];
     NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
     
-    [dateFormater setTimeZone: [NSTimeZone timeZoneWithName:@"GMT"]];
+    //[dateFormater setTimeZone: [NSTimeZone timeZoneWithName:@"GMT"]];
     [dateFormater setDateFormat:@"dd.MM.yy. hh:mm:ss"];
     NSDate *currentDate = [dateFormater dateFromString:_dateTime.text];
     [self addNewObject:currentDate :[NSNumber numberWithInt:-1]];
@@ -144,6 +144,7 @@
     
     
     _datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0.0, 44.0, 0.0, 0.0)];
+    //[_datePicker setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
     [self.datePicker setDatePickerMode:UIDatePickerModeDateAndTime];
     
     UIToolbar *pickerDateToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
@@ -178,6 +179,7 @@
     if ([_swch isOn])
     {
         [self updateTime];
+        [_dateTime setTextColor:[UIColor blackColor]];
     }
     else
     {
@@ -190,17 +192,24 @@
 {
     NSDateFormatter * formater = [[NSDateFormatter alloc] init];
     formater.dateFormat = @"dd.MM.yy. hh:mm:ss";
-    [formater setTimeZone: [NSTimeZone timeZoneWithName:@"GMT"]];
+    //[formater setTimeZone: [NSTimeZone timeZoneWithName:@"GMT"]];
     _dateTime.text = [[NSString alloc] initWithFormat:@"%@",[formater stringFromDate:_datePicker.date]];
     [self.dateActionSheet dismissWithClickedButtonIndex:2 animated:YES];
+    [_dateTime setTextColor:[UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0] ];
 }
 
 -(void)datePickerCancelClick:(id)sender
 {
     [self.dateActionSheet dismissWithClickedButtonIndex:0 animated:YES];
-    [self performSelector:@selector(updateTime) withObject:self afterDelay:1.0];
-    [self updateTime];
-    [_swch setOn:YES];
+    if (!_swch.isOn)
+    {
+        [_swch setOn:YES];
+        [_text setTextColor:[UIColor blackColor]];
+    }
+    else
+    {
+        [self performSelector:@selector(updateTime) withObject:self afterDelay:1.0];
+    }
 }
 -(void)cancelNumberPad
 {
@@ -215,7 +224,7 @@
     _text.text = str;
     NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
     [dateFormater setDateFormat:@"dd.MM.yy. hh:mm:ss"];
-    [dateFormater setTimeZone: [NSTimeZone timeZoneWithName:@"GMT"]];
+    //[dateFormater setTimeZone: [NSTimeZone timeZoneWithName:@"GMT"]];
     NSDate *currentDate = [dateFormater dateFromString:_dateTime.text];
     [self addNewObject:currentDate :[NSNumber numberWithInt:count]];
     [_text resignFirstResponder];

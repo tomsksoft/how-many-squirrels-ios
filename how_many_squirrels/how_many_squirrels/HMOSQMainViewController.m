@@ -26,9 +26,9 @@
     if (self)
     {
         
-        self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Главная" image:[UIImage imageNamed:@""] tag:0];
-
-
+        self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Главная" image:[UIImage imageNamed:@"iconm.png"] tag:0];
+        
+        
     }
     return self;
 }
@@ -36,7 +36,7 @@
 {
     HMOSQOptionViewController* options = [[HMOSQOptionViewController alloc]init ];
     [self presentViewController:options animated:YES completion:nil];
-
+    
 }
 
 -(IBAction)enterClick:(id)sender

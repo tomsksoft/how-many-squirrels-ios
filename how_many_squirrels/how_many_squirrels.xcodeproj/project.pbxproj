@@ -15,6 +15,9 @@
 		E74E58C51961180200D262F0 /* HMOSQPlotView.m in Sources */ = {isa = PBXBuildFile; fileRef = E74E58C41961180200D262F0 /* HMOSQPlotView.m */; };
 		E77A1822196133DE00DB677A /* HMOSQOptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E77A1820196133DE00DB677A /* HMOSQOptionViewController.m */; };
 		E77A1823196133DE00DB677A /* HMOSQOptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77A1821196133DE00DB677A /* HMOSQOptionViewController.xib */; };
+		E77A182919626BF100DB677A /* icon120.png in Resources */ = {isa = PBXBuildFile; fileRef = E77A182619626BF100DB677A /* icon120.png */; };
+		E77A182A19626BF100DB677A /* iconm.png in Resources */ = {isa = PBXBuildFile; fileRef = E77A182719626BF100DB677A /* iconm.png */; };
+		E77A182B19626BF100DB677A /* belka.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E77A182819626BF100DB677A /* belka.jpg */; };
 		E78E58561951477700C4AA9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E78E58551951477700C4AA9F /* Foundation.framework */; };
 		E78E58581951477700C4AA9F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E78E58571951477700C4AA9F /* CoreGraphics.framework */; };
 		E78E585A1951477800C4AA9F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E78E58591951477800C4AA9F /* UIKit.framework */; };
@@ -64,6 +67,9 @@
 		E77A181F196133DE00DB677A /* HMOSQOptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMOSQOptionViewController.h; sourceTree = "<group>"; };
 		E77A1820196133DE00DB677A /* HMOSQOptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMOSQOptionViewController.m; sourceTree = "<group>"; };
 		E77A1821196133DE00DB677A /* HMOSQOptionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMOSQOptionViewController.xib; sourceTree = "<group>"; };
+		E77A182619626BF100DB677A /* icon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon120.png; sourceTree = "<group>"; };
+		E77A182719626BF100DB677A /* iconm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconm.png; sourceTree = "<group>"; };
+		E77A182819626BF100DB677A /* belka.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = belka.jpg; sourceTree = "<group>"; };
 		E78E58521951477700C4AA9F /* how_many_squirrels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = how_many_squirrels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78E58551951477700C4AA9F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E78E58571951477700C4AA9F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -176,6 +182,9 @@
 		E78E585D1951477800C4AA9F /* how_many_squirrels */ = {
 			isa = PBXGroup;
 			children = (
+				E77A182619626BF100DB677A /* icon120.png */,
+				E77A182719626BF100DB677A /* iconm.png */,
+				E77A182819626BF100DB677A /* belka.jpg */,
 				E74EDB9C1952B9D2004466CA /* Classes */,
 				E78E58E319518F9400C4AA9F /* Interface */,
 				E78E585E1951477800C4AA9F /* Supporting Files */,
@@ -327,6 +336,9 @@
 				E78E588E19514BF000C4AA9F /* HMOSQMainViewController.xib in Resources */,
 				E77A1823196133DE00DB677A /* HMOSQOptionViewController.xib in Resources */,
 				E74E586719595C2500D262F0 /* HMOSQEditViewController.xib in Resources */,
+				E77A182A19626BF100DB677A /* iconm.png in Resources */,
+				E77A182B19626BF100DB677A /* belka.jpg in Resources */,
+				E77A182919626BF100DB677A /* icon120.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

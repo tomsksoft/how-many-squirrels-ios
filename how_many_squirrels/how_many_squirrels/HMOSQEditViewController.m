@@ -44,7 +44,7 @@
                            nil];
     [numberToolbar sizeToFit];
     _text.inputAccessoryView = numberToolbar;
-    _datePicker.timeZone = [NSTimeZone timeZoneWithName:@"GMT"];
+    //_datePicker.timeZone = [NSTimeZone timeZoneWithName:@"GMT"];
     NSLog(@"date %@",info.date);
     _datePicker.date = info.date;
 }
@@ -72,6 +72,11 @@
 - (IBAction)cancel:(id)sender
 {
     [self.delegate closeEdit:self didFinishWithSave:NO withObject:info];
+}
+
+- (IBAction)setCurrentDate:(id)sender
+{
+    _datePicker.date = [NSDate date];
 }
 
 
