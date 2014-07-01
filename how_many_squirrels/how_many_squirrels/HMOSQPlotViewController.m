@@ -22,7 +22,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"График" image:[UIImage imageNamed:@""] tag:0];
+        self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"График" image:[UIImage imageNamed:@"iconm.png"] tag:0];
         id delegate = [[UIApplication sharedApplication]delegate];
         self.managedObjectContext = [delegate managedObjectContext];
     }
@@ -69,15 +69,35 @@
     [recognizer setNumberOfTapsRequired:1];
     [_maxLabel addGestureRecognizer:recognizer2];
     _minLabel.text = @"22.06.14";
-    _maxLabel.text = @"27.06.14";
+    //_maxLabel.text = @"27.06.14";
     NSString *dateStr = @"22.06.2014. 02:00:00";
-    NSString *dateStr2 = @"27.06.2014. 02:00:00";
+    //NSString *dateStr2 = @"01.07.2014. 02:00:00";
     NSDateFormatter * formater = [[NSDateFormatter alloc] init];
     formater.dateFormat = @"dd.MM.yy. hh:mm:ss";
     minDate = [formater dateFromString:dateStr];
-    maxDate = [formater dateFromString:dateStr2];
+    [self setDefaultInterval];
+    //maxDate = [formater dateFromString:dateStr2];
     //[self initGraph];
     // Do any additional setup after loading the view from its nib.
+}
+
+-(void)setDefaultInterval
+{
+    NSDate *date = [NSDate date];
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier: NSGregorianCalendar];
+    NSDateComponents *components = [gregorian components: NSUIntegerMax fromDate: date];
+    [components setHour: 4];
+    [components setMinute: 0];
+    [components setSecond: 0];
+    
+    NSDate *newDate = [gregorian dateFromComponents: components];
+    NSLog(@"new date = %@",newDate);
+    NSDateFormatter * formater = [[NSDateFormatter alloc] init];
+    [formater setTimeZone: [NSTimeZone timeZoneWithName:@"GMT"]];
+    formater.dateFormat = @"dd.MM.yy";
+    _maxLabel.text = [formater stringFromDate:newDate];
+    maxDate = [formater dateFromString:_maxLabel.text];
+    NSLog(@"max = %@",maxDate);
 }
 
 -(void)stateChange
@@ -139,7 +159,7 @@
     if(_swch.isOn)
         [_plotView createDatePlot:[_fetchedResultsController fetchedObjects] withMinDate:minDate withMaxDate:maxDate];
     else
-        [_plotView createBarPlot:[_fetchedResultsController fetchedObjects] withMinDate:minDate withMaxDate:maxDate];
+        [_plotView createDatePlot:[_fetchedResultsController fetchedObjects] withMinDate:minDate withMaxDate:maxDate];
     [self.dateActionSheet dismissWithClickedButtonIndex:2 animated:YES];
 }
 

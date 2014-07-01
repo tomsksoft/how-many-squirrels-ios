@@ -13,7 +13,7 @@
 
 #import <UIKit/UIKit.h>
 #import "HMOSQEditViewController.h"
-@interface HMOSQTableViewController : UIViewController<NSFetchedResultsControllerDelegate,UIActionSheetDelegate,HMOSQEditViewControllerDelegate>
+@interface HMOSQTableViewController : UIViewController<NSFetchedResultsControllerDelegate,HMOSQEditViewControllerDelegate>
 {
 }
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
