@@ -19,19 +19,6 @@
 
 @implementation HMOSQMainViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self)
-    {
-        
-        self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Главная" image:[UIImage imageNamed:@"iconm.png"] tag:0];
-        
-        
-    }
-    return self;
-}
-
 -(id)initWithTabBar:(UITabBarController *)tab
 {
     self = [super init];

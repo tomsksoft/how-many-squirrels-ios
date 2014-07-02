@@ -117,6 +117,7 @@
     NSManagedObject* object = [NSEntityDescription insertNewObjectForEntityForName:[disc name] inManagedObjectContext:context];
     [object setValue: date forKey:@"date"];
     [object setValue:count forKey:@"number"];
+    //[object setValue:@"Belki" forKey:@"param"];
     [context save:nil];
     
 }

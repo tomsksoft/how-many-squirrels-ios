@@ -11,11 +11,11 @@
  * Created by Anton Tsygantsev on 18/06/14
  */
 
-#import <CoreData/CoreData.h>
+#import <Foundation/Foundation.h>
 
-@interface HMOSQInfo : NSManagedObject
+@interface HMOSQEnum : NSObject
 
-@property (nonatomic, retain) NSDate * date;
-@property (nonatomic, retain) id number;
-@property (nonatomic, retain) NSString* param;
+@property (nonatomic, retain) NSArray * paramList;
+@property (nonatomic, retain) NSString* value;
+
 @end

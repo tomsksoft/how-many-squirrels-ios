@@ -11,11 +11,8 @@
  * Created by Anton Tsygantsev on 18/06/14
  */
 
-#import <CoreData/CoreData.h>
+#import "HMOSQParametr.h"
 
-@interface HMOSQInfo : NSManagedObject
+@implementation HMOSQParametr
 
-@property (nonatomic, retain) NSDate * date;
-@property (nonatomic, retain) id number;
-@property (nonatomic, retain) NSString* param;
 @end

@@ -12,6 +12,8 @@
  */
 
 #import "HMOSQOptionViewController.h"
+#import "HMOSQParametr.h"
+#import "HMOSQInfo.h"
 
 @interface HMOSQOptionViewController ()
 
@@ -26,8 +28,22 @@
     {
         id delegate = [[UIApplication sharedApplication]delegate];
         self.managedObjectContext = [delegate managedObjectContext];
+        [self.fetchedResultsController performFetch:nil];
+        //[self addNewObject:@"belki" :@"int"];
+        [self haveData];
     }
     return self;
+}
+
+-(void)addNewObject:(NSString*) name : (NSString*) type
+{
+    NSManagedObjectContext * context = [self.fetchedResultsController managedObjectContext];
+    NSEntityDescription * disc = [[self.fetchedResultsController fetchRequest] entity];
+    NSManagedObject* object = [NSEntityDescription insertNewObjectForEntityForName:[disc name] inManagedObjectContext:context];
+    [object setValue: name forKey:@"name"];
+    [object setValue:type forKey:@"type"];
+    [context save:nil];
+    
 }
 
 - (void)viewDidLoad
@@ -41,8 +57,8 @@
                            [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
                            [[UIBarButtonItem alloc]initWithTitle:@"Принять" style:UIBarButtonItemStyleDone target:self action:@selector(doneWithNumberPad)],
                            nil];
-    [numberToolbar sizeToFit];
-    _textView.inputAccessoryView = numberToolbar;
+    /*[numberToolbar sizeToFit];
+    //_textView.inputAccessoryView = numberToolbar;
     prefs = [NSUserDefaults standardUserDefaults];
     NSString *tmp = [prefs stringForKey:@"type"];
     if ([tmp length]!=0)
@@ -54,16 +70,38 @@
         _textView.text = @"Белки";
     }
 
-    // Do any additional setup after loading the view from its nib.
+    // Do any additional setup after loading the view from its nib.*/
+}
+
+-(BOOL)haveData
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Info" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:YES];
+    NSArray *sortDescriptors = @[sortDescriptor];
+    
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+
+    
+    for (HMOSQInfo*p in [aFetchedResultsController fetchedObjects])
+    {
+        if ([p.param  isEqual: @"belki"])
+        {
+            return YES;
+        }
+    }
+    return NO;
 }
 
 - (NSFetchedResultsController *)fetchedResultsController
 {
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Info" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Params" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
     NSArray *sortDescriptors = @[sortDescriptor];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
@@ -75,13 +113,13 @@
 
 -(void) cancelNumberPad
 {
-    [_textView resignFirstResponder];
-    _textView.text = [prefs stringForKey:@"type"];
+    //[_textView resignFirstResponder];
+    //_textView.text = [prefs stringForKey:@"type"];
 }
 
 -(void) doneWithNumberPad
 {
-    [_textView resignFirstResponder];
+    //[_textView resignFirstResponder];
 }
 
 
@@ -91,42 +129,78 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    
+    //[self.tableView endUpdates];
+    [self.tableView reloadData];
+}
+
 -(IBAction)cancelClick:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
--(IBAction)saveClick:(id)sender
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)path
 {
-    if (![[prefs stringForKey:@"type"] isEqualToString:_textView.text])
+    if([_tableView isEditing])
     {
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Внимание" message:@"Все существующие данные будут стерты" delegate:self cancelButtonTitle:@"Отмена" otherButtonTitles:@"Принять", nil];
-        [alert show];
+        //[self updateDeleteButtonTitle];
     }
     else
     {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
-}
-
--(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == 1)
-    {
-        [prefs setObject:_textView.text forKey:@"type"];
-        [prefs setObject:0 forKey:@"count"];
-        NSArray *items = [_fetchedResultsController fetchedObjects];
         
-        
-        for (NSManagedObject *managedObject in items)
-        {
-            [_managedObjectContext deleteObject:managedObject];
-        }
-        [_managedObjectContext save:nil];
-        [self dismissViewControllerAnimated:YES completion:nil];
+        //HMOSQEditViewController* editView = [[HMOSQEditViewController alloc]init ];
+        //editView.manageObject = [_fetchedResultsController objectAtIndexPath:path];
+        //editView.delegate = self;
+        //[self presentViewController:editView animated:YES completion:nil];
     }
     
-
 }
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //[self updateDeleteButtonTitle];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return  UITableViewCellEditingStyleNone;
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [_fetchedResultsController.fetchedObjects count];
+}
+
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+    
+    HMOSQParametr * param = [_fetchedResultsController.fetchedObjects objectAtIndex:indexPath.row];
+    cell.detailTextLabel.text = param.type;
+    cell.textLabel.text = param.name;
+    cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+    [self configureCell:cell atIndexPath:indexPath];
+    return cell;
+}
+
 
 @end

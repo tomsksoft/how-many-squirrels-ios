@@ -14,13 +14,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HMOSQOptionViewController : UIViewController<UIAlertViewDelegate,NSFetchedResultsControllerDelegate>
+@interface HMOSQOptionViewController : UIViewController<UIAlertViewDelegate,NSFetchedResultsControllerDelegate,UITableViewDelegate>
 {
     NSUserDefaults *prefs;
 }
 
-@property(strong,nonatomic)IBOutlet UITextView* textView;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property(strong,nonatomic)IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *editButton;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *cancelButton;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *deleteButton;
+@property(nonatomic,strong) IBOutlet UINavigationItem *navItem;
 
 @end

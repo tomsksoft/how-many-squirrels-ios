@@ -27,6 +27,7 @@
         id delegate = [[UIApplication sharedApplication]delegate];
         self.managedObjectContext = [delegate managedObjectContext];
         //self.fetchedRecordsArray = [delegate getAllRecords];
+        [self.fetchedResultsController performFetch:nil];
     }
     return self;
 }
@@ -112,7 +113,7 @@
 }
 -(void) viewWillAppear:(BOOL)animated
 {
-    [self.fetchedResultsController performFetch:nil];
+    
 }
 
 -(void) viewDidAppear:(BOOL)animated
