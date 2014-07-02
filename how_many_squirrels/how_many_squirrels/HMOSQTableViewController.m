@@ -12,9 +12,7 @@
  */
 
 #import "HMOSQTableViewController.h"
-#import "HMOSQAppDelegate.h"
 #import "HMOSQInfo.h"
-#import "HMOSQEditViewController.h"
 
 @interface HMOSQTableViewController ()
 @end

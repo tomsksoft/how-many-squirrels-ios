@@ -12,7 +12,6 @@
  */
 
 #import "HMOSQEditViewController.h"
-#import "HMOSQInfo.h"
 
 @interface HMOSQEditViewController ()
 

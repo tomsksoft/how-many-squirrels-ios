@@ -203,8 +203,8 @@
     [self.dateActionSheet dismissWithClickedButtonIndex:0 animated:YES];
     if (!_swch.isOn)
     {
-        [_swch setOn:YES];
-        [_text setTextColor:[UIColor blackColor]];
+        //[_swch setOn:YES];
+        //[_text setTextColor:[UIColor blackColor]];
     }
     else
     {

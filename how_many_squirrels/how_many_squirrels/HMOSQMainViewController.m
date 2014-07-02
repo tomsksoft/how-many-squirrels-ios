@@ -13,7 +13,6 @@
 
 #import "HMOSQMainViewController.h"
 #import "HMOSQOptionViewController.h"
-#import "HMOSQAppDelegate.h"
 @interface HMOSQMainViewController ()
 
 @end
@@ -32,6 +31,20 @@
     }
     return self;
 }
+
+-(id)initWithTabBar:(UITabBarController *)tab
+{
+    self = [super init];
+    if (self)
+    {
+        tabBar = tab;
+        self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Главная" image:[UIImage imageNamed:@"iconm.png"] tag:0];
+        
+    }
+    return self;
+
+}
+
 -(IBAction)SettingClick:(id)sender
 {
     HMOSQOptionViewController* options = [[HMOSQOptionViewController alloc]init ];
@@ -41,15 +54,12 @@
 
 -(IBAction)enterClick:(id)sender
 {
-    HMOSQAppDelegate *appDelegate = (HMOSQAppDelegate*) [[UIApplication sharedApplication] delegate];
-    [appDelegate.tabBarController setSelectedIndex:1];
+    [tabBar setSelectedIndex:1];
 }
 
 -(IBAction)plotClick:(id)sender
 {
-    
-    HMOSQAppDelegate *appDelegate = (HMOSQAppDelegate*) [[UIApplication sharedApplication] delegate];
-    [appDelegate.tabBarController setSelectedIndex:2];
+    [tabBar setSelectedIndex:2];
 }
 
 - (void)viewDidLoad

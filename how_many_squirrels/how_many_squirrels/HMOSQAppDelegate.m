@@ -23,7 +23,7 @@
 {
     _tabBarController = [[UITabBarController alloc]init];
 
-    HMOSQMainViewController * mainViewController = [[HMOSQMainViewController alloc]init];
+    HMOSQMainViewController * mainViewController = [[HMOSQMainViewController alloc]initWithTabBar:_tabBarController];
     HMOSQEnterViewController * enterViewController = [[HMOSQEnterViewController alloc]init];
     HMOSQPlotViewController * plotController = [[HMOSQPlotViewController alloc] init];
     HMOSQTableViewController * tableController = [[HMOSQTableViewController alloc]init];

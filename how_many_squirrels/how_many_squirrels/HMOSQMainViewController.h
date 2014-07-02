@@ -14,9 +14,14 @@
 #import <UIKit/UIKit.h>
 
 @interface HMOSQMainViewController : UIViewController
+{
+    UITabBarController* tabBar;
+}
 
 - (IBAction) SettingClick : (id)sender;
 - (IBAction) plotClick : (id)sender;
 - (IBAction) enterClick : (id)sender;
+
+-(id)initWithTabBar:(UITabBarController*) tab;
 
 @end
