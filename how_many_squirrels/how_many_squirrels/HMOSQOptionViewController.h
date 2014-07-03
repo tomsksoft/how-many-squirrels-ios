@@ -17,6 +17,7 @@
 @interface HMOSQOptionViewController : UIViewController<UIAlertViewDelegate,NSFetchedResultsControllerDelegate,UITableViewDelegate>
 {
     NSUserDefaults *prefs;
+    NSString *currentType;
 }
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;

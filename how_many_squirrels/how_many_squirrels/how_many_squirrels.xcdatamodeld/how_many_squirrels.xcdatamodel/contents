@@ -3,14 +3,15 @@
     <entity name="Info" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="number" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <relationship name="param" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Params" syncable="YES"/>
+        <relationship name="param" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Params" inverseName="value" inverseEntity="Params" syncable="YES"/>
     </entity>
     <entity name="Params" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="value" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Info" inverseName="param" inverseEntity="Info" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Info" positionX="-63" positionY="-18" width="128" height="88"/>
-        <element name="Params" positionX="-36" positionY="27" width="128" height="75"/>
+        <element name="Info" positionX="-155" positionY="-117" width="128" height="88"/>
+        <element name="Params" positionX="-36" positionY="27" width="128" height="88"/>
     </elements>
 </model>

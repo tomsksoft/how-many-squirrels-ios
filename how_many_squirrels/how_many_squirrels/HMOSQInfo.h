@@ -12,10 +12,11 @@
  */
 
 #import <CoreData/CoreData.h>
+#import "HMOSQParametr.h"
 
 @interface HMOSQInfo : NSManagedObject
 
 @property (nonatomic, retain) NSDate * date;
 @property (nonatomic, retain) id number;
-@property (nonatomic, retain) NSString* param;
+@property (nonatomic, retain) HMOSQParametr* param;
 @end

@@ -30,7 +30,7 @@
         self.managedObjectContext = [delegate managedObjectContext];
         [self.fetchedResultsController performFetch:nil];
         //[self addNewObject:@"belki" :@"int"];
-        [self haveData];
+        //[self haveData];
     }
     return self;
 }
@@ -46,6 +46,11 @@
     
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    currentType = [prefs stringForKey:@"type"];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -57,10 +62,10 @@
                            [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
                            [[UIBarButtonItem alloc]initWithTitle:@"Принять" style:UIBarButtonItemStyleDone target:self action:@selector(doneWithNumberPad)],
                            nil];
-    /*[numberToolbar sizeToFit];
+    [numberToolbar sizeToFit];
     //_textView.inputAccessoryView = numberToolbar;
     prefs = [NSUserDefaults standardUserDefaults];
-    NSString *tmp = [prefs stringForKey:@"type"];
+    /*NSString *tmp = [prefs stringForKey:@"type"];
     if ([tmp length]!=0)
     {
         _textView.text = tmp;
@@ -71,28 +76,6 @@
     }
 
     // Do any additional setup after loading the view from its nib.*/
-}
-
--(BOOL)haveData
-{
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Info" inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:YES];
-    NSArray *sortDescriptors = @[sortDescriptor];
-    
-    [fetchRequest setSortDescriptors:sortDescriptors];
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
-
-    
-    for (HMOSQInfo*p in [aFetchedResultsController fetchedObjects])
-    {
-        if ([p.param  isEqual: @"belki"])
-        {
-            return YES;
-        }
-    }
-    return NO;
 }
 
 - (NSFetchedResultsController *)fetchedResultsController
@@ -186,7 +169,19 @@
     HMOSQParametr * param = [_fetchedResultsController.fetchedObjects objectAtIndex:indexPath.row];
     cell.detailTextLabel.text = param.type;
     cell.textLabel.text = param.name;
-    cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+    if (param.values!=nil)
+    {
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, (%@)", param.type,@"Have data"];
+    }
+    if ([param.name isEqualToString: currentType])
+    {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    else
+    {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

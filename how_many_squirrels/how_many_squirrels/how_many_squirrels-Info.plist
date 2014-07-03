@@ -38,7 +38,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>count</key>
-	<integer>17</integer>
 </dict>
 </plist>
