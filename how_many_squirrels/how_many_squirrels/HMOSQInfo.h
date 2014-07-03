@@ -16,7 +16,7 @@
 
 @interface HMOSQInfo : NSManagedObject
 
-@property (nonatomic, retain) NSDate * date;
-@property (nonatomic, retain) id number;
-@property (nonatomic, retain) HMOSQParametr* param;
+@property (nonatomic, strong) NSDate * date;
+@property (nonatomic, strong) id number;
+@property (nonatomic, strong) HMOSQParametr* param;
 @end

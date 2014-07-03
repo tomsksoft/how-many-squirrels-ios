@@ -26,10 +26,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        id delegate = [[UIApplication sharedApplication]delegate];
-        self.managedObjectContext = [delegate managedObjectContext];
-        [self.fetchedResultsController performFetch:nil];
-        //[self addNewObject:@"belki" :@"int"];
+        
         //[self haveData];
     }
     return self;
@@ -37,12 +34,30 @@
 
 -(void)addNewObject:(NSString*) name : (NSString*) type
 {
-    NSManagedObjectContext * context = [self.fetchedResultsController managedObjectContext];
-    NSEntityDescription * disc = [[self.fetchedResultsController fetchRequest] entity];
+    //NSManagedObjectContext * context = self.managedObjectContext;
+    /*NSEntityDescription * disc = [[self.fetchedResultsController fetchRequest] entity];
     NSManagedObject* object = [NSEntityDescription insertNewObjectForEntityForName:[disc name] inManagedObjectContext:context];
     [object setValue: name forKey:@"name"];
     [object setValue:type forKey:@"type"];
-    [context save:nil];
+    [context save:nil];*/
+    HMOSQParametr * newEntry = [NSEntityDescription insertNewObjectForEntityForName:@"Params"
+     inManagedObjectContext:self.managedObjectContext];
+     //  2
+    newEntry.name = name;
+    newEntry.type = type;
+    
+     //  6
+     HMOSQInfo * info = [NSEntityDescription insertNewObjectForEntityForName:@"Info"
+     inManagedObjectContext:self.managedObjectContext];
+     info.date = [NSDate date];
+     info.number = [[NSNumber alloc ] initWithInt:1];
+     
+     //  7
+     newEntry.value = [NSSet setWithObjects:info, nil];
+    NSError * eror;
+    [_managedObjectContext save:&eror];
+    //NSLog(@"%@",eror);
+
     
 }
 
@@ -54,6 +69,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    id delegate = [[UIApplication sharedApplication]delegate];
+    self.managedObjectContext = [delegate managedObjectContext];
     [self.fetchedResultsController performFetch:nil];
     UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
     numberToolbar.barStyle = UIBarStyleBlackTranslucent;
@@ -65,6 +83,8 @@
     [numberToolbar sizeToFit];
     //_textView.inputAccessoryView = numberToolbar;
     prefs = [NSUserDefaults standardUserDefaults];
+    [self addNewObject:@"Белки" :@"Целое"];
+    
     /*NSString *tmp = [prefs stringForKey:@"type"];
     if ([tmp length]!=0)
     {
@@ -91,6 +111,10 @@
     NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
+    for (NSManagedObject *o in [aFetchedResultsController fetchedObjects])
+    {
+        NSLog(@"%@",o);
+    }
     return _fetchedResultsController;
 }
 
@@ -160,16 +184,21 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    
+    NSLog(@"sfd = %lu",(unsigned long)[_fetchedResultsController.fetchedObjects count]);
     return [_fetchedResultsController.fetchedObjects count];
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    
-    HMOSQParametr * param = [_fetchedResultsController.fetchedObjects objectAtIndex:indexPath.row];
+    NSLog(@"%ld",(long)indexPath.item);
+    NSArray *array = [_fetchedResultsController fetchedObjects];
+    HMOSQParametr * param = [array objectAtIndex:indexPath.item];
     cell.detailTextLabel.text = param.type;
     cell.textLabel.text = param.name;
-    if (param.values!=nil)
+    NSLog(@"%@   %@",param.type,param.name);
+    //NSLog(@"%@",param.values);
+    if (param.value!=nil)
     {
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, (%@)", param.type,@"Have data"];
     }

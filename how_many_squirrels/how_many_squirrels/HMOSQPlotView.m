@@ -36,7 +36,7 @@
             if (([self getDay:dt] == [self getDay:inf.date])&&
                 ([self getMonth:dt] == [self getMonth:inf.date]))
             {
-                count+=[inf.number intValue];
+                //count+=[inf.number intValue];
             }
         }
         if (count!=0)
@@ -200,7 +200,7 @@
             if (([self getDay:dt] == [self getDay:inf.date])&&
                 ([self getMonth:dt] == [self getMonth:inf.date]))
             {
-                count+=[inf.number intValue];
+                //count+=[inf.number intValue];
             }
         }
         [newData addObject:

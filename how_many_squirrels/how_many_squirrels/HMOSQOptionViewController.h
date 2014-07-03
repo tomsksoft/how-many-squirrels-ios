@@ -14,7 +14,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HMOSQOptionViewController : UIViewController<UIAlertViewDelegate,NSFetchedResultsControllerDelegate,UITableViewDelegate>
+@interface HMOSQOptionViewController : UIViewController<UIAlertViewDelegate,NSFetchedResultsControllerDelegate>
 {
     NSUserDefaults *prefs;
     NSString *currentType;

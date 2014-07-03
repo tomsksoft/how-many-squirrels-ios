@@ -21,8 +21,8 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="f9J-xg-qdr"/>
-                        <outlet property="delegate" destination="-1" id="IAc-GL-9p8"/>
+                        <outlet property="dataSource" destination="-1" id="UgR-6c-0XX"/>
+                        <outlet property="delegate" destination="-1" id="ZUc-St-tm0"/>
                     </connections>
                 </tableView>
                 <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Do-0A-hVg">

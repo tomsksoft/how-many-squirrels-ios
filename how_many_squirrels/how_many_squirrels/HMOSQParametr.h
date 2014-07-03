@@ -11,12 +11,12 @@
  * Created by Anton Tsygantsev on 18/06/14
  */
 
-#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
 @interface HMOSQParametr : NSManagedObject
 
-@property (nonatomic, retain) NSString* name;
-@property (nonatomic, retain) NSString* type;
-@property (nonatomic, retain) NSSet* values;
+@property (nonatomic, strong) NSString* name;
+@property (nonatomic, strong) NSString* type;
+@property (nonatomic, strong) NSSet* value;
 
 @end
