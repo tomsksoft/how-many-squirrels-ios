@@ -32,28 +32,33 @@
     return self;
 }
 
--(void)addNewObject:(NSString*) name : (NSString*) type
+-(void)defaultOptions
 {
-    //NSManagedObjectContext * context = self.managedObjectContext;
-    /*NSEntityDescription * disc = [[self.fetchedResultsController fetchRequest] entity];
-    NSManagedObject* object = [NSEntityDescription insertNewObjectForEntityForName:[disc name] inManagedObjectContext:context];
-    [object setValue: name forKey:@"name"];
-    [object setValue:type forKey:@"type"];
-    [context save:nil];*/
+    
+    [self addNewObject:@"Белки" :@"Целое":@"1/-1"];
+    [self addNewObject:@"Граммы" :@"Вещественное":@"0.1/-0.1"];
+    [self addNewObject:@"Прием пищи" :@"Перечислимое":@"Завтрак/Обед/Ужин"];
+    [self addNewObject:@"Миг" :@"Момент времени":@""];
+    [self addNewObject:@"Продолжительность" :@"Интервал времени":@""];
+}
+
+-(void)addNewObject:(NSString*) name : (NSString*) type :(NSString*)data
+{
     HMOSQParametr * newEntry = [NSEntityDescription insertNewObjectForEntityForName:@"Params"
      inManagedObjectContext:self.managedObjectContext];
      //  2
     newEntry.name = name;
     newEntry.type = type;
+    newEntry.data = data;
     
      //  6
-     HMOSQInfo * info = [NSEntityDescription insertNewObjectForEntityForName:@"Info"
+     /*HMOSQInfo * info = [NSEntityDescription insertNewObjectForEntityForName:@"Info"
      inManagedObjectContext:self.managedObjectContext];
      info.date = [NSDate date];
-     info.number = [[NSNumber alloc ] initWithInt:1];
+     info.number = @"1";*/
      
      //  7
-     newEntry.value = [NSSet setWithObjects:info, nil];
+     newEntry.value = [NSSet setWithObjects: nil];
     NSError * eror;
     [_managedObjectContext save:&eror];
     //NSLog(@"%@",eror);
@@ -83,7 +88,6 @@
     [numberToolbar sizeToFit];
     //_textView.inputAccessoryView = numberToolbar;
     prefs = [NSUserDefaults standardUserDefaults];
-    [self addNewObject:@"Белки" :@"Целое"];
     
     /*NSString *tmp = [prefs stringForKey:@"type"];
     if ([tmp length]!=0)

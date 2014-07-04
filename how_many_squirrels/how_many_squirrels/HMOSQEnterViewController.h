@@ -25,16 +25,19 @@
     id valueForAdd;
     NSString *firstValue;
     BOOL isSelfTime;
+    int numberOfColumns;
 }
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) UIActionSheet *dateActionSheet;
 @property (nonatomic, retain) UIDatePicker *datePicker;
+@property (nonatomic, retain)IBOutlet UIDatePicker *momentPicker;
 @property (nonatomic, retain)IBOutlet UIPickerView *showPicker;
 @property(strong,nonatomic)IBOutlet UILabel * dateTime;
 @property(strong,nonatomic)IBOutlet UILabel * currentParam;
 @property (strong,nonatomic)IBOutlet UITextField * field;
 @property(strong,nonatomic) IBOutlet UISwitch * swch;
+@property(strong,nonatomic) IBOutlet UIButton * addButt;
 -(IBAction)oneClick:(id)sender;
 -(IBAction)addFromKeyboard:(id)sender;
 @end

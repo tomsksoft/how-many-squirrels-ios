@@ -18,5 +18,6 @@
 @property (nonatomic, strong) NSString* name;
 @property (nonatomic, strong) NSString* type;
 @property (nonatomic, strong) NSSet* value;
+@property (nonatomic, strong) NSString* data;
 
 @end

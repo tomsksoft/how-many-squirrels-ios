@@ -6,12 +6,13 @@
         <relationship name="param" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Params" inverseName="value" inverseEntity="Params" syncable="YES"/>
     </entity>
     <entity name="Params" representedClassName="HMOSQParametr" syncable="YES">
+        <attribute name="data" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="value" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Info" inverseName="param" inverseEntity="Info" syncable="YES"/>
     </entity>
     <elements>
         <element name="Info" positionX="-155" positionY="-117" width="128" height="88"/>
-        <element name="Params" positionX="-36" positionY="27" width="128" height="88"/>
+        <element name="Params" positionX="-36" positionY="27" width="128" height="103"/>
     </elements>
 </model>

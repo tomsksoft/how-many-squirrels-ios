@@ -35,28 +35,35 @@
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
-    return 1;// or the number of vertical "columns" the picker will show...
+    return numberOfColumns;// or the number of vertical "columns" the picker will show...
 }
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    if (pikerData!=nil)
+    switch (numberOfColumns)
     {
-        //NSLog(@"picker count = %lu",(unsigned long)[pikerData count]);
-        return [pikerData count];//this will tell the picker how many rows it has - in this case, the size of your loaded array...
+        case 1:
+        {
+            return 2;break;
+        }
+        case 3:
+        {
+            switch (component)
+            {
+                case 0:return 24; break;
+                case 1:return 60; break;
+                case 2:return 60; break;
+                default:
+                    break;
+            }
+        }
+        default:
+        {
+            break;
+        }
     }
     return 0;
 }
 
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-    //you can also write code here to descide what data to return depending on the component ("column")
-    if (pikerData!=nil)
-    {
-        //NSLog(@"value at row%@",[pikerData objectAtIndex:row]);
-        return [pikerData objectAtIndex:row];//assuming the array contains strings..
-    }
-    return @"";//or nil, depending how protective you are
-}
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
     firstValue = _field.text;
@@ -64,8 +71,72 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    valueForAdd = [pikerData objectAtIndex:row];
+    switch (numberOfColumns)
+    {
+        case 1:
+        {
+            valueForAdd = [pikerData objectAtIndex:row];
+            break;
+        }
+        case 2:
+        {
+            valueForAdd = [[NSString alloc]initWithFormat:@"%ldч.%ldмин.%ldсек.",[_showPicker selectedRowInComponent:0],[_showPicker selectedRowInComponent:1],[_showPicker selectedRowInComponent:2]];
+            break;
+        }
+        default:
+        {
+            break;
+        }
+    }
     NSLog(@"value to add = %@",valueForAdd);
+}
+
+-(void)momentChange :(id)sender
+{
+    
+    NSDateFormatter * formater = [[NSDateFormatter alloc] init];
+    formater.dateFormat = @"dd.MM.yy. hh:mm:ss";
+    //[formater setTimeZone: [NSTimeZone timeZoneWithName:@"GMT"]];
+    valueForAdd = [[NSString alloc] initWithFormat:@"%@",[formater stringFromDate:_momentPicker.date]];
+    NSLog(@"%@",valueForAdd);
+}
+
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row
+            forComponent:(NSInteger)component{
+    NSString *result = nil;
+    switch (numberOfColumns)
+    {
+        case 1:
+        {
+            return [pikerData objectAtIndex:row];break;
+        }
+        case 3:
+        {
+            switch (component)
+            {
+                case 0:
+                    return [[NSString alloc] initWithFormat:@"%ldh",(long)row];
+                    break;
+                case 1:
+                    return [[NSString alloc] initWithFormat:@"%ldm",(long)row];
+                    break;
+                case 2:
+                    return [[NSString alloc] initWithFormat:@"%lds",(long)row];
+                    break;
+                    
+                default:
+                    break;
+            }
+        }
+            
+        default:
+        {
+            break;
+        }
+    }
+        
+    return result;
 }
 
 -(void) customInit
@@ -74,17 +145,53 @@
     /*[prefs setObject:@"Белки" forKey:@"name"];
     [prefs setObject:@"Целое" forKey:@"type"];
     [prefs synchronize];*/
-    currentParamType = @"Вещественное";
+    currentParamType = @"Целое";
+    currentParamName = @"Белки";
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Params"
+                                              inManagedObjectContext:self.managedObjectContext];
+    [request setEntity:entity];
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"type = %@",currentParamType];
+    [request setPredicate:pred];
+    HMOSQParametr *par = [self.managedObjectContext executeFetchRequest:request error:nil][0];
+    pikerData = [par.data componentsSeparatedByString:@"/"];
+
     _currentParam.text = [NSString stringWithFormat:@"Текущий параметр: %@,Тип: %@",currentParamName,currentParamType];
     if ([currentParamType isEqualToString:@"Целое"])
     {
-        pikerData = [[NSArray alloc] initWithObjects: @"1", @"-1", nil];
-        //valueForAdd = pikerData[0];
+        numberOfColumns = 1;
+        _addButt.hidden = 0;
+        _momentPicker.hidden = 1;
+        _showPicker.hidden = 0;
     }
     if([currentParamType isEqualToString:@"Вещественное"])
     {
-        pikerData = [[NSArray alloc] initWithObjects: @"0.1", @"-0.1", nil];
-        
+        numberOfColumns = 1;
+        _addButt.hidden = 0;
+        _momentPicker.hidden = 1;
+        _showPicker.hidden = 0;
+    }
+    if([currentParamType isEqualToString:@"Перечислимое"])
+    {
+        numberOfColumns = 1;
+        _addButt.hidden = 1;
+        _momentPicker.hidden = 1;
+        _showPicker.hidden = 0;
+    }
+    if([currentParamType isEqualToString:@"Момент времени"])
+    {
+        [_momentPicker addTarget:self action:@selector(momentChange:) forControlEvents:UIControlEventValueChanged];
+        numberOfColumns = 0;
+        _addButt.hidden = 1;
+        _momentPicker.hidden = 0;
+        _showPicker.hidden = 1;
+    }
+    if([currentParamType isEqualToString:@"Интервал времени"])
+    {
+        numberOfColumns = 3;
+        _addButt.hidden = 1;
+        _momentPicker.hidden = 1;
+        _showPicker.hidden = 0;
     }
     valueForAdd = pikerData[0];
 }
@@ -170,8 +277,6 @@
 {
     [super viewDidLoad];
     [self stateChange];
-    
-    
     _field.delegate = self;
     _showPicker.delegate =self;
     //_textView.delegate = self;
