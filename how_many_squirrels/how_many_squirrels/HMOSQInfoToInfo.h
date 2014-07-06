@@ -10,9 +10,8 @@
  *
  * Created by Anton Tsygantsev on 18/06/14
  */
-
-#import "HMOSQParametr.h"
-
-@implementation HMOSQParametr
+#import <CoreData/CoreData.h>
+#import "HMOSQInfo.h"
+@interface HMOSQInfoToInfo : NSEntityMigrationPolicy
 
 @end

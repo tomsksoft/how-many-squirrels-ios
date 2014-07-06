@@ -12,15 +12,20 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "HMOSQParametr.h"
+#import "HMOSQInfo.h"
 
 @interface HMOSQMainViewController : UIViewController
 {
     UITabBarController* tabBar;
+    NSUserDefaults *pref;
 }
 
 - (IBAction) SettingClick : (id)sender;
 - (IBAction) plotClick : (id)sender;
 - (IBAction) enterClick : (id)sender;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
 
 -(id)initWithTabBar:(UITabBarController*) tab;
 

@@ -18,6 +18,7 @@
 {
     NSUserDefaults *prefs;
     NSString *currentType;
+    NSString *currentName;
 }
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;

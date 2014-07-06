@@ -36,7 +36,6 @@
 {
     HMOSQOptionViewController* options = [[HMOSQOptionViewController alloc]init ];
     [self presentViewController:options animated:YES completion:nil];
-    
 }
 
 -(IBAction)enterClick:(id)sender
@@ -52,6 +51,38 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    id delegate = [[UIApplication sharedApplication]delegate];
+    self.managedObjectContext = [delegate managedObjectContext];
+    pref = [NSUserDefaults standardUserDefaults];
+    if ([pref valueForKey:@"name"] == nil  && [pref valueForKey:@"type"] == nil)
+    {
+        [pref setValue:@"Белки" forKey:@"name"];
+        [pref setValue:@"Целое" forKey:@"type"];
+        [pref setValue:@"0" forKey:@"count"];
+        [pref synchronize];
+        NSFetchRequest *paramRequest = [[NSFetchRequest alloc] init];
+        NSEntityDescription *paramEntity = [NSEntityDescription entityForName:@"Params"
+                                                       inManagedObjectContext:self.managedObjectContext];
+        [paramRequest setEntity:paramEntity];
+        NSFetchRequest *infoRequest = [[NSFetchRequest alloc] init];
+        NSEntityDescription *infoEntity = [NSEntityDescription entityForName:@"Info"
+                                                      inManagedObjectContext:self.managedObjectContext];
+        [infoRequest setEntity:infoEntity];
+        HMOSQParametr * newEntry = [NSEntityDescription insertNewObjectForEntityForName:@"Params"
+                                                                     inManagedObjectContext:self.managedObjectContext];
+        newEntry.name = @"Белки";
+        newEntry.type = @"Целое";
+        newEntry.def = @"1/-1";
+        NSMutableSet * set = [[NSMutableSet alloc] init];
+        for (HMOSQInfo *o in [self.managedObjectContext executeFetchRequest:infoRequest error:nil])
+        {
+            o.param = newEntry;
+            [set addObject:o];
+        }
+        newEntry.value = [set mutableCopy];
+        [_managedObjectContext save:nil];
+    }
+
     // Do any additional setup after loading the view from its nib.
 }
 

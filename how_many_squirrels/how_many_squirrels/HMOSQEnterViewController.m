@@ -141,12 +141,6 @@
 
 -(void) customInit
 {
-    
-    /*[prefs setObject:@"Белки" forKey:@"name"];
-    [prefs setObject:@"Целое" forKey:@"type"];
-    [prefs synchronize];*/
-    currentParamType = @"Целое";
-    currentParamName = @"Белки";
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Params"
                                               inManagedObjectContext:self.managedObjectContext];
@@ -154,7 +148,8 @@
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"type = %@",currentParamType];
     [request setPredicate:pred];
     HMOSQParametr *par = [self.managedObjectContext executeFetchRequest:request error:nil][0];
-    pikerData = [par.data componentsSeparatedByString:@"/"];
+    pikerData = [par.def componentsSeparatedByString:@"/"];
+    //NSLog(@"%@ %@ %@",par.def);
 
     _currentParam.text = [NSString stringWithFormat:@"Текущий параметр: %@,Тип: %@",currentParamName,currentParamType];
     if ([currentParamType isEqualToString:@"Целое"])

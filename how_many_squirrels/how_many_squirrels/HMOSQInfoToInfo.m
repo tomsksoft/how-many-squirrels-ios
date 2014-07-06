@@ -11,13 +11,13 @@
  * Created by Anton Tsygantsev on 18/06/14
  */
 
-#import <CoreData/CoreData.h>
+#import "HMOSQInfoToInfo.h"
 
-@interface HMOSQParametr : NSManagedObject
+@implementation HMOSQInfoToInfo
 
-@property (nonatomic, strong) NSString* name;
-@property (nonatomic, strong) NSString* type;
-@property (nonatomic, strong) NSSet* value;
-@property (nonatomic, strong) NSString* data;
+- (NSString *)NumberToString:(NSNumber* )number
+{
+    return [[NSString alloc]initWithFormat:@"%@",number];
+}
 
 @end

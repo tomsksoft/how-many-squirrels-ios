@@ -42,26 +42,43 @@
     [self addNewObject:@"Продолжительность" :@"Интервал времени":@""];
 }
 
+-(void)deleteAll
+{
+    NSFetchRequest * allCars = [[NSFetchRequest alloc] init];
+    [allCars setEntity:[NSEntityDescription entityForName:@"Params" inManagedObjectContext:self.managedObjectContext]];
+    [allCars setIncludesPropertyValues:NO]; //only fetch the managedObjectID
+    
+    NSError * error = nil;
+    NSArray * cars = [self.managedObjectContext executeFetchRequest:allCars error:&error];
+    //error handling goes here
+    for (NSManagedObject * car in cars) {
+        [self.managedObjectContext deleteObject:car];
+    }
+    NSError *saveError = nil;
+    [self.managedObjectContext save:&saveError];
+}
+
 -(void)addNewObject:(NSString*) name : (NSString*) type :(NSString*)data
 {
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Params"
+                                              inManagedObjectContext:self.managedObjectContext];
+    [request setEntity:entity];
+    for (HMOSQParametr *p in [self.managedObjectContext executeFetchRequest:request error:nil])
+    {
+        if ([p.name isEqualToString:name])
+        {
+            return;
+        }
+    }
     HMOSQParametr * newEntry = [NSEntityDescription insertNewObjectForEntityForName:@"Params"
      inManagedObjectContext:self.managedObjectContext];
-     //  2
     newEntry.name = name;
     newEntry.type = type;
-    newEntry.data = data;
-    
-     //  6
-     /*HMOSQInfo * info = [NSEntityDescription insertNewObjectForEntityForName:@"Info"
-     inManagedObjectContext:self.managedObjectContext];
-     info.date = [NSDate date];
-     info.number = @"1";*/
-     
-     //  7
-     newEntry.value = [NSSet setWithObjects: nil];
-    NSError * eror;
-    [_managedObjectContext save:&eror];
-    //NSLog(@"%@",eror);
+    newEntry.def = data;
+    newEntry.value = [NSSet setWithObjects: nil];
+    [_managedObjectContext save:nil];
 
     
 }
@@ -69,6 +86,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     currentType = [prefs stringForKey:@"type"];
+    currentName = [prefs stringForKey:@"name"];
 }
 
 - (void)viewDidLoad
@@ -78,6 +96,10 @@
     id delegate = [[UIApplication sharedApplication]delegate];
     self.managedObjectContext = [delegate managedObjectContext];
     [self.fetchedResultsController performFetch:nil];
+    
+    
+    //[self defaultOptions];
+    //[self deleteAll];
     UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
     numberToolbar.barStyle = UIBarStyleBlackTranslucent;
     numberToolbar.items = [NSArray arrayWithObjects:
@@ -188,8 +210,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
-    NSLog(@"sfd = %lu",(unsigned long)[_fetchedResultsController.fetchedObjects count]);
     return [_fetchedResultsController.fetchedObjects count];
 }
 
@@ -200,13 +220,11 @@
     HMOSQParametr * param = [array objectAtIndex:indexPath.item];
     cell.detailTextLabel.text = param.type;
     cell.textLabel.text = param.name;
-    NSLog(@"%@   %@",param.type,param.name);
-    //NSLog(@"%@",param.values);
-    if (param.value!=nil)
+    if (param.value.count!=0)
     {
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, (%@)", param.type,@"Have data"];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, (%@)", param.type,@"Есть данные"];
     }
-    if ([param.name isEqualToString: currentType])
+    if ([param.name isEqualToString: currentName] && [param.type isEqualToString: currentType])
     {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
