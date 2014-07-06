@@ -58,6 +58,15 @@
     [self.managedObjectContext save:&saveError];
 }
 
+-(void)deleteObject :(NSIndexPath*)index
+{
+    HMOSQParametr *deleteRow = [self.fetchedResultsController objectAtIndexPath:index];
+    NSLog(@"%@",deleteRow.name);
+    [self.managedObjectContext deleteObject:deleteRow];
+    [self.managedObjectContext save:nil];
+    [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:index] withRowAnimation:UITableViewRowAnimationFade];
+}
+
 -(void)addNewObject:(NSString*) name : (NSString*) type :(NSString*)data
 {
     
@@ -79,9 +88,26 @@
     newEntry.def = data;
     newEntry.value = [NSSet setWithObjects: nil];
     [_managedObjectContext save:nil];
-
-    
 }
+
+-(IBAction)cancelClick:(id)sender
+{
+    if ([_tableView isEditing])
+    {
+        [_tableView setEditing:NO];
+    }
+    else
+    {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+-(IBAction)editClick:(id)sender
+{
+    [_tableView setEditing:YES];
+    _navItem.rightBarButtonItem = _addButton;
+    _navItem.leftBarButtonItem = _cancelButton;
+}
+
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -97,6 +123,10 @@
     self.managedObjectContext = [delegate managedObjectContext];
     [self.fetchedResultsController performFetch:nil];
     
+    _navItem.rightBarButtonItem = _editButton;
+    _navItem.leftBarButtonItem = _cancelButton;
+    
+    _fetchedResultsController.delegate = self;
     
     //[self defaultOptions];
     //[self deleteAll];
@@ -127,6 +157,9 @@
 - (NSFetchedResultsController *)fetchedResultsController
 {
     
+    if (_fetchedResultsController != nil) {
+        return _fetchedResultsController;
+    }
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Params" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
@@ -168,23 +201,15 @@
     [self.tableView reloadData];
 }
 
--(IBAction)cancelClick:(id)sender
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)path
 {
-    if([_tableView isEditing])
+    if(![_tableView isEditing])
     {
-        //[self updateDeleteButtonTitle];
-    }
-    else
-    {
-        
+        HMOSQEditParametrViewController *editController = [[HMOSQEditParametrViewController alloc] initWithContext:self.managedObjectContext :[_fetchedResultsController objectAtIndexPath:path]];
         //HMOSQEditViewController* editView = [[HMOSQEditViewController alloc]init ];
         //editView.manageObject = [_fetchedResultsController objectAtIndexPath:path];
         //editView.delegate = self;
-        //[self presentViewController:editView animated:YES completion:nil];
+        [self presentViewController:editController animated:YES completion:nil];
     }
     
 }
@@ -194,6 +219,19 @@
     //[self updateDeleteButtonTitle];
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [_tableView beginUpdates];
+    [self deleteObject:indexPath];
+    
+    [_tableView endUpdates];
+}
+
+- (void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return ;
+}
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return YES;
@@ -201,7 +239,7 @@
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return  UITableViewCellEditingStyleNone;
+    return  UITableViewCellEditingStyleDelete;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

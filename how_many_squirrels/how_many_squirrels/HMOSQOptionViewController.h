@@ -13,6 +13,7 @@
 
 
 #import <UIKit/UIKit.h>
+#import "HMOSQEditParametrViewController.h"
 
 @interface HMOSQOptionViewController : UIViewController<UIAlertViewDelegate,NSFetchedResultsControllerDelegate>
 {
@@ -26,7 +27,7 @@
 @property(strong,nonatomic)IBOutlet UITableView *tableView;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *editButton;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *cancelButton;
-@property (nonatomic, strong) IBOutlet UIBarButtonItem *deleteButton;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *addButton;
 @property(nonatomic,strong) IBOutlet UINavigationItem *navItem;
 
 @end

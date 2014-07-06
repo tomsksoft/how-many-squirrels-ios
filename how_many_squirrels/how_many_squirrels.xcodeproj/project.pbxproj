@@ -10,6 +10,8 @@
 		849BB2F41967D087005A9A3C /* HMOSQInfoToInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 849BB2F31967D087005A9A3C /* HMOSQInfoToInfo.m */; };
 		84B32A0C19692BE90030B8C5 /* how_many_squirrels 2.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 84B32A0A19692BE90030B8C5 /* how_many_squirrels 2.xcdatamodel */; };
 		84B32A1319693A5E0030B8C5 /* modelMap.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 84B32A1219693A5E0030B8C5 /* modelMap.xcmappingmodel */; };
+		84BC3AF91969A4F6007EC191 /* HMOSQEditParametrViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BC3AF71969A4F6007EC191 /* HMOSQEditParametrViewController.m */; };
+		84BC3AFA1969A4F6007EC191 /* HMOSQEditParametrViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84BC3AF81969A4F6007EC191 /* HMOSQEditParametrViewController.xib */; };
 		8635B97EDF4C4D61A4C4DC13 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00839AF424F841008C20A7F4 /* libPods.a */; };
 		E74E586619595C2500D262F0 /* HMOSQEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E74E586419595C2500D262F0 /* HMOSQEditViewController.m */; };
 		E74E586719595C2500D262F0 /* HMOSQEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E74E586519595C2500D262F0 /* HMOSQEditViewController.xib */; };
@@ -63,6 +65,9 @@
 		849BB2F31967D087005A9A3C /* HMOSQInfoToInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMOSQInfoToInfo.m; sourceTree = "<group>"; };
 		84B32A0A19692BE90030B8C5 /* how_many_squirrels 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "how_many_squirrels 2.xcdatamodel"; sourceTree = "<group>"; };
 		84B32A1219693A5E0030B8C5 /* modelMap.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = modelMap.xcmappingmodel; sourceTree = "<group>"; };
+		84BC3AF61969A4F6007EC191 /* HMOSQEditParametrViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMOSQEditParametrViewController.h; sourceTree = "<group>"; };
+		84BC3AF71969A4F6007EC191 /* HMOSQEditParametrViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMOSQEditParametrViewController.m; sourceTree = "<group>"; };
+		84BC3AF81969A4F6007EC191 /* HMOSQEditParametrViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMOSQEditParametrViewController.xib; sourceTree = "<group>"; };
 		C61C13EAD83F44C4A2A7327F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		E74E586319595C2500D262F0 /* HMOSQEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMOSQEditViewController.h; sourceTree = "<group>"; };
 		E74E586419595C2500D262F0 /* HMOSQEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMOSQEditViewController.m; sourceTree = "<group>"; };
@@ -263,6 +268,9 @@
 				E78E58DE1951864F00C4AA9F /* HMOSQTableViewController.m */,
 				E74E586319595C2500D262F0 /* HMOSQEditViewController.h */,
 				E74E586419595C2500D262F0 /* HMOSQEditViewController.m */,
+				84BC3AF61969A4F6007EC191 /* HMOSQEditParametrViewController.h */,
+				84BC3AF71969A4F6007EC191 /* HMOSQEditParametrViewController.m */,
+				84BC3AF81969A4F6007EC191 /* HMOSQEditParametrViewController.xib */,
 			);
 			name = Interface;
 			sourceTree = "<group>";
@@ -354,6 +362,7 @@
 				E77A1823196133DE00DB677A /* HMOSQOptionViewController.xib in Resources */,
 				E74E586719595C2500D262F0 /* HMOSQEditViewController.xib in Resources */,
 				E77A182A19626BF100DB677A /* iconm.png in Resources */,
+				84BC3AFA1969A4F6007EC191 /* HMOSQEditParametrViewController.xib in Resources */,
 				E77A182B19626BF100DB677A /* belka.jpg in Resources */,
 				E77A182919626BF100DB677A /* icon120.png in Resources */,
 			);
@@ -412,6 +421,7 @@
 				E74E586619595C2500D262F0 /* HMOSQEditViewController.m in Sources */,
 				E78E589219515A2D00C4AA9F /* HMOSQEnterViewController.m in Sources */,
 				E78E588D19514BF000C4AA9F /* HMOSQMainViewController.m in Sources */,
+				84BC3AF91969A4F6007EC191 /* HMOSQEditParametrViewController.m in Sources */,
 				E78E59301952B01600C4AA9F /* HMOSQInfo.m in Sources */,
 				E78E58DB1951823900C4AA9F /* HMOSQPlotViewController.m in Sources */,
 				E78E58641951477800C4AA9F /* main.m in Sources */,

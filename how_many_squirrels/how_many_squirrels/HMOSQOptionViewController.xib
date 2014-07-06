@@ -6,6 +6,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HMOSQOptionViewController">
             <connections>
+                <outlet property="addButton" destination="fVx-fe-Woe" id="vRs-uW-ha9"/>
+                <outlet property="cancelButton" destination="rQ7-9g-TB1" id="Wfj-Kv-jNT"/>
+                <outlet property="editButton" destination="7I8-KA-c0a" id="4Pw-LU-VZt"/>
                 <outlet property="navItem" destination="N0y-bL-CCz" id="Pai-ur-8Cl"/>
                 <outlet property="tableView" destination="1q7-wZ-yqA" id="pHP-nM-qwC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -17,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="1q7-wZ-yqA">
-                    <rect key="frame" x="0.0" y="50" width="320" height="530"/>
+                    <rect key="frame" x="0.0" y="59" width="320" height="521"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
@@ -26,7 +29,7 @@
                     </connections>
                 </tableView>
                 <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Do-0A-hVg">
-                    <rect key="frame" x="0.0" y="6" width="320" height="44"/>
+                    <rect key="frame" x="0.0" y="15" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <items>
                         <navigationItem id="N0y-bL-CCz"/>
@@ -37,6 +40,16 @@
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
-        <navigationItem title="Title" id="LB8-cG-Ggt"/>
+        <barButtonItem title="Отмена" id="rQ7-9g-TB1">
+            <connections>
+                <action selector="cancelClick:" destination="-1" id="H9j-tU-Poe"/>
+            </connections>
+        </barButtonItem>
+        <barButtonItem title="Редактировать" id="7I8-KA-c0a">
+            <connections>
+                <action selector="editClick:" destination="-1" id="0lZ-0E-2s3"/>
+            </connections>
+        </barButtonItem>
+        <barButtonItem title="Добавить" id="fVx-fe-Woe"/>
     </objects>
 </document>
