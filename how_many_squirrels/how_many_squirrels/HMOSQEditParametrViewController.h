@@ -24,6 +24,7 @@
     NSString *selectedType;
     NSString *defValue;
 }
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 
 @property (weak, nonatomic) IBOutlet UIButton *makeCurrent;
 -(id)initWithContext : (NSManagedObjectContext*) context : (HMOSQParametr*) p;

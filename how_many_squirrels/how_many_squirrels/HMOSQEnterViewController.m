@@ -43,7 +43,7 @@
     {
         case 1:
         {
-            return 2;break;
+            return [pikerData count];break;
         }
         case 3:
         {

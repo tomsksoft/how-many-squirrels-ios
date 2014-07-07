@@ -18,54 +18,100 @@
 @end
 
 @implementation HMOSQEditParametrViewController
+- (IBAction)deleteFromEnum:(id)sender
+{
+    NSInteger row = [_enumPicker selectedRowInComponent:0];
+    NSString *s = [listEnum objectAtIndex:row];
+    NSLog(@"%@",s);
+}
 
 - (IBAction)saveClick:(id)sender
 {
     if (![parametr.type isEqualToString:selectedType])
     {
-        if (parametr.value.count!=0)
-        {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Внимание" message:@"Изменен тип параметра.Все данные будут удалены."  delegate:self cancelButtonTitle:@"Отмена" otherButtonTitles: @"Принять", nil];
+        alert.tag = 1;
             [alert show];
-        }
     }
     else
     {
         parametr.name = _textField.text;
+        parametr.def = defValue;
         [perf setValue:parametr.name forKey:@"name"];
         [perf synchronize];
-        [_managedObjectContext save:nil];
-    }
-}
-
-- (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == 0)
-    {
-        NSLog(@"Отмена");
-    }
-    else
-    {
-        NSLog(@"Принять");
-        parametr.name = _textField.text;
-        parametr.type = selectedType;
-        parametr.def = defValue;
-        for (NSManagedObject *o in parametr.value)
-        {
-            [_managedObjectContext deleteObject:o];
-        }
         [_managedObjectContext save:nil];
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
+- (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (actionSheet.tag)
+    {
+        case 1:
+        {
+            if (buttonIndex == 0)
+            {
+                NSLog(@"Отмена");
+            }
+            else
+            {
+                NSLog(@"Принять");
+                parametr.name = _textField.text;
+                parametr.type = selectedType;
+                parametr.def = defValue;
+                [perf setValue:@"" forKey:@"count"];
+                [perf synchronize];
+                
+                NSLog(@"save value = %@",parametr.def);
+                if ([parametr.name isEqualToString:[perf valueForKeyPath:@"name"]])
+                {
+                    [perf setValue:parametr.type forKeyPath:@"type"];
+                }
+                for (NSManagedObject *o in parametr.value)
+                {
+                    [_managedObjectContext deleteObject:o];
+                }
+                [_managedObjectContext save:nil];
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }
+            break;
+        }
+        case 2:
+        {
+            NSString *name = [actionSheet textFieldAtIndex:0].text;
+            NSMutableArray * a = [listEnum mutableCopy];
+            [a addObject:name];
+            listEnum = [[NSArray alloc] initWithArray:a];
+            [_enumPicker reloadAllComponents];
+            if(defValue == nil)
+                defValue = [NSString stringWithFormat:@"%@",name];
+            else
+                defValue = [NSString stringWithFormat:@"%@/%@",name,defValue];
+            [_enumPicker selectRow:[a indexOfObject:name] inComponent:0 animated:0];
+            NSLog(@"%@",defValue);
+            break;
+        }
+        default:
+        {
+            break;
+        }
+    }
+}
+
 - (IBAction)cancelClick:(id)sender
 {
+    parametr.def = @"";
+    [_managedObjectContext save:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)addToEnum:(id)sender
 {
-    
+    UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"Перечислый параметр" message:@"Введите параметр" delegate:self cancelButtonTitle:@"Отмена" otherButtonTitles:@"Добавить", nil];
+    av.tag = 2;
+    av.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [av textFieldAtIndex:0].delegate = self;
+    [av show];
 }
 - (IBAction)makeCurrent:(id)sender
 {
@@ -102,7 +148,7 @@
     listOfTypes = [NSArray arrayWithObjects:@"Целое",@"Вещественное",@"Перечислимое",@"Момент времени",@"Интервал времени",nil];
     for (int i =0; i<listOfTypes.count; i++)
     {
-        if ([listOfTypes[i] isEqualToString:parametr.name])
+        if ([listOfTypes[i] isEqualToString:parametr.type])
         {
             [_typePicker selectRow:i inComponent:0 animated:YES];
             selectedType = [listOfTypes objectAtIndex:i];
@@ -112,13 +158,27 @@
     {
         _makeCurrent.hidden = YES;
     }
-    if ([parametr.name isEqualToString:@"Перечислимое"])
+    listEnum = [[NSArray alloc] init];
+    if ([parametr.type isEqualToString:@"Перечислимое"])
     {
-        listEnum = [parametr.def componentsSeparatedByString:@"/"];
+        if (![[parametr.def componentsSeparatedByString:@"/"][0]  isEqualToString:@""])
+        {
+            listEnum = [parametr.def componentsSeparatedByString:@"/"];
+            NSLog(@"%lu", (unsigned long)[parametr.def componentsSeparatedByString:@"/"].count );
+            for (NSString *str in listEnum)
+            {
+                if(defValue == nil)
+                    defValue = [NSString stringWithFormat:@"%@",str];
+                else
+                    defValue = [NSString stringWithFormat:@"%@/%@",str,defValue];
+
+            }
+        }
+        NSLog(@"cnt%lu",(unsigned long)listEnum.count);
         _enumPicker.hidden = NO;
         _addEnumButton.hidden = NO;
     }
-    defValue = @"";
+    //defValue = @"";
 }
 
 -(void)cancelNumberPad
@@ -160,6 +220,7 @@
     if (pickerView.tag ==1)
     {
         selectedType = [listOfTypes objectAtIndex:row];
+        NSLog(@"%@",selectedType);
         switch (row)
         {
             case 0:
