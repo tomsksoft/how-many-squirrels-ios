@@ -12,7 +12,7 @@
         <relationship name="value" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Info" inverseName="param" inverseEntity="Info" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Info" positionX="-432" positionY="-72" width="128" height="88"/>
-        <element name="Params" positionX="-63" positionY="-126" width="128" height="103"/>
+        <element name="Info" positionX="-396" positionY="18" width="128" height="90"/>
+        <element name="Params" positionX="-63" positionY="9" width="128" height="105"/>
     </elements>
 </model>

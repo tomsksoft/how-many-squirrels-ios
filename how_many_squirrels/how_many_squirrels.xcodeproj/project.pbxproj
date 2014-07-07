@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8449F6AA196A957A00385280 /* mapModel.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8449F6A9196A957A00385280 /* mapModel.xcmappingmodel */; };
 		849BB2F41967D087005A9A3C /* HMOSQInfoToInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 849BB2F31967D087005A9A3C /* HMOSQInfoToInfo.m */; };
-		84B32A0C19692BE90030B8C5 /* how_many_squirrels 2.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 84B32A0A19692BE90030B8C5 /* how_many_squirrels 2.xcdatamodel */; };
-		84B32A1319693A5E0030B8C5 /* modelMap.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 84B32A1219693A5E0030B8C5 /* modelMap.xcmappingmodel */; };
+		84A6C453196A901800F13445 /* how_many_squirrels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84A6C451196A901700F13445 /* how_many_squirrels.xcdatamodeld */; };
 		84BC3AF91969A4F6007EC191 /* HMOSQEditParametrViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BC3AF71969A4F6007EC191 /* HMOSQEditParametrViewController.m */; };
 		84BC3AFA1969A4F6007EC191 /* HMOSQEditParametrViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84BC3AF81969A4F6007EC191 /* HMOSQEditParametrViewController.xib */; };
 		8635B97EDF4C4D61A4C4DC13 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00839AF424F841008C20A7F4 /* libPods.a */; };
@@ -61,10 +61,11 @@
 
 /* Begin PBXFileReference section */
 		00839AF424F841008C20A7F4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8449F6A9196A957A00385280 /* mapModel.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = mapModel.xcmappingmodel; sourceTree = "<group>"; };
 		849BB2F21967D087005A9A3C /* HMOSQInfoToInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMOSQInfoToInfo.h; sourceTree = "<group>"; };
 		849BB2F31967D087005A9A3C /* HMOSQInfoToInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMOSQInfoToInfo.m; sourceTree = "<group>"; };
-		84B32A0A19692BE90030B8C5 /* how_many_squirrels 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "how_many_squirrels 2.xcdatamodel"; sourceTree = "<group>"; };
-		84B32A1219693A5E0030B8C5 /* modelMap.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = modelMap.xcmappingmodel; sourceTree = "<group>"; };
+		84A6C452196A901700F13445 /* how_many_squirrels.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = how_many_squirrels.xcdatamodel; sourceTree = "<group>"; };
+		84A6C454196A906E00F13445 /* how_many_squirrels 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "how_many_squirrels 2.xcdatamodel"; sourceTree = "<group>"; };
 		84BC3AF61969A4F6007EC191 /* HMOSQEditParametrViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMOSQEditParametrViewController.h; sourceTree = "<group>"; };
 		84BC3AF71969A4F6007EC191 /* HMOSQEditParametrViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMOSQEditParametrViewController.m; sourceTree = "<group>"; };
 		84BC3AF81969A4F6007EC191 /* HMOSQEditParametrViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMOSQEditParametrViewController.xib; sourceTree = "<group>"; };
@@ -216,13 +217,13 @@
 		E78E585E1951477800C4AA9F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				84B32A0A19692BE90030B8C5 /* how_many_squirrels 2.xcdatamodel */,
-				84B32A1219693A5E0030B8C5 /* modelMap.xcmappingmodel */,
+				84A6C451196A901700F13445 /* how_many_squirrels.xcdatamodeld */,
 				E78E586C1951477800C4AA9F /* Images.xcassets */,
 				E78E585F1951477800C4AA9F /* how_many_squirrels-Info.plist */,
 				E78E58601951477800C4AA9F /* InfoPlist.strings */,
 				E78E58631951477800C4AA9F /* main.m */,
 				E78E58651951477800C4AA9F /* how_many_squirrels-Prefix.pch */,
+				8449F6A9196A957A00385280 /* mapModel.xcmappingmodel */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -418,6 +419,7 @@
 			files = (
 				E74E58C51961180200D262F0 /* HMOSQPlotView.m in Sources */,
 				E77A1822196133DE00DB677A /* HMOSQOptionViewController.m in Sources */,
+				84A6C453196A901800F13445 /* how_many_squirrels.xcdatamodeld in Sources */,
 				E74E586619595C2500D262F0 /* HMOSQEditViewController.m in Sources */,
 				E78E589219515A2D00C4AA9F /* HMOSQEnterViewController.m in Sources */,
 				E78E588D19514BF000C4AA9F /* HMOSQMainViewController.m in Sources */,
@@ -427,10 +429,9 @@
 				E78E58641951477800C4AA9F /* main.m in Sources */,
 				E78E58681951477800C4AA9F /* HMOSQAppDelegate.m in Sources */,
 				E78E58E01951864F00C4AA9F /* HMOSQTableViewController.m in Sources */,
+				8449F6AA196A957A00385280 /* mapModel.xcmappingmodel in Sources */,
 				E77A18361963E16900DB677A /* HMOSQEnum.m in Sources */,
-				84B32A1319693A5E0030B8C5 /* modelMap.xcmappingmodel in Sources */,
 				849BB2F41967D087005A9A3C /* HMOSQInfoToInfo.m in Sources */,
-				84B32A0C19692BE90030B8C5 /* how_many_squirrels 2.xcdatamodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -643,6 +644,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		84A6C451196A901700F13445 /* how_many_squirrels.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				84A6C454196A906E00F13445 /* how_many_squirrels 2.xcdatamodel */,
+				84A6C452196A901700F13445 /* how_many_squirrels.xcdatamodel */,
+			);
+			currentVersion = 84A6C454196A906E00F13445 /* how_many_squirrels 2.xcdatamodel */;
+			path = how_many_squirrels.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E78E584A1951477700C4AA9F /* Project object */;
 }

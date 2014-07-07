@@ -54,7 +54,8 @@
     id delegate = [[UIApplication sharedApplication]delegate];
     self.managedObjectContext = [delegate managedObjectContext];
     pref = [NSUserDefaults standardUserDefaults];
-    if ([pref valueForKey:@"name"] == nil  && [pref valueForKey:@"type"] == nil)
+    //[pref setValue:nil forKeyPath:@"type"];
+    if ([pref valueForKey:@"type"] == nil)
     {
         [pref setValue:@"Белки" forKey:@"name"];
         [pref setValue:@"Целое" forKey:@"type"];
