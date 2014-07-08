@@ -108,6 +108,11 @@
     _navItem.leftBarButtonItem = _cancelButton;
 }
 
+-(IBAction)addClick:(id)sender
+{
+    HMOSQParametrAddViewController * addParametr = [[HMOSQParametrAddViewController alloc] init];
+    [self presentViewController:addParametr animated:YES completion:nil];
+}
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -176,18 +181,6 @@
     }
     return _fetchedResultsController;
 }
-
--(void) cancelNumberPad
-{
-    //[_textView resignFirstResponder];
-    //_textView.text = [prefs stringForKey:@"type"];
-}
-
--(void) doneWithNumberPad
-{
-    //[_textView resignFirstResponder];
-}
-
 
 - (void)didReceiveMemoryWarning
 {

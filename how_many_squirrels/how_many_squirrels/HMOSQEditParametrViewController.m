@@ -21,27 +21,97 @@
 - (IBAction)deleteFromEnum:(id)sender
 {
     NSInteger row = [_enumPicker selectedRowInComponent:0];
-    NSString *s = [listEnum objectAtIndex:row];
-    NSLog(@"%@",s);
+    NSMutableArray *array = [[NSMutableArray alloc] initWithArray:listEnum];
+    [array removeObjectAtIndex:row];
+    listEnum = [[NSArray alloc]initWithArray:array];
+    [_enumPicker reloadAllComponents];
+    if (listEnum.count == 0)
+    {
+        _deleteButton.hidden = 1;
+    }
 }
 
 - (IBAction)saveClick:(id)sender
 {
-    if (![parametr.type isEqualToString:selectedType])
+    if (![parametr.type isEqualToString:listOfTypes[[_typePicker selectedRowInComponent:0]]])
     {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Внимание" message:@"Изменен тип параметра.Все данные будут удалены."  delegate:self cancelButtonTitle:@"Отмена" otherButtonTitles: @"Принять", nil];
         alert.tag = 1;
-            [alert show];
+        [alert show];
     }
     else
     {
-        parametr.name = _textField.text;
-        parametr.def = defValue;
-        [perf setValue:parametr.name forKey:@"name"];
-        [perf synchronize];
-        [_managedObjectContext save:nil];
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self saveChanges];
     }
+}
+
+-(void)saveChanges
+{
+    NSInteger row = [_typePicker selectedRowInComponent:0];
+    switch (row)
+    {
+        case 0:
+        {
+            defValue = @"1/-1"; break;
+        }
+        case 1:
+        {
+            defValue = @"0.1/-0.1"; break;
+        }
+        case 2:
+        {
+            for (NSString *str in listEnum)
+            {
+                if (![str isEqualToString:@""])
+                {
+                    if(defValue == nil)
+                        defValue = [NSString stringWithFormat:@"%@",str];
+                    else
+                        defValue = [NSString stringWithFormat:@"%@/%@",str,defValue];
+                }
+            }
+            break;
+        }
+            
+        case 3:
+        {
+                /*NSDateFormatter * formater = [[NSDateFormatter alloc] init];
+            formater.dateFormat = @"dd.MM.yy. hh:mm:ss";
+            //[formater setTimeZone: [NSTimeZone timeZoneWithName:@"GMT"]];
+            defValue = [[NSString alloc] initWithFormat:@"%@/",[formater stringFromDate: [NSDate date]]];
+
+            break;*/
+        }
+        case 4:
+        {
+            defValue = @"0ч.0мин.0сек./";
+            break;
+        }
+        default:
+        {
+            defValue = @"";
+            break;
+        }
+    }
+    
+    if (![parametr.type isEqualToString:listOfTypes[[_typePicker selectedRowInComponent:0]]])
+    {
+        
+        parametr.type = listOfTypes[[_typePicker selectedRowInComponent:0]];
+        [perf setValue:@"" forKey:@"count"];
+        [perf synchronize];
+    }
+    parametr.name = _textField.text;
+    parametr.def = defValue;
+    if (isCurrent)
+    {
+        
+        [perf setValue:parametr.name forKey:@"name"];
+        [perf setValue:parametr.type forKeyPath:@"type"];
+        [perf synchronize];
+    }
+    [_managedObjectContext save:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -56,38 +126,23 @@
             }
             else
             {
-                NSLog(@"Принять");
-                parametr.name = _textField.text;
-                parametr.type = selectedType;
-                parametr.def = defValue;
-                [perf setValue:@"" forKey:@"count"];
-                [perf synchronize];
-                
-                NSLog(@"save value = %@",parametr.def);
-                if ([parametr.name isEqualToString:[perf valueForKeyPath:@"name"]])
-                {
-                    [perf setValue:parametr.type forKeyPath:@"type"];
-                }
+                [self saveChanges];
                 for (NSManagedObject *o in parametr.value)
                 {
                     [_managedObjectContext deleteObject:o];
                 }
                 [_managedObjectContext save:nil];
-                [self dismissViewControllerAnimated:YES completion:nil];
             }
             break;
         }
         case 2:
         {
             NSString *name = [actionSheet textFieldAtIndex:0].text;
-            NSMutableArray * a = [listEnum mutableCopy];
+            NSMutableArray * a = [[NSMutableArray alloc] initWithArray:listEnum];
             [a addObject:name];
             listEnum = [[NSArray alloc] initWithArray:a];
+            _deleteButton.hidden = 0;
             [_enumPicker reloadAllComponents];
-            if(defValue == nil)
-                defValue = [NSString stringWithFormat:@"%@",name];
-            else
-                defValue = [NSString stringWithFormat:@"%@/%@",name,defValue];
             [_enumPicker selectRow:[a indexOfObject:name] inComponent:0 animated:0];
             NSLog(@"%@",defValue);
             break;
@@ -101,13 +156,13 @@
 
 - (IBAction)cancelClick:(id)sender
 {
-    parametr.def = @"";
+    parametr.def = nil;
     [_managedObjectContext save:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)addToEnum:(id)sender
 {
-    UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"Перечислый параметр" message:@"Введите параметр" delegate:self cancelButtonTitle:@"Отмена" otherButtonTitles:@"Добавить", nil];
+    UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"Перечислимый параметр" message:@"Введите параметр" delegate:self cancelButtonTitle:@"Отмена" otherButtonTitles:@"Добавить", nil];
     av.tag = 2;
     av.alertViewStyle = UIAlertViewStylePlainTextInput;
     [av textFieldAtIndex:0].delegate = self;
@@ -146,39 +201,29 @@
     _textField.inputAccessoryView = numberToolbar;
     _textField.text = parametr.name;
     listOfTypes = [NSArray arrayWithObjects:@"Целое",@"Вещественное",@"Перечислимое",@"Момент времени",@"Интервал времени",nil];
+    listEnum = [parametr.def componentsSeparatedByString:@"/"];
     for (int i =0; i<listOfTypes.count; i++)
     {
         if ([listOfTypes[i] isEqualToString:parametr.type])
         {
             [_typePicker selectRow:i inComponent:0 animated:YES];
-            selectedType = [listOfTypes objectAtIndex:i];
         }
     }
     if (([[perf stringForKey:@"name"] isEqualToString:parametr.name]) && [[perf stringForKey:@"type"] isEqualToString:parametr.type])
     {
+        isCurrent = 1;
         _makeCurrent.hidden = YES;
     }
-    listEnum = [[NSArray alloc] init];
+    //listEnum = [[NSArray alloc] init];
     if ([parametr.type isEqualToString:@"Перечислимое"])
     {
-        if (![[parametr.def componentsSeparatedByString:@"/"][0]  isEqualToString:@""])
+        if (listEnum!=nil)
         {
-            listEnum = [parametr.def componentsSeparatedByString:@"/"];
-            NSLog(@"%lu", (unsigned long)[parametr.def componentsSeparatedByString:@"/"].count );
-            for (NSString *str in listEnum)
-            {
-                if(defValue == nil)
-                    defValue = [NSString stringWithFormat:@"%@",str];
-                else
-                    defValue = [NSString stringWithFormat:@"%@/%@",str,defValue];
-
-            }
+            _deleteButton.hidden = NO;
         }
-        NSLog(@"cnt%lu",(unsigned long)listEnum.count);
         _enumPicker.hidden = NO;
         _addEnumButton.hidden = NO;
     }
-    //defValue = @"";
 }
 
 -(void)cancelNumberPad
@@ -219,44 +264,49 @@
 {
     if (pickerView.tag ==1)
     {
-        selectedType = [listOfTypes objectAtIndex:row];
-        NSLog(@"%@",selectedType);
+        //selectedType = [listOfTypes objectAtIndex:row];
+        //NSLog(@"%@",selectedType);
         switch (row)
         {
             case 0:
             {
-                defValue = @"1/-1"; break;
+                _addEnumButton.hidden = 1;
+                _enumPicker.hidden = 1;
+                _deleteButton.hidden = 1;
+                break;
             }
             case 1:
             {
-                defValue = @"0.1/-0.1"; break;
+                _addEnumButton.hidden = 1;
+                _enumPicker.hidden = 1;
+                _deleteButton.hidden = 1;
+                break;
             }
             case 2:
             {
-                for (NSString *str in listEnum)
+                if(![parametr.type isEqualToString:@"Перечислимое"])
                 {
-                    if([defValue isEqualToString:@""])
-                        defValue = str;
-                    else
-                    {
-                        defValue = [NSString stringWithFormat:@"%@/%@",str,defValue];
-                    }
+                    NSMutableArray * a = [[NSMutableArray alloc] initWithArray:listEnum];
+                    [a removeAllObjects];
+                    listEnum = [NSArray arrayWithArray:a];
+                    [_enumPicker reloadAllComponents];
+                }
+                _addEnumButton.hidden = 0;
+                _enumPicker.hidden = 0;
+                if (listEnum.count != 0)
+                {
+                    _deleteButton.hidden = 0;
                 }
                 break;
             }
                 
             default:
+            {
+                _addEnumButton.hidden = 1;
+                _enumPicker.hidden = 1;
+                _deleteButton.hidden = 1;
                 break;
-        }
-        if (row== 2)
-        {
-            _enumPicker.hidden = NO;
-            _addEnumButton.hidden = NO;
-        }
-        else
-        {
-            _enumPicker.hidden = YES;
-            _addEnumButton.hidden = YES;
+            }
         }
     }
 }

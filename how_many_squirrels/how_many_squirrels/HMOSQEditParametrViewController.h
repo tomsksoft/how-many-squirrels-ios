@@ -21,7 +21,7 @@
     NSArray *listOfTypes;
     NSArray *listEnum;
     NSString *firstValue;
-    NSString *selectedType;
+    BOOL isCurrent;
     NSString *defValue;
 }
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;

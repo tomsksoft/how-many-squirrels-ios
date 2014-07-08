@@ -78,7 +78,7 @@
             valueForAdd = [pikerData objectAtIndex:row];
             break;
         }
-        case 2:
+        case 3:
         {
             valueForAdd = [[NSString alloc]initWithFormat:@"%ldч.%ldмин.%ldсек.",[_showPicker selectedRowInComponent:0],[_showPicker selectedRowInComponent:1],[_showPicker selectedRowInComponent:2]];
             break;
@@ -116,13 +116,13 @@
             switch (component)
             {
                 case 0:
-                    return [[NSString alloc] initWithFormat:@"%ldh",(long)row];
+                    return [[NSString alloc] initWithFormat:@"%ldч.",(long)row];
                     break;
                 case 1:
-                    return [[NSString alloc] initWithFormat:@"%ldm",(long)row];
+                    return [[NSString alloc] initWithFormat:@"%ldмин.",(long)row];
                     break;
                 case 2:
-                    return [[NSString alloc] initWithFormat:@"%lds",(long)row];
+                    return [[NSString alloc] initWithFormat:@"%ldсек.",(long)row];
                     break;
                     
                 default:
@@ -149,8 +149,8 @@
     [request setPredicate:pred];
     HMOSQParametr *par = [self.managedObjectContext executeFetchRequest:request error:nil][0];
     pikerData = [par.def componentsSeparatedByString:@"/"];
-    //NSLog(@"%@ %@ %@",par.def);
-
+    NSLog(@"%@ ",par.def);
+    valueForAdd = pikerData[0];
     _currentParam.text = [NSString stringWithFormat:@"Текущий параметр: %@,Тип: %@",currentParamName,currentParamType];
     if ([currentParamType isEqualToString:@"Целое"])
     {
@@ -175,6 +175,10 @@
     }
     if([currentParamType isEqualToString:@"Момент времени"])
     {
+        NSDateFormatter * formater = [[NSDateFormatter alloc] init];
+        formater.dateFormat = @"dd.MM.yy. hh:mm:ss";
+        //[formater setTimeZone: [NSTimeZone timeZoneWithName:@"GMT"]];
+        valueForAdd = [[NSString alloc] initWithFormat:@"%@",[formater stringFromDate:_momentPicker.date]];
         [_momentPicker addTarget:self action:@selector(momentChange:) forControlEvents:UIControlEventValueChanged];
         numberOfColumns = 0;
         _addButt.hidden = 1;
@@ -188,7 +192,6 @@
         _momentPicker.hidden = 1;
         _showPicker.hidden = 0;
     }
-    valueForAdd = pikerData[0];
 }
 -(void)tapAction
 {

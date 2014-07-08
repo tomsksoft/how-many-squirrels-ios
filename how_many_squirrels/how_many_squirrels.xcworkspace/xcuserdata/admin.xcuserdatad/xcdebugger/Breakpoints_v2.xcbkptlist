@@ -281,22 +281,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "how_many_squirrels/HMOSQEnterViewController.m"
-            timestampString = "426320404.522208"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
-            landmarkName = "-customInit"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQOptionViewController.m"
             timestampString = "426092694.15523"
             startingColumnNumber = "9223372036854775807"
@@ -362,23 +346,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426370784.895601"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
-            landmarkName = "-configureCell:atIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426370784.895601"
+            timestampString = "426541719.173402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "263"
@@ -394,55 +362,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426370784.895601"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
-            landmarkName = "-configureCell:atIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426370784.895601"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267"
-            landmarkName = "-configureCell:atIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426370784.895601"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "255"
-            endingLineNumber = "255"
-            landmarkName = "-configureCell:atIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426370784.895601"
+            timestampString = "426541719.173402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "256"
@@ -458,7 +378,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426370784.895601"
+            timestampString = "426541719.173402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "259"
@@ -474,11 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426370784.895601"
+            timestampString = "426541719.173402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "258"
-            endingLineNumber = "258"
+            startingLineNumber = "260"
+            endingLineNumber = "260"
             landmarkName = "-configureCell:atIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -490,11 +410,75 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426370784.895601"
+            timestampString = "426541719.173402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "272"
-            endingLineNumber = "272"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
+            landmarkName = "-configureCell:atIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "how_many_squirrels/HMOSQOptionViewController.m"
+            timestampString = "426541719.173402"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "249"
+            endingLineNumber = "249"
+            landmarkName = "-configureCell:atIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "how_many_squirrels/HMOSQOptionViewController.m"
+            timestampString = "426541719.173402"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
+            landmarkName = "-configureCell:atIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "how_many_squirrels/HMOSQOptionViewController.m"
+            timestampString = "426541719.173402"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
+            landmarkName = "-configureCell:atIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "how_many_squirrels/HMOSQOptionViewController.m"
+            timestampString = "426541719.173402"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "265"
+            endingLineNumber = "265"
             landmarkName = "-configureCell:atIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -506,11 +490,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426370784.895601"
+            timestampString = "426541719.173402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "233"
-            endingLineNumber = "233"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
             landmarkName = "-tableView:willBeginEditingRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -522,11 +506,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426370784.895601"
+            timestampString = "426541719.173402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
             landmarkName = "-tableView:editingStyleForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -538,11 +522,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426370784.895601"
+            timestampString = "426541719.173402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "249"
-            endingLineNumber = "249"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
             landmarkName = "-tableView:numberOfRowsInSection:"
             landmarkType = "5">
          </BreakpointContent>
@@ -554,11 +538,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426353841.996758"
+            timestampString = "426541719.173402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
             landmarkName = "-fetchedResultsController"
             landmarkType = "5">
          </BreakpointContent>
@@ -618,11 +602,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426353841.996758"
+            timestampString = "426541719.173402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "-viewWillAppear:"
             landmarkType = "5">
          </BreakpointContent>
@@ -634,11 +618,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426353841.996758"
+            timestampString = "426541719.173402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
             landmarkName = "-viewWillAppear:"
             landmarkType = "5">
          </BreakpointContent>
@@ -650,11 +634,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426353841.996758"
+            timestampString = "426541719.173402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
             landmarkName = "@implementation HMOSQOptionViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -666,11 +650,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426353841.996758"
+            timestampString = "426541719.173402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -682,11 +666,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426353841.996758"
+            timestampString = "426541719.173402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
             landmarkName = "-fetchedResultsController"
             landmarkType = "5">
          </BreakpointContent>
@@ -698,11 +682,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426353841.996758"
+            timestampString = "426541719.173402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
             landmarkName = "-fetchedResultsController"
             landmarkType = "5">
          </BreakpointContent>
@@ -714,11 +698,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426353841.996758"
+            timestampString = "426541719.173402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -730,11 +714,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426370784.895601"
+            timestampString = "426541719.173402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
             landmarkName = "-configureCell:atIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -794,11 +778,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQEnterViewController.m"
-            timestampString = "426320404.522208"
+            timestampString = "426515682.078423"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "305"
-            endingLineNumber = "305"
+            startingLineNumber = "308"
+            endingLineNumber = "308"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -810,11 +794,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQEnterViewController.m"
-            timestampString = "426320404.522208"
+            timestampString = "426515682.078423"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
             landmarkName = "-oneClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -842,11 +826,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426353841.996758"
+            timestampString = "426541719.173402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "-fetchedResultsController"
             landmarkType = "5">
          </BreakpointContent>
@@ -858,11 +842,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426353841.996758"
+            timestampString = "426541719.173402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
             landmarkName = "-fetchedResultsController"
             landmarkType = "5">
          </BreakpointContent>
@@ -874,39 +858,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426353841.996758"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
-            landmarkName = "-fetchedResultsController"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426353841.996758"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
-            landmarkName = "-fetchedResultsController"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426353841.996758"
+            timestampString = "426541719.173402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "168"
@@ -922,11 +874,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426353841.996758"
+            timestampString = "426541719.173402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
             landmarkName = "-fetchedResultsController"
             landmarkType = "5">
          </BreakpointContent>
@@ -938,11 +890,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426353841.996758"
+            timestampString = "426541719.173402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "-fetchedResultsController"
             landmarkType = "5">
          </BreakpointContent>
@@ -954,11 +906,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426353841.996758"
+            timestampString = "426541719.173402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "-fetchedResultsController"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "how_many_squirrels/HMOSQOptionViewController.m"
+            timestampString = "426541719.173402"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
+            landmarkName = "-fetchedResultsController"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "how_many_squirrels/HMOSQOptionViewController.m"
+            timestampString = "426541719.173402"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -970,11 +954,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426353841.996758"
+            timestampString = "426541719.173402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -986,11 +970,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426353841.996758"
+            timestampString = "426541719.173402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -1002,11 +986,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426353841.996758"
+            timestampString = "426541719.173402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -1050,11 +1034,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426370784.895601"
+            timestampString = "426541719.173402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "274"
-            endingLineNumber = "274"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
             landmarkName = "-configureCell:atIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1194,11 +1178,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426370784.895601"
+            timestampString = "426541719.173402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "230"
-            endingLineNumber = "230"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
             landmarkName = "-tableView:willBeginEditingRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1210,11 +1194,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426370784.895601"
+            timestampString = "426541719.173402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "235"
-            endingLineNumber = "235"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
             landmarkName = "-tableView:canEditRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1226,11 +1210,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426370784.895601"
+            timestampString = "426541719.173402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "222"
-            endingLineNumber = "222"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
             landmarkName = "-tableView:commitEditingStyle:forRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1242,11 +1226,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426370784.895601"
+            timestampString = "426541719.173402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
             landmarkName = "-tableView:commitEditingStyle:forRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1338,11 +1322,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQOptionViewController.m"
-            timestampString = "426353841.996758"
+            timestampString = "426541719.173402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "-controllerDidChangeContent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1354,11 +1338,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426450433.783612"
+            timestampString = "426541446.824376"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "271"
-            endingLineNumber = "271"
+            startingLineNumber = "321"
+            endingLineNumber = "321"
             landmarkName = "-pickerView:titleForRow:forComponent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1370,11 +1354,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426450433.783612"
+            timestampString = "426515355.394587"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
             landmarkName = "-customInit"
             landmarkType = "5">
          </BreakpointContent>
@@ -1386,11 +1370,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426449459.776629"
+            timestampString = "426515355.394587"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
             landmarkName = "-customInit"
             landmarkType = "5">
          </BreakpointContent>
@@ -1402,11 +1386,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426449459.776629"
+            timestampString = "426515355.394587"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "206"
+            endingLineNumber = "206"
             landmarkName = "-customInit"
             landmarkType = "5">
          </BreakpointContent>
@@ -1418,11 +1402,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426449459.776629"
+            timestampString = "426515355.394587"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
             landmarkName = "-customInit"
             landmarkType = "5">
          </BreakpointContent>
@@ -1434,11 +1418,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426449459.776629"
+            timestampString = "426515355.394587"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
             landmarkName = "-customInit"
             landmarkType = "5">
          </BreakpointContent>
@@ -1450,11 +1434,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426449459.776629"
+            timestampString = "426515355.394587"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
             landmarkName = "-customInit"
             landmarkType = "5">
          </BreakpointContent>
@@ -1466,27 +1450,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426449459.776629"
+            timestampString = "426515355.394587"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
-            landmarkName = "-customInit"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426450433.783612"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
             landmarkName = "-pickerView:numberOfRowsInComponent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1498,11 +1466,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426449459.776629"
+            timestampString = "426515355.394587"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
             landmarkName = "-customInit"
             landmarkType = "5">
          </BreakpointContent>
@@ -1514,11 +1482,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426449459.776629"
+            timestampString = "426515355.394587"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
             landmarkName = "-customInit"
             landmarkType = "5">
          </BreakpointContent>
@@ -1530,11 +1498,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426449459.776629"
+            timestampString = "426515355.394587"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
             landmarkName = "-customInit"
             landmarkType = "5">
          </BreakpointContent>
@@ -1594,11 +1562,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426449459.776629"
+            timestampString = "426512128.277242"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "-saveClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1610,11 +1578,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426449459.776629"
+            timestampString = "426512128.277242"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "-saveClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1626,11 +1594,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426449459.776629"
+            timestampString = "426515355.394587"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "-alertView:clickedButtonAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1642,11 +1610,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426449459.776629"
+            timestampString = "426515355.394587"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "-alertView:clickedButtonAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1658,11 +1626,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426450433.783612"
+            timestampString = "426541446.824376"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "274"
-            endingLineNumber = "274"
+            startingLineNumber = "324"
+            endingLineNumber = "324"
             landmarkName = "-pickerView:titleForRow:forComponent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1674,11 +1642,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426450433.783612"
+            timestampString = "426541446.824376"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "275"
-            endingLineNumber = "275"
+            startingLineNumber = "325"
+            endingLineNumber = "325"
             landmarkName = "-pickerView:titleForRow:forComponent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1690,11 +1658,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426449459.776629"
+            timestampString = "426515355.394587"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "-alertView:clickedButtonAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1706,11 +1674,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426449459.776629"
+            timestampString = "426515355.394587"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "-alertView:clickedButtonAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1722,75 +1690,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426449459.776629"
+            timestampString = "426515355.394587"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
-            landmarkName = "-customInit"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426449459.776629"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
-            landmarkName = "-customInit"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426450433.783612"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
-            landmarkName = "-customInit"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426449459.776629"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "-alertView:clickedButtonAtIndex:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426449459.776629"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "-alertView:clickedButtonAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1802,11 +1706,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426449459.776629"
+            timestampString = "426515355.394587"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
             landmarkName = "-alertView:clickedButtonAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1866,12 +1770,188 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426449459.776629"
+            timestampString = "426515355.394587"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "-alertView:clickedButtonAtIndex:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
+            timestampString = "426515355.394587"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "-alertView:clickedButtonAtIndex:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
+            timestampString = "426515355.394587"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "-alertView:clickedButtonAtIndex:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
+            timestampString = "426515355.394587"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "-alertView:clickedButtonAtIndex:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
+            timestampString = "426515355.394587"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
+            landmarkName = "-pickerView:didSelectRow:inComponent:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
+            timestampString = "426541446.824376"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "296"
+            endingLineNumber = "296"
+            landmarkName = "-pickerView:didSelectRow:inComponent:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
+            timestampString = "426541446.824376"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "314"
+            endingLineNumber = "314"
+            landmarkName = "-pickerView:titleForRow:forComponent:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
+            timestampString = "426515355.394587"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
+            landmarkName = "-customInit"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
+            timestampString = "426513586.398173"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "-saveChanges"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
+            timestampString = "426513860.881353"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "-saveChanges"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
+            timestampString = "426513709.332218"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "-saveChanges"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
+            timestampString = "426515355.394587"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "92"
             endingLineNumber = "92"
-            landmarkName = "-alertView:clickedButtonAtIndex:"
+            landmarkName = "-saveChanges"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1881,13 +1961,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426450433.783612"
+            filePath = "how_many_squirrels/HMOSQEnterViewController.m"
+            timestampString = "426514171.226958"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
-            landmarkName = "-customInit"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "-pickerView:didSelectRow:inComponent:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1897,13 +1977,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426449459.776629"
+            filePath = "how_many_squirrels/HMOSQEnterViewController.m"
+            timestampString = "426514173.691975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "-alertView:clickedButtonAtIndex:"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "-pickerView:didSelectRow:inComponent:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1913,13 +1993,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426449459.776629"
+            filePath = "how_many_squirrels/HMOSQEnterViewController.m"
+            timestampString = "426515682.078423"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "-alertView:clickedButtonAtIndex:"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
+            landmarkName = "-oneClick:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1929,13 +2009,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426449459.776629"
+            filePath = "how_many_squirrels/HMOSQEnterViewController.m"
+            timestampString = "426515682.078423"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
-            landmarkName = "-customInit"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
+            landmarkName = "-oneClick:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1945,77 +2025,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426450433.783612"
+            filePath = "how_many_squirrels/HMOSQEnterViewController.m"
+            timestampString = "426515682.078423"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
-            landmarkName = "-customInit"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426449938.993363"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "-alertView:clickedButtonAtIndex:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426449939.410163"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "-alertView:clickedButtonAtIndex:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426449939.754089"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "-alertView:clickedButtonAtIndex:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "how_many_squirrels/HMOSQEditParametrViewController.m"
-            timestampString = "426449940.450411"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "-alertView:clickedButtonAtIndex:"
+            startingLineNumber = "255"
+            endingLineNumber = "255"
+            landmarkName = "-addNewObject::"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

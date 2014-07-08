@@ -14,6 +14,7 @@
 
 #import <UIKit/UIKit.h>
 #import "HMOSQEditParametrViewController.h"
+#import "HMOSQParametrAddViewController.h"
 
 @interface HMOSQOptionViewController : UIViewController<UIAlertViewDelegate,NSFetchedResultsControllerDelegate>
 {

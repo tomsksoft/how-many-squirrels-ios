@@ -50,6 +50,10 @@
                 <action selector="editClick:" destination="-1" id="0lZ-0E-2s3"/>
             </connections>
         </barButtonItem>
-        <barButtonItem title="Добавить" id="fVx-fe-Woe"/>
+        <barButtonItem title="Добавить" id="fVx-fe-Woe">
+            <connections>
+                <action selector="addClick:" destination="-1" id="LQS-fS-Gzb"/>
+            </connections>
+        </barButtonItem>
     </objects>
 </document>

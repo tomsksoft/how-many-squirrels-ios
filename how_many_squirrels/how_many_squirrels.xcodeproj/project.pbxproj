@@ -10,6 +10,8 @@
 		8449F6AA196A957A00385280 /* mapModel.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8449F6A9196A957A00385280 /* mapModel.xcmappingmodel */; };
 		849BB2F41967D087005A9A3C /* HMOSQInfoToInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 849BB2F31967D087005A9A3C /* HMOSQInfoToInfo.m */; };
 		84A6C453196A901800F13445 /* how_many_squirrels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84A6C451196A901700F13445 /* how_many_squirrels.xcdatamodeld */; };
+		84B227C6196C7E34004B515A /* HMOSQParametrAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B227C4196C7E34004B515A /* HMOSQParametrAddViewController.m */; };
+		84B227C7196C7E34004B515A /* HMOSQParametrAddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B227C5196C7E34004B515A /* HMOSQParametrAddViewController.xib */; };
 		84BC3AF91969A4F6007EC191 /* HMOSQEditParametrViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BC3AF71969A4F6007EC191 /* HMOSQEditParametrViewController.m */; };
 		84BC3AFA1969A4F6007EC191 /* HMOSQEditParametrViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84BC3AF81969A4F6007EC191 /* HMOSQEditParametrViewController.xib */; };
 		8635B97EDF4C4D61A4C4DC13 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00839AF424F841008C20A7F4 /* libPods.a */; };
@@ -66,6 +68,9 @@
 		849BB2F31967D087005A9A3C /* HMOSQInfoToInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMOSQInfoToInfo.m; sourceTree = "<group>"; };
 		84A6C452196A901700F13445 /* how_many_squirrels.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = how_many_squirrels.xcdatamodel; sourceTree = "<group>"; };
 		84A6C454196A906E00F13445 /* how_many_squirrels 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "how_many_squirrels 2.xcdatamodel"; sourceTree = "<group>"; };
+		84B227C3196C7E34004B515A /* HMOSQParametrAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMOSQParametrAddViewController.h; sourceTree = "<group>"; };
+		84B227C4196C7E34004B515A /* HMOSQParametrAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMOSQParametrAddViewController.m; sourceTree = "<group>"; };
+		84B227C5196C7E34004B515A /* HMOSQParametrAddViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMOSQParametrAddViewController.xib; sourceTree = "<group>"; };
 		84BC3AF61969A4F6007EC191 /* HMOSQEditParametrViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMOSQEditParametrViewController.h; sourceTree = "<group>"; };
 		84BC3AF71969A4F6007EC191 /* HMOSQEditParametrViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMOSQEditParametrViewController.m; sourceTree = "<group>"; };
 		84BC3AF81969A4F6007EC191 /* HMOSQEditParametrViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMOSQEditParametrViewController.xib; sourceTree = "<group>"; };
@@ -272,6 +277,9 @@
 				84BC3AF61969A4F6007EC191 /* HMOSQEditParametrViewController.h */,
 				84BC3AF71969A4F6007EC191 /* HMOSQEditParametrViewController.m */,
 				84BC3AF81969A4F6007EC191 /* HMOSQEditParametrViewController.xib */,
+				84B227C3196C7E34004B515A /* HMOSQParametrAddViewController.h */,
+				84B227C4196C7E34004B515A /* HMOSQParametrAddViewController.m */,
+				84B227C5196C7E34004B515A /* HMOSQParametrAddViewController.xib */,
 			);
 			name = Interface;
 			sourceTree = "<group>";
@@ -356,6 +364,7 @@
 			files = (
 				E78E58621951477800C4AA9F /* InfoPlist.strings in Resources */,
 				E78E586D1951477800C4AA9F /* Images.xcassets in Resources */,
+				84B227C7196C7E34004B515A /* HMOSQParametrAddViewController.xib in Resources */,
 				E78E589319515A2D00C4AA9F /* HMOSQEnterViewController.xib in Resources */,
 				E78E58DC1951823900C4AA9F /* HMOSQPlotViewController.xib in Resources */,
 				E78E58E11951864F00C4AA9F /* HMOSQTableViewController.xib in Resources */,
@@ -431,6 +440,7 @@
 				E78E58E01951864F00C4AA9F /* HMOSQTableViewController.m in Sources */,
 				8449F6AA196A957A00385280 /* mapModel.xcmappingmodel in Sources */,
 				E77A18361963E16900DB677A /* HMOSQEnum.m in Sources */,
+				84B227C6196C7E34004B515A /* HMOSQParametrAddViewController.m in Sources */,
 				849BB2F41967D087005A9A3C /* HMOSQInfoToInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
