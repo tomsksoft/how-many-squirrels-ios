@@ -32,6 +32,17 @@
     return self;
 }
 
+-(void)customInit
+{
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Params"
+                                              inManagedObjectContext:self.managedObjectContext];
+    [request setEntity:entity];
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"name = %@", currentName];
+    [request setPredicate:pred];
+    HMOSQParametr *par = [self.managedObjectContext executeFetchRequest:request error:nil][0];
+}
+
 - (void)closeEdit:(HMOSQEditViewController *)controller didFinishWithSave:(BOOL)save withObject:(HMOSQInfo*) object
 {
     if (save)
@@ -95,7 +106,7 @@
     {
         
         HMOSQEditViewController* editView = [[HMOSQEditViewController alloc]init ];
-        editView.manageObject = [_fetchedResultsController objectAtIndexPath:path];
+        //editView.info = [_fetchedResultsController objectAtIndexPath:path];
         editView.delegate = self;
         [self presentViewController:editView animated:YES completion:nil];
     }
@@ -113,7 +124,8 @@
 }
 -(void) viewWillAppear:(BOOL)animated
 {
-    
+    currentName = [pref valueForKey:@"name"];
+    currentType = [pref valueForKey:@"type"];
 }
 
 -(void) viewDidAppear:(BOOL)animated
@@ -122,17 +134,23 @@
 }
 - (NSFetchedResultsController *)fetchedResultsController
 {
+    //NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    //NSEntityDescription *entity = [NSEntityDescription entityForName:@"Params"
+     //                                         inManagedObjectContext:self.managedObjectContext];
+    //[request setEntity:entity];
+    currentName = @"Белки";
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"name = %@", currentName];
+    //[request setPredicate:pred];
+    //HMOSQParametr *par = [self.managedObjectContext executeFetchRequest:request error:nil][0];
+    //[request setEntity:entity];
+    //NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
+    //NSArray *sortDescriptors = @[sortDescriptor];
     
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Info" inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
-    NSArray *sortDescriptors = @[sortDescriptor];
-    
-    [fetchRequest setSortDescriptors:sortDescriptors];
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
-    aFetchedResultsController.delegate = self;
-    self.fetchedResultsController = aFetchedResultsController;
+    //[request setSortDescriptors:sortDescriptors];
+   // NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+   // aFetchedResultsController.delegate = self;
+    //self.fetchedResultsController = aFetchedResultsController;
+    //NSLog(@"%@",[[aFetchedResultsController fetchedObjects]objectAtIndex:0]);
     return _fetchedResultsController;
 }
 
@@ -187,7 +205,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    currentName = [pref valueForKey:@"name"];
+    currentType = [pref valueForKey:@"type"];
     _navItem.rightBarButtonItem = _editButton;
+    pref = [NSUserDefaults standardUserDefaults];
 }
 
 - (void)didReceiveMemoryWarning

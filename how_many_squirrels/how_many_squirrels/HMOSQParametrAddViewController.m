@@ -158,6 +158,17 @@
 
 -(IBAction)saveClick:(id)sender
 {
+    if ([_textField.text isEqualToString:@""])
+    {
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Внимание"
+                                                        message:@"Введите название параметра."
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
     NSInteger row = [_typePicker selectedRowInComponent:0];
     switch (row)
     {
@@ -284,6 +295,7 @@
             return;
         }
     }
+
     parametr.name = _textField.text;
     [_textField resignFirstResponder];
 }

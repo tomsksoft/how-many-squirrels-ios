@@ -15,6 +15,9 @@
 #import "HMOSQEditViewController.h"
 @interface HMOSQTableViewController : UIViewController<NSFetchedResultsControllerDelegate,HMOSQEditViewControllerDelegate>
 {
+    NSUserDefaults *pref;
+    NSString *currentName;
+    NSString *currentType;
 }
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
@@ -23,4 +26,5 @@
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *cancelButton;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *deleteButton;
 @property(nonatomic,strong) IBOutlet UINavigationItem *navItem;
+
 @end

@@ -28,10 +28,20 @@
     return self;
 }
 
+-(id)initWhithContext:(NSManagedObjectContext*)context WithInfo:(HMOSQInfo*) inf
+{
+    self = [super init];
+    if (self)
+    {
+        self.managedObjectContext = context;
+        info = inf;
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    info = self.manageObject;
     _text.delegate = self;
     [_text setText: [[NSString alloc] initWithFormat:@"%@",info.number]];
     UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];

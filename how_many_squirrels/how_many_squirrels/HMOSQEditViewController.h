@@ -20,12 +20,14 @@
     NSNumber * num;
     HMOSQInfo* info;
 }
-@property (nonatomic, strong) NSManagedObject *manageObject;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, weak) id <HMOSQEditViewControllerDelegate> delegate;
 @property (nonatomic, retain)IBOutlet UIDatePicker *datePicker;
 @property (strong,nonatomic)IBOutlet UITextView * text;
 @end
 
 @protocol HMOSQEditViewControllerDelegate
+
+-(id)initWhithContext:(NSManagedObjectContext*)context withInfo:(HMOSQInfo*) inf;
 - (void)closeEdit:(HMOSQEditViewController *)controller didFinishWithSave:(BOOL)save withObject:(HMOSQInfo*) object;
 @end
