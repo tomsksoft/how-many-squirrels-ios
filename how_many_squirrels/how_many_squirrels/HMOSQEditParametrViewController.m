@@ -156,8 +156,6 @@
 
 - (IBAction)cancelClick:(id)sender
 {
-    parametr.def = nil;
-    [_managedObjectContext save:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)addToEnum:(id)sender

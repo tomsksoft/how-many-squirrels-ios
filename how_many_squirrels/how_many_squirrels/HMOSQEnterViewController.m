@@ -145,12 +145,14 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Params"
                                               inManagedObjectContext:self.managedObjectContext];
     [request setEntity:entity];
-    NSPredicate *pred = [NSPredicate predicateWithFormat:@"type = %@",currentParamType];
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"name = %@",currentParamName];
     [request setPredicate:pred];
     HMOSQParametr *par = [self.managedObjectContext executeFetchRequest:request error:nil][0];
+    NSLog(@"%@ %@",par.name,par.type);
     pikerData = [par.def componentsSeparatedByString:@"/"];
     NSLog(@"%@ ",par.def);
     valueForAdd = pikerData[0];
+    [_showPicker reloadAllComponents];
     _currentParam.text = [NSString stringWithFormat:@"Текущий параметр: %@,Тип: %@",currentParamName,currentParamType];
     if ([currentParamType isEqualToString:@"Целое"])
     {

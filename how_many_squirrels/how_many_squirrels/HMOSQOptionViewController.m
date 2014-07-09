@@ -110,8 +110,9 @@
 
 -(IBAction)addClick:(id)sender
 {
-    HMOSQParametrAddViewController * addParametr = [[HMOSQParametrAddViewController alloc] init];
+    HMOSQParametrAddViewController * addParametr = [[HMOSQParametrAddViewController alloc] initWithContext:_managedObjectContext];
     [self presentViewController:addParametr animated:YES completion:nil];
+    [_tableView setEditing:NO];
 }
 
 -(void)viewWillAppear:(BOOL)animated
