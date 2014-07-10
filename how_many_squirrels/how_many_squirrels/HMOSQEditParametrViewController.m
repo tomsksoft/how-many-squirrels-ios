@@ -188,16 +188,6 @@
 
 -(void)customInit
 {
-    perf = [NSUserDefaults standardUserDefaults];
-    UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
-    numberToolbar.barStyle = UIBarStyleBlackTranslucent;
-    numberToolbar.items = [NSArray arrayWithObjects:
-                           [[UIBarButtonItem alloc]initWithTitle:@"Отмена" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelNumberPad)],
-                           [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                           [[UIBarButtonItem alloc]initWithTitle:@"Принять" style:UIBarButtonItemStyleDone target:self action:@selector(doneWithNumberPad)],nil];
-    [numberToolbar sizeToFit];
-    _textField.inputAccessoryView = numberToolbar;
-    _textField.text = parametr.name;
     listOfTypes = [NSArray arrayWithObjects:@"Целое",@"Вещественное",@"Перечислимое",@"Момент времени",@"Интервал времени",nil];
     listEnum = [parametr.def componentsSeparatedByString:@"/"];
     for (int i =0; i<listOfTypes.count; i++)
@@ -329,6 +319,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    perf = [NSUserDefaults standardUserDefaults];
+    UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
+    numberToolbar.barStyle = UIBarStyleBlackTranslucent;
+    numberToolbar.items = [NSArray arrayWithObjects:
+                           [[UIBarButtonItem alloc]initWithTitle:@"Отмена" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelNumberPad)],
+                           [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                           [[UIBarButtonItem alloc]initWithTitle:@"Принять" style:UIBarButtonItemStyleDone target:self action:@selector(doneWithNumberPad)],nil];
+    [numberToolbar sizeToFit];
+    _textField.inputAccessoryView = numberToolbar;
+    _textField.text = parametr.name;
     [self customInit];
 }
 

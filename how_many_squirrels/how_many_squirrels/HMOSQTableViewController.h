@@ -13,11 +13,14 @@
 
 #import <UIKit/UIKit.h>
 #import "HMOSQEditViewController.h"
-@interface HMOSQTableViewController : UIViewController<NSFetchedResultsControllerDelegate,HMOSQEditViewControllerDelegate>
+#import "HMOSQParametr.h"
+@interface HMOSQTableViewController : UIViewController<NSFetchedResultsControllerDelegate>
 {
     NSUserDefaults *pref;
     NSString *currentName;
     NSString *currentType;
+    HMOSQParametr *p;
+    NSArray *valuesArray;
 }
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

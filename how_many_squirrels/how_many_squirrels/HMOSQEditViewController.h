@@ -14,20 +14,26 @@
 @protocol HMOSQEditViewControllerDelegate;
 #import <UIKit/UIKit.h>
 #import "HMOSQInfo.h"
+#import "HMOSQParametr.h"
 
-@interface HMOSQEditViewController : UIViewController<UITextViewDelegate,UIActionSheetDelegate>
+@interface HMOSQEditViewController : UIViewController
 {
     NSNumber * num;
     HMOSQInfo* info;
+    NSUserDefaults *pref;
+    NSInteger numberOfComponent;
+    HMOSQParametr *parametr;
+    NSArray *listEnum;
 }
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, weak) id <HMOSQEditViewControllerDelegate> delegate;
 @property (nonatomic, retain)IBOutlet UIDatePicker *datePicker;
-@property (strong,nonatomic)IBOutlet UITextView * text;
-@end
+@property (nonatomic, retain)IBOutlet UIPickerView *enumPicker;
+@property (strong,nonatomic)IBOutlet UITextField * text;
 
-@protocol HMOSQEditViewControllerDelegate
+@property (strong,nonatomic)IBOutlet UILabel * label;
 
--(id)initWhithContext:(NSManagedObjectContext*)context withInfo:(HMOSQInfo*) inf;
-- (void)closeEdit:(HMOSQEditViewController *)controller didFinishWithSave:(BOOL)save withObject:(HMOSQInfo*) object;
+
+-(id)initWhithContext:(NSManagedObjectContext*)context withInfo:(HMOSQInfo*) inf withParametr:(HMOSQParametr*)p;
+
 @end

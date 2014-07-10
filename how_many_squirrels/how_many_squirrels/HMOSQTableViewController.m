@@ -24,26 +24,31 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Таблица" image:[UIImage imageNamed:@"iconm.png"] tag:0];        // Custom initialization
-        id delegate = [[UIApplication sharedApplication]delegate];
-        self.managedObjectContext = [delegate managedObjectContext];
+        
         //self.fetchedRecordsArray = [delegate getAllRecords];
-        [self.fetchedResultsController performFetch:nil];
+        //[self.fetchedResultsController performFetch:nil];
     }
     return self;
 }
 
 -(void)customInit
 {
+    
+    currentName = [pref valueForKey:@"name"];
+    currentType = [pref valueForKey:@"type"];
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Params"
                                               inManagedObjectContext:self.managedObjectContext];
     [request setEntity:entity];
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"name = %@", currentName];
     [request setPredicate:pred];
-    HMOSQParametr *par = [self.managedObjectContext executeFetchRequest:request error:nil][0];
+    p = [self.managedObjectContext executeFetchRequest:request error:nil][0];
+    NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO];
+    valuesArray = [p.value sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
+    [_tableView reloadData];
 }
 
-- (void)closeEdit:(HMOSQEditViewController *)controller didFinishWithSave:(BOOL)save withObject:(HMOSQInfo*) object
+/*- (void)closeEdit:(HMOSQEditViewController *)controller didFinishWithSave:(BOOL)save withObject:(HMOSQInfo*) object
 {
     if (save)
     {
@@ -53,7 +58,7 @@
         [self.managedObjectContext save:nil];
     }
     [self dismissViewControllerAnimated:YES completion:nil];
-}
+}*/
 
 
 -(IBAction)editClick:(id)sender
@@ -74,22 +79,28 @@
 
 -(IBAction)deleteClick:(id)sender
 {
+    NSMutableSet *set = [NSMutableSet setWithSet:p.value];
     NSArray *selectedRows = [_tableView indexPathsForSelectedRows];
-    if (selectedRows.count==0 || selectedRows.count == [_fetchedResultsController.fetchedObjects count])
+    if (selectedRows.count==0 || selectedRows.count == [valuesArray count])
     {
-        for (NSManagedObject * inf in _fetchedResultsController.fetchedObjects)
+        for (NSManagedObject * inf in p.value)
         {
-            [_managedObjectContext deleteObject:inf];
+            //[_managedObjectContext deleteObject:inf];
+            [set removeObject:inf];
         }
+        p.value = [NSSet setWithSet:set];
     }
     else
     {
         for (NSIndexPath *selectionIndex in selectedRows)
         {
-            [_managedObjectContext deleteObject:[_fetchedResultsController objectAtIndexPath:selectionIndex]];
-            [_managedObjectContext save:nil];
+            [set removeObject:[[p.value allObjects] objectAtIndex:selectionIndex.row]];
+            //[_managedObjectContext deleteObject:[valuesArray objectAtIndex:selectionIndex.row]];
+            //[_managedObjectContext save:nil];
             [self configureCell:[_tableView cellForRowAtIndexPath:selectionIndex] atIndexPath:selectionIndex];
         }
+        
+        p.value = [NSSet setWithSet:set];
     }
     [_managedObjectContext save:nil];
     [_tableView setEditing:NO animated:YES];
@@ -105,7 +116,7 @@
     else
     {
         
-        HMOSQEditViewController* editView = [[HMOSQEditViewController alloc]init ];
+        HMOSQEditViewController* editView = [[HMOSQEditViewController alloc]initWhithContext:self.managedObjectContext withInfo:[[p.value allObjects] objectAtIndex:path.row] withParametr:p];
         //editView.info = [_fetchedResultsController objectAtIndexPath:path];
         editView.delegate = self;
         [self presentViewController:editView animated:YES completion:nil];
@@ -124,45 +135,14 @@
 }
 -(void) viewWillAppear:(BOOL)animated
 {
-    currentName = [pref valueForKey:@"name"];
-    currentType = [pref valueForKey:@"type"];
+    
+    [self customInit];
+    //[self.fetchedResultsController performFetch:nil];
 }
 
 -(void) viewDidAppear:(BOOL)animated
 {
     //[_tableView endUpdates];
-}
-- (NSFetchedResultsController *)fetchedResultsController
-{
-    //NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    //NSEntityDescription *entity = [NSEntityDescription entityForName:@"Params"
-     //                                         inManagedObjectContext:self.managedObjectContext];
-    //[request setEntity:entity];
-    currentName = @"Белки";
-    NSPredicate *pred = [NSPredicate predicateWithFormat:@"name = %@", currentName];
-    //[request setPredicate:pred];
-    //HMOSQParametr *par = [self.managedObjectContext executeFetchRequest:request error:nil][0];
-    //[request setEntity:entity];
-    //NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
-    //NSArray *sortDescriptors = @[sortDescriptor];
-    
-    //[request setSortDescriptors:sortDescriptors];
-   // NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
-   // aFetchedResultsController.delegate = self;
-    //self.fetchedResultsController = aFetchedResultsController;
-    //NSLog(@"%@",[[aFetchedResultsController fetchedObjects]objectAtIndex:0]);
-    return _fetchedResultsController;
-}
-
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-    
-    //[self.tableView beginUpdates];
-}
-
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    
-    //[self.tableView endUpdates];
-    [self.tableView reloadData];
 }
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -177,12 +157,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_fetchedResultsController.fetchedObjects count];
+    return [[p.value allObjects] count];
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    
-    HMOSQInfo * inf = [_fetchedResultsController.fetchedObjects objectAtIndex:indexPath.row];
+    HMOSQInfo * inf = [[p.value allObjects] objectAtIndex:indexPath.row];
     NSDateFormatter * formater = [[NSDateFormatter alloc] init];
     formater.dateFormat = @"dd/MM/yy hh:mm:ss";
     [formater setTimeZone: [NSTimeZone localTimeZone]];
@@ -205,11 +184,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    currentName = [pref valueForKey:@"name"];
-    currentType = [pref valueForKey:@"type"];
+    _fetchedResultsController.delegate = self;
     _navItem.rightBarButtonItem = _editButton;
     pref = [NSUserDefaults standardUserDefaults];
+    id delegate = [[UIApplication sharedApplication]delegate];
+    self.managedObjectContext = [delegate managedObjectContext];
+    [self.fetchedResultsController performFetch:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -222,7 +202,7 @@
 {
     NSArray *selectedRows = [_tableView indexPathsForSelectedRows];
     
-    BOOL allItemsAreSelected = selectedRows.count == [_fetchedResultsController.fetchedObjects count];
+    BOOL allItemsAreSelected = selectedRows.count == [[p.value allObjects]count];
     BOOL noItemsAreSelected = selectedRows.count == 0;
     
     if (allItemsAreSelected || noItemsAreSelected)
