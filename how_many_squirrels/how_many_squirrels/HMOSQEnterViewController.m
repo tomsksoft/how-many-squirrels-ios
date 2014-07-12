@@ -23,12 +23,15 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
+    if (self)
+    {
         self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Ввод данных" image:[UIImage imageNamed:@"iconm.png"] tag:0];        // Custom initialization
-        UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
-        [recognizer setNumberOfTapsRequired:1];
-        //lblName.userInteractionEnabled = true;  (setting this in Interface Builder)
-        //[_dateTime addGestureRecognizer:recognizer];
+        UITapGestureRecognizer *recognizerl = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
+        [recognizerl setNumberOfTapsRequired:1];
+        prefs = [NSUserDefaults standardUserDefaults];
+        
+        id delegate = [[UIApplication sharedApplication]delegate];
+        self.managedObjectContext = [delegate managedObjectContext];
     }
     return self;
 }
@@ -80,7 +83,7 @@
         }
         case 3:
         {
-            valueForAdd = [[NSString alloc]initWithFormat:@"%ldч.%ldмин.%ldсек.",[_showPicker selectedRowInComponent:0],[_showPicker selectedRowInComponent:1],[_showPicker selectedRowInComponent:2]];
+            valueForAdd = [[NSString alloc]initWithFormat:@"%@ч.%@мин.%@сек.",[_showPicker selectedRowInComponent:0],[_showPicker selectedRowInComponent:1],[_showPicker selectedRowInComponent:2]];
             break;
         }
         default:
@@ -279,6 +282,11 @@
     [self stateChange];
     _field.delegate = self;
     _showPicker.delegate =self;
+    self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Ввод данных" image:[UIImage imageNamed:@"iconm.png"] tag:0];        // Custom initialization
+    UITapGestureRecognizer *recognizerl = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
+    [recognizerl setNumberOfTapsRequired:1];
+    //lblName.userInteractionEnabled = true;  (setting this in Interface Builder)
+    //[_dateTime addGestureRecognizer:recognizer];
     //_textView.delegate = self;
     //[_text setText:@"100"];
     UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
@@ -305,7 +313,7 @@
     NSMutableArray *barItems = [[NSMutableArray alloc] init];
     
     //UITextField * textFieldItem = [[UITextField alloc] init];
-   // UIBarButtonItem *field = [[UIBarButtonItem alloc] initWithCustomView:_textView];
+    // UIBarButtonItem *field = [[UIBarButtonItem alloc] initWithCustomView:_textView];
     
     UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
     
@@ -324,11 +332,7 @@
     [recognizer setNumberOfTapsRequired:1];
     //lblName.userInteractionEnabled = true;  (setting this in Interface Builder)
     [_dateTime addGestureRecognizer:recognizer];
-    
-    prefs = [NSUserDefaults standardUserDefaults];
-    
-    id delegate = [[UIApplication sharedApplication]delegate];
-    self.managedObjectContext = [delegate managedObjectContext];
+
 }
 
 -(void) stateChange
@@ -393,7 +397,7 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    [_showPicker reloadAllComponents];
+    //[_showPicker reloadAllComponents];
     
     currentParamName = [prefs stringForKey:@"name"];
     currentParamType = [prefs stringForKey:@"type"];

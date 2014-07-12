@@ -24,7 +24,9 @@
     NSInteger numberOfComponent;
     HMOSQParametr *parametr;
     NSArray *listEnum;
+    NSString *lastValue;
 }
+@property (weak, nonatomic) IBOutlet UIDatePicker *momentPicker;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, weak) id <HMOSQEditViewControllerDelegate> delegate;
 @property (nonatomic, retain)IBOutlet UIDatePicker *datePicker;

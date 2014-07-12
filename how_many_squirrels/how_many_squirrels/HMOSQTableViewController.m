@@ -47,20 +47,6 @@
     valuesArray = [p.value sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
     [_tableView reloadData];
 }
-
-/*- (void)closeEdit:(HMOSQEditViewController *)controller didFinishWithSave:(BOOL)save withObject:(HMOSQInfo*) object
-{
-    if (save)
-    {
-        HMOSQInfo* inf = [_fetchedResultsController objectAtIndexPath:[_tableView indexPathForSelectedRow]];
-        [inf setValue:object.date forKey:@"date"];
-        [inf setValue:object.number forKeyPath:@"number"];
-        [self.managedObjectContext save:nil];
-    }
-    [self dismissViewControllerAnimated:YES completion:nil];
-}*/
-
-
 -(IBAction)editClick:(id)sender
 {
     
@@ -117,8 +103,6 @@
     {
         
         HMOSQEditViewController* editView = [[HMOSQEditViewController alloc]initWhithContext:self.managedObjectContext withInfo:[[p.value allObjects] objectAtIndex:path.row] withParametr:p];
-        //editView.info = [_fetchedResultsController objectAtIndexPath:path];
-        editView.delegate = self;
         [self presentViewController:editView animated:YES completion:nil];
     }
     

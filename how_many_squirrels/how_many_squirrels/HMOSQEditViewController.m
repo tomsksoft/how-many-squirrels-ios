@@ -32,7 +32,11 @@
     return self;
 }
 
-
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    lastValue = _text.text;
+    return YES;
+}
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
     switch (numberOfComponent)
@@ -112,37 +116,42 @@
     
     [_text setText: [[NSString alloc] initWithFormat:@"%@",info.number]];
     _datePicker.date = info.date;
-    parametr.type = @"Интервал времени";
     listEnum = [parametr.def componentsSeparatedByString:@"/"];
     if ([parametr.type isEqualToString:@"Целое"])
     {
         _enumPicker.hidden = 1;
+        _momentPicker.hidden = 1;
     }
     if ([parametr.type isEqualToString:@"Вещественное"])
     {
         _enumPicker.hidden = 1;
+        _momentPicker.hidden = 1;
     }
-    if ([parametr.type isEqualToString:@"Перечисление"])
+    if ([parametr.type isEqualToString:@"Перечислимое"])
     {
         _enumPicker.hidden = 0;
-        _label.hidden = 1;
         _text.hidden = 1;
+        _momentPicker.hidden = 1;
         numberOfComponent = 1;
     }
     if ([parametr.type isEqualToString:@"Момент времени"])
     {
+        NSDateFormatter * formater = [[NSDateFormatter alloc] init];
+        formater.dateFormat = @"dd.MM.yy. hh:mm:ss";
+        _momentPicker.date = [formater dateFromString:info.number];
         _enumPicker.hidden = 1;
-        _label.hidden = 1;
         _text.hidden = 1;
+        _momentPicker.hidden = 0;
     }
     if ([parametr.type isEqualToString:@"Интервал времени"])
     {
         
+        _momentPicker.hidden = 1;
         numberOfComponent = 3;
         _enumPicker.hidden = 0;
+        _text.hidden = 1;
         [_text setBorderStyle:UITextBorderStyleNone];
         [_text setUserInteractionEnabled:0];
-        info.number = @"0ч.2мин.50сек.";
         _text.text = info.number;
         NSArray *array = [info.number componentsSeparatedByString:@"."];
         [_enumPicker selectRow:[array[0] intValue] inComponent:0 animated:0];
@@ -154,10 +163,56 @@
 
 }
 
+-(void)save
+{
+    
+    NSDateFormatter * formater = [[NSDateFormatter alloc] init];
+    formater.dateFormat = @"dd.MM.yy. hh:mm:ss";
+    info.date = _datePicker.date;
+    NSLog(@"%@",_momentPicker.date);
+    NSLog(@"%@",[[NSString alloc] initWithFormat:@"%@",[formater stringFromDate:_momentPicker.date]]);
+    
+    
+    if ([parametr.type isEqualToString:@"Целое"])
+    {
+        info.number = _text.text;
+        [_managedObjectContext save:nil];
+        return;
+    }
+    if ([parametr.type isEqualToString:@"Вещественное"])
+    {
+        info.number = _text.text;
+        [_managedObjectContext save:nil];
+        return;
+    }
+    if ([parametr.type isEqualToString:@"Перечислимое"])
+    {
+        info.number = listEnum[[_enumPicker selectedRowInComponent:0]];
+        [_managedObjectContext save:nil];
+        return;
+    }
+    if ([parametr.type isEqualToString:@"Момент времени"])
+    {
+        
+        NSDateFormatter * formater = [[NSDateFormatter alloc] init];
+        formater.dateFormat = @"dd.MM.yy. hh:mm:ss";
+        //[formater setTimeZone: [NSTimeZone timeZoneWithName:@"GMT"]];
+        info.number =[[NSString alloc] initWithFormat:@"%@",[formater stringFromDate:_momentPicker.date]];
+        [_managedObjectContext save:nil];
+        return;
+    }
+    if ([parametr.type isEqualToString:@"Интервал времени"])
+    {
+        info.number = [NSString stringWithFormat:@"%ldч.%ldмин.%ldсек.",[_enumPicker selectedRowInComponent:0],[_enumPicker selectedRowInComponent:1],[_enumPicker selectedRowInComponent:2]];
+        [_managedObjectContext save:nil];
+        return;
+    }
+
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _enumPicker.delegate = self;
     pref = [NSUserDefaults standardUserDefaults];
     //_text.delegate = self;
     UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
@@ -170,13 +225,12 @@
     [numberToolbar sizeToFit];
     _text.inputAccessoryView = numberToolbar;
     [self customInit];
-    //_datePicker.timeZone = [NSTimeZone timeZoneWithName:@"GMT"];
 }
 
 -(void) cancelNumberPad
 {
     [_text resignFirstResponder];
-    _text.text = [[NSString alloc]initWithFormat:@"%@",num];
+    _text.text = lastValue;
 }
 
 -(void) doneWithNumberPad
@@ -191,7 +245,6 @@
 
 - (IBAction)cancel:(id)sender
 {
-    //[self.delegate closeEdit:self didFinishWithSave:NO withObject:info];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -203,8 +256,7 @@
 
 - (IBAction)save:(id)sender
 {
-    int tmp = [_text.text intValue];
-    info.number = [[NSNumber alloc] initWithInt:tmp];
-    info.date = _datePicker.date;
+    [self save];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end
